@@ -8,6 +8,8 @@ import Footer from './components/Footer';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import firebaseStart from "./components/firebaseStart";
 import UpdateUserData from './components/UpdateUserData';
+import MealList from './components/MealsList';
+import MealDetail from './components/MealDetail';
 
 function App() {
 
@@ -63,6 +65,12 @@ function App() {
               <Footer />
             </>}
           />
+          <Route
+            path='/categorie/:categorieName'
+            element={<MealList />} />
+          <Route
+            path='/categorie/:categorieName/:id'
+            element={<MealDetail />} />
           <Route
             path='/singup'
             element={<SingUpPage />}

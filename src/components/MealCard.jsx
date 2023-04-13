@@ -1,28 +1,17 @@
-import { useEffect, useState } from 'react';
-import './MealCard.css';
+import { Link } from "react-router-dom";
 
 const MealCard = (props) => {
-    const [hover, setHover] = useState(false);
-
-    useEffect(() => {
-
-    }, [hover])
-
+  /*   console.log('Meal Card...');
+    console.log(props.mealId);
+    console.log(props.mealCategory); */
 
     return (
-        <div className={`card_wrapper`}
-            onMouseEnter={() => { setHover(true) }}
-            onMouseLeave={() => { setHover(false) }}
-            aria-disabled={props.enabled? 'false':'true'}
-        >
-            <img
-                className={`card_image ${!hover ? 'image_show' : ''}`}
-                src={props.image}
-                alt={`of ${props.name} meal`} />
-            <div
-                className={`card_name ${hover ? 'name_show' : ''}`}>{props.name}
+        <Link to={`/categorie/${props.mealCategory}/${props.mealId}`}>
+            <div className="meal_card_wrapper">
+                <img src={props.mealImage} alt={`of ${props.mealName} meal`} />
+                <h2>{props.nameMeal}</h2>
             </div>
-        </div>
+        </Link>
     )
 }
 

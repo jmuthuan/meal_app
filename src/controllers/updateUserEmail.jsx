@@ -1,5 +1,6 @@
 import { getAuth, updateEmail } from "firebase/auth";
 import firebaseStart from "../components/firebaseStart";
+import { emailVerification } from "./emailVerification";
 
 export function updateUserEmail(email) {
     const app = firebaseStart();
@@ -9,6 +10,7 @@ export function updateUserEmail(email) {
     updateEmail(auth.currentUser, email).then(() => {
         // Email updated!
         alert('Email updated!')
+        emailVerification(auth);
         // ...
       }).catch((error) => {
         // An error occurred

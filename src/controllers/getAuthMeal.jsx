@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { emailVerification } from './emailVerification';
 
 
 const getAuthMeal = (buttonName, email, password) => {
@@ -45,6 +46,7 @@ const newUser = (email, password) => {
             // ...
             console.log('user credentials...');
             console.log(userCredential);
+            emailVerification(auth);
         })
         .catch((error) => {
             const errorCode = error.code;

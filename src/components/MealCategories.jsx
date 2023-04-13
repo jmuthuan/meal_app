@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import MealCard from "./MealCard";
+import MealCategoryCard from "./MealCategoryCard";
 import './MealCategories.css';
 
 
@@ -27,7 +27,7 @@ const MealCategories = (props) => {
                     {
                         categories.map((element, index) => {
                             return (
-                                <MealCard
+                                <MealCategoryCard
                                     key={element.idCategory}
                                     name={element.strCategory}
                                     image={element.strCategoryThumb}

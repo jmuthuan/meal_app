@@ -23,7 +23,7 @@ const SingUpPage = () => {
         const passwordRules = [passLength, passLower, passUpper, passNumber, passSpecial];
         
         if(passwordCheck(event.target, passwordRules)){
-            //getAuthMeal('singup', event.target.email.value, event.target.password.value)
+            getAuthMeal('singup', event.target.email.value, event.target.password.value)
             console.log('passwords check!');
             navigate('/');
         }
