@@ -1,0 +1,6 @@
+.meal_categories_wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;    
+}

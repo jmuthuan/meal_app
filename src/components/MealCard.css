@@ -1,0 +1,18 @@
+.card_wrapper{
+    background-color: gray;
+    width: 25%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px white;
+    margin: 2rem 2rem;
+
+}
+
+.card_wrapper[aria-disabled='false']:hover{
+    background-color: red;
+}
+
+.card_wrapper[aria-disabled='true']{
+   opacity: 0.5;
+}
