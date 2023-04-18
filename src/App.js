@@ -15,6 +15,8 @@ function App() {
 
   const [user, setUser] = useState(null);
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [userId, setUserId] = useState();
+  const [favoriteIdList, setFavoriteIdList] = useState(null);
 
 
   const app = firebaseStart();
@@ -31,6 +33,8 @@ function App() {
         console.dir(user);
         setUser(user);
         setLoggedIn(true);
+        setUserId(uid);
+        favoriteList(uid);
 
       } else {
         // User is signed out    
@@ -43,6 +47,11 @@ function App() {
     setUser(null);
     setLoggedIn(false);
   }
+
+  const favoriteList = async (userId) => {
+    setFavoriteIdList(await getFirestoreFavorite(userId))
+    //console.log(favoriteIdList)
+}
 
 
   return (
@@ -65,19 +74,30 @@ function App() {
               <Footer />
             </>}
           />
+
           <Route
             path='/categorie/:categorieName'
-            element={<MealList />} />
+            element={
+              <MealList
+                isLoggedIn={isLoggedIn}
+                userId = {userId}
+                favoriteIdList = {favoriteIdList}
+              />}
+          />
+
           <Route
             path='/categorie/:categorieName/:id'
             element={<MealDetail />} />
+
           <Route
             path='/singup'
             element={<SingUpPage />}
+
           />
           <Route
             path='/updateProfile/:userId'
             element={<UpdateUserData />} />
+
         </Routes>
       </BrowserRouter>
 

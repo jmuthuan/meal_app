@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import MealCategoryCard from "./MealCategoryCard";
 import './MealCategories.css';
+import getAllCategories from "../controllers/getAllCategories";
 
 
 const MealCategories = (props) => {
 
     const [categories, setCategories] = useState([]);
-
-    const CATEGORIES_URL = 'https://www.themealdb.com/api/json/v1/1/categories.php';
-
-    const getCategories = async () => {
-        const res = await axios.get(CATEGORIES_URL);
-        setCategories(res.data.categories);
+    
+    const getCategories = async () => {        
+        setCategories(await getAllCategories());
     }
 
     useEffect(() => {
-        getCategories();        
-    }, [categories.length]);
+        getCategories();            
+    }, []);
    
     return (
         <main>
@@ -31,7 +28,7 @@ const MealCategories = (props) => {
                                     key={element.idCategory}
                                     name={element.strCategory}
                                     image={element.strCategoryThumb}
-                                    enabled={!props.isLoggedIn && index > 0?false : true}
+                                    enabled={!props.isLoggedIn && index > 0?false : true}                                   
                                 />
                             )
                         })

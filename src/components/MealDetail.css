@@ -1,0 +1,17 @@
+.meal_instructions{
+    white-space: break-spaces;
+    text-align: start;
+    padding-left: 5rem;
+    
+}
+
+.meal_detail_img{
+    width: 20%;
+    height: auto;
+}
+
+.ingredient_card {
+    text-align: center;
+    display: inline-block;    
+    width: 10%;
+}

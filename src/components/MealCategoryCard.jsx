@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './MealCategoryCard.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,12 +6,12 @@ const MealCategoryCard = (props) => {
     const [hover, setHover] = useState(false);
 
     const navigate = useNavigate();
-    useEffect(() => {
+    /* useEffect(() => {
 
-    }, [hover])
+    }, [hover]) */
 
 
-    const onClickCategory = () =>{
+    const onClickCategory = () => {
         navigate(`categorie/${props.name}`);
     }
 
@@ -20,12 +20,13 @@ const MealCategoryCard = (props) => {
             onMouseEnter={() => { setHover(true) }}
             onMouseLeave={() => { setHover(false) }}
             onClick={onClickCategory}
-            aria-disabled={props.enabled? 'false':'true'}
+            aria-disabled={props.enabled ? 'false' : 'true'}
         >
             <img
                 className={`card_image ${!hover ? 'image_show' : ''}`}
                 src={props.image}
                 alt={`of ${props.name} meal`} />
+
             <div
                 className={`card_name ${hover ? 'name_show' : ''}`}>{props.name}
             </div>

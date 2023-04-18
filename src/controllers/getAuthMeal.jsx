@@ -1,26 +1,13 @@
-import { initializeApp } from 'firebase/app';
+//import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { emailVerification } from './emailVerification';
+import firebaseStart from '../components/firebaseStart';
 
 
 const getAuthMeal = (buttonName, email, password) => {
-    //App Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyBEjJf27Qpa9aadYvq-WlKq7Sx-9xlY-lk",
-        authDomain: "jmuthuan-meal-app.firebaseapp.com",
-        projectId: "jmuthuan-meal-app",
-        storageBucket: "jmuthuan-meal-app.appspot.com",
-        messagingSenderId: "359325443334",
-        appId: "1:359325443334:web:2c827451c81c9b05832a87",
-        measurementId: "G-Z6TJM5ET7W"
-    };
-
-    console.log('button: ' + buttonName);
-    /* console.log('email: ' + email);
-    console.log('password: ' + password); */
-
+    
     // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+    const app = firebaseStart();
 
     // Initialize Firebase Authentication and get a reference to the service
     const auth = getAuth(app);

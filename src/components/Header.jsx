@@ -7,9 +7,6 @@ import bootstrap from 'bootstrap';
 const Header = (props) => {
 
     const navigate = useNavigate();
-
-
-
     //LogIn Form - LogOut
     const logInEvent = (event) => {
         event.preventDefault();
@@ -33,16 +30,20 @@ const Header = (props) => {
     }
 
     //edit Profile
-    const editProfile = (event) =>{
+    const editProfile = (event) => {
         event.preventDefault();
         navigate(`/updateProfile/${props.user.uid}`);
     }
 
     //favorite user Meals
-    const favoriteMeals = (event) =>{
-        event.preventDefault();
+    const favoriteMeals = () => {
+        //event.preventDefault();
+        console.log('TO-DO navigate to user favorite meals')
         //TO-DO navigate to user favorite meals
-        
+    }
+
+    const addMeal = () =>{
+        console.log('TO-DO add personal meal');
     }
 
     return (
@@ -80,25 +81,35 @@ const Header = (props) => {
                 </div>
 
                 {props.isLoggedIn && <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">                         
-                        <img src={userImage} alt="user avatar"/>
+                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src={userImage} alt="user avatar" />
                     </button>
                     <ul className="dropdown-menu">
-                        <li><button className="dropdown-item" onClick={favoriteMeals}>My Favorite Meals</button></li>
                         <li>
-                            <button 
-                            className="dropdown-item" 
-                            onClick={editProfile}>Edit my profile</button></li>
+                            <button
+                                className="dropdown-item"
+                                type="button"
+                                onClick={favoriteMeals}>My Favorite Meals</button></li>
                         <li>
-                            <button 
-                            className="dropdown-item logout_button"
-                            type="submit"
-                            onClick={logOutEvent}
-                            name="button_logout"
-                            value='logout' >Log Out</button></li>
+                            <button
+                                className="dropdown-item"
+                                type="button"
+                                onClick={addMeal}>Add a Meal</button></li>
+                        <li>
+                            <button
+                                className="dropdown-item"
+                                type="button"
+                                onClick={editProfile}>Edit my profile</button></li>
+                        <li>
+                            <button
+                                className="dropdown-item logout_button"
+                                type="submit"
+                                onClick={logOutEvent}
+                                name="button_logout"
+                                value='logout' >Log Out</button></li>
                     </ul>
-                </div>}  
-                
+                </div>}
+
             </div>
         </header>
     )

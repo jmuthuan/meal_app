@@ -1,51 +1,52 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MealCard from './MealCard';
-import axios from "axios";
+import getAllMealsByCategory from '../controllers/getAllMealsByCategory';
+
 
 const MealList = (props) => {
     const { categorieName } = useParams();
+    //const userId = currentUser();
 
-    const [mealsList, setMealsList] = useState([]);
+    const [mealsList, setMealsList] = useState([]);    
+
+
+    const getAllMeals = async (category) => {
+        setMealsList(await getAllMealsByCategory(categorieName))
+    }    
+
 
     useEffect(() => {
-        getAllMealsBycategory(categorieName);
+        //const userId = currentUser();
+        getAllMeals(categorieName);       
     }, [])
 
-    const getAllMealsBycategory = async (category) => {
-        const API_URL_MEALS_BY_CATEGORY = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=';
-      
-        try {
-            const response = await axios.get(API_URL_MEALS_BY_CATEGORY + category);
-            setMealsList(response.data.meals);
-            console.log('axios...');
-           
-
-        } catch (error) {
-            console.log(error);
-            return error;
-        }
-    }
+    console.log(props.favoriteIdList);
     
-
     return (
-        <div className='meal_list_wrapper'>
-           
-            {mealsList && mealsList.map((meal) => {
+        <div className='meal_list_wrapper'>            
+            <h2>{categorieName} Meals List</h2>
+
+            {mealsList && favoriteIdList && mealsList.map((meal) => {
+                console.log(favoriteIdList)
+
                 return (
+                    
                     <MealCard
                         key={meal.idMeal}
                         nameMeal={meal.strMeal}
                         mealImage={meal.strMealThumb}
                         mealId={meal.idMeal}
-                        mealCategory = {categorieName}
+                        mealCategory={categorieName}
+                        isFavorite={favoriteIdList.includes(meal.idMeal)? true :false}
+                        isLoggedIn={props.isLoggedIn}
+                        userId = {props.userId}
                     />
                 )
             })
             }
         </div>
     )
-
 }
 
 export default MealList;
