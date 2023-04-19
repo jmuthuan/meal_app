@@ -6,6 +6,8 @@ import bootstrap from 'bootstrap';
 
 const Header = (props) => {
 
+    let avatarImage = userImage;
+
     const navigate = useNavigate();
     //LogIn Form - LogOut
     const logInEvent = (event) => {
@@ -46,6 +48,13 @@ const Header = (props) => {
         console.log('TO-DO add personal meal');
     }
 
+    if(props.isLoggedIn){
+        avatarImage = props.user.photoURL ? props.user.photoURL : userImage;
+        console.log('avatar');
+        console.log(avatarImage);
+    }
+    
+
     return (
         <header className="App-header">
             <div className="header_wrapper">
@@ -82,7 +91,7 @@ const Header = (props) => {
 
                 {props.isLoggedIn && <div className="dropdown">
                     <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src={userImage} alt="user avatar" />
+                        <img src={avatarImage} alt="user avatar" />
                     </button>
                     <ul className="dropdown-menu">
                         <li>

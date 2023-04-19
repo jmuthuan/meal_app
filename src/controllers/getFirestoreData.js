@@ -1,10 +1,10 @@
 import { doc, getDoc } from "firebase/firestore";
 import db from "../components/firestoreStart";
 
-const getFirestoreFavorite = async (userId) => {
+const getFirestoreData = async (userCollection, userId) => {
     console.log('testing favorites: '+userId);
     
-    const docRef = doc(db, 'favorites', userId)
+    const docRef = doc(db, userCollection, userId)
     const docSnap = await getDoc(docRef);
     
     if (docSnap.exists()) {
@@ -17,4 +17,4 @@ const getFirestoreFavorite = async (userId) => {
     }
 }
 
-export default getFirestoreFavorite;
+export default getFirestoreData;

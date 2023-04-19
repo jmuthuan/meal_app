@@ -10,6 +10,7 @@ import firebaseStart from "./components/firebaseStart";
 import UpdateUserData from './components/UpdateUserData';
 import MealList from './components/MealsList';
 import MealDetail from './components/MealDetail';
+import getFirestoreData from './controllers/getFirestoreData'
 
 function App() {
 
@@ -23,14 +24,14 @@ function App() {
   const auth = getAuth(app);
 
   const logIn = () => {
-    console.log("testing firebase auth");
+    /* console.log("testing firebase auth"); */
     //const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         const uid = user.uid;
-        console.log('dir');
-        console.dir(user);
+        console.log(user);
+
         setUser(user);
         setLoggedIn(true);
         setUserId(uid);
@@ -49,9 +50,9 @@ function App() {
   }
 
   const favoriteList = async (userId) => {
-    setFavoriteIdList(await getFirestoreFavorite(userId))
+    setFavoriteIdList(await getFirestoreData('favorites', userId))
     //console.log(favoriteIdList)
-}
+  }
 
 
   return (
@@ -80,8 +81,9 @@ function App() {
             element={
               <MealList
                 isLoggedIn={isLoggedIn}
-                userId = {userId}
-                favoriteIdList = {favoriteIdList}
+                userId={userId}
+                favoriteIdList={favoriteIdList}
+                mainLogIn={logIn}
               />}
           />
 
@@ -96,7 +98,12 @@ function App() {
           />
           <Route
             path='/updateProfile/:userId'
-            element={<UpdateUserData />} />
+            element={
+              <UpdateUserData
+                user = {user}
+                app = {app}
+                auth = {auth}
+              />} />
 
         </Routes>
       </BrowserRouter>

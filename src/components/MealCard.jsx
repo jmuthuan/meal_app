@@ -1,34 +1,28 @@
 import { Link } from "react-router-dom";
 import { FaStar, FaRegStar } from 'react-icons/fa';
-import setFirestoreFavorite from "../controllers/setFirestoreFavorite";
+import setFirestoreData from "../controllers/setFirestoreData";
 import currentUser from "../controllers/currentUser";
-import deleteFirestoreFavorite from "../controllers/deleteFirestoreFavorite";
+import deleteFirestoreData from "../controllers/deleteFirestoreData";
 import { useState } from "react";
 
 
 
 
 const MealCard = (props) => {
-    /*   console.log('Meal Card...');
-      console.log(props.mealId);
-      console.log(props.mealCategory); */
-      //const userId = currentUser();
-
-      const [test_favorite, setFavorite] = useState(false);
-      
+   
+      const [isFavorite, setIsFavorite] = useState(props.isFavorite);      
       
 
     const favoriteToggle = () => {
        /*  console.log('Toggle favorite'); */        
 
-        if(props.userId && !test_favorite){
-            setFirestoreFavorite(props.mealId, props.userId);
-            setFavorite(true);
+        if(props.userId && !isFavorite){
+            setFirestoreData(props.mealId, 'favorites', props.userId);
+            setIsFavorite(true);            
 
-        }else if(props.userId && test_favorite){
-            deleteFirestoreFavorite(props.mealId, props.userId);
-            setFavorite(false);
-
+        }else if(props.userId && isFavorite){
+            deleteFirestoreData(props.mealId, 'favorites', props.userId);
+            setIsFavorite(false);            
         }else       
         {
             alert('You must be logged in to add/remove your favorite meals');
@@ -43,8 +37,7 @@ const MealCard = (props) => {
             <h2>{props.nameMeal}</h2>  
             </Link>          
             <span onClick={favoriteToggle} style={{ zIndex: 10 }}>
-                {/* {props.isFavorite ? <FaStar /> : <FaRegStar />} */}
-                {test_favorite ? <FaStar /> : <FaRegStar />}
+                {isFavorite ? <FaStar /> : <FaRegStar />}               
             </span>            
 
         </div>

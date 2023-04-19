@@ -23,12 +23,13 @@ const MealList = (props) => {
 
     console.log(props.favoriteIdList);
     
+
     return (
         <div className='meal_list_wrapper'>            
             <h2>{categorieName} Meals List</h2>
 
-            {mealsList && favoriteIdList && mealsList.map((meal) => {
-                console.log(favoriteIdList)
+            {mealsList &&  mealsList.map((meal) => {
+                console.log(props.favoriteIdList.includes(meal.idMeal))
 
                 return (
                     
@@ -38,9 +39,9 @@ const MealList = (props) => {
                         mealImage={meal.strMealThumb}
                         mealId={meal.idMeal}
                         mealCategory={categorieName}
-                        isFavorite={favoriteIdList.includes(meal.idMeal)? true :false}
+                        isFavorite={props.favoriteIdList.includes(meal.idMeal)? true :false}
                         isLoggedIn={props.isLoggedIn}
-                        userId = {props.userId}
+                        userId = {props.userId}                       
                     />
                 )
             })
