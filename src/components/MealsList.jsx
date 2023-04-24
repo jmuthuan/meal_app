@@ -8,8 +8,7 @@ const MealList = (props) => {
     const { categorieName } = useParams();
     //const userId = currentUser();
 
-    const [mealsList, setMealsList] = useState([]);    
-
+    const [mealsList, setMealsList] = useState([]);   
 
     const getAllMeals = async (category) => {
         setMealsList(await getAllMealsByCategory(categorieName))
@@ -17,7 +16,6 @@ const MealList = (props) => {
 
 
     useEffect(() => {
-        //const userId = currentUser();
         getAllMeals(categorieName);       
     }, [])
 
@@ -28,11 +26,8 @@ const MealList = (props) => {
         <div className='meal_list_wrapper'>            
             <h2>{categorieName} Meals List</h2>
 
-            {mealsList &&  mealsList.map((meal) => {
-                console.log(props.favoriteIdList.includes(meal.idMeal))
-
-                return (
-                    
+            {mealsList && props.favoriteIdList && mealsList.map((meal) => {
+                return (                    
                     <MealCard
                         key={meal.idMeal}
                         nameMeal={meal.strMeal}
@@ -46,6 +41,7 @@ const MealList = (props) => {
                 )
             })
             }
+            
         </div>
     )
 }

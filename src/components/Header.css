@@ -3,3 +3,11 @@
     width: 100%;
     padding: 2rem;
 }
+
+.img_avatar{
+    width: 48px;
+    height: auto;
+    clip-path: circle(50% at 50% 50%);
+    position: relative;
+    right: 5px;
+}

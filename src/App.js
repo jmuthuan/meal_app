@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import MealCategories from './components/MealCategories';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import SingUpPage from './components/SingUpPage';
 import Footer from './components/Footer';
@@ -11,6 +11,7 @@ import UpdateUserData from './components/UpdateUserData';
 import MealList from './components/MealsList';
 import MealDetail from './components/MealDetail';
 import getFirestoreData from './controllers/getFirestoreData'
+import AddMealPage from './components/AddMealPage';
 
 function App() {
 
@@ -23,6 +24,10 @@ function App() {
   const app = firebaseStart();
   const auth = getAuth(app);
 
+  useEffect(() => {
+    logIn();
+  }, [])
+
   const logIn = () => {
     /* console.log("testing firebase auth"); */
     //const auth = getAuth();
@@ -30,7 +35,7 @@ function App() {
       if (user) {
         // User is signed in
         const uid = user.uid;
-        console.log(user);
+        //console.log(user);
 
         setUser(user);
         setLoggedIn(true);
@@ -60,7 +65,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path='/'
+            path='/home'
             element={<>
               <Header
                 user={user}
@@ -84,6 +89,7 @@ function App() {
                 userId={userId}
                 favoriteIdList={favoriteIdList}
                 mainLogIn={logIn}
+                favoriteList={favoriteList}
               />}
           />
 
@@ -100,10 +106,23 @@ function App() {
             path='/updateProfile/:userId'
             element={
               <UpdateUserData
-                user = {user}
-                app = {app}
-                auth = {auth}
+                user={user}
+                app={app}
+                auth={auth}
               />} />
+          {/* <Route
+            path='/addMeal/:userId'
+            element={
+              <AddMealPage  />
+            }
+          /> */}
+          <Route
+            path='/'
+            element={
+              <AddMealPage />
+            }
+          />
+
 
         </Routes>
       </BrowserRouter>

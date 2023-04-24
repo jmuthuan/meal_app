@@ -46,6 +46,7 @@ const Header = (props) => {
 
     const addMeal = () =>{
         console.log('TO-DO add personal meal');
+        navigate(`/addMeal/${props.user.uid}`);
     }
 
     if(props.isLoggedIn){
@@ -61,18 +62,18 @@ const Header = (props) => {
                 <input type="text" className="search_bar" placeholder="Search a meal!" />
                 <div className="login_wrapper">
                     <form onSubmit={logInEvent}>
-                        <input
+                        {!props.isLoggedIn && <input
                             type='email'
                             className="email_login"
                             name='email'
                             placeholder="email"
-                            required />
-                        <input
+                            required />}
+                        {!props.isLoggedIn && <input
                             type='password'
                             className="password_login"
                             name="password"
                             placeholder="password"
-                            required />
+                            required />}
 
                         {!props.isLoggedIn && <button
                             type="submit"
@@ -91,7 +92,7 @@ const Header = (props) => {
 
                 {props.isLoggedIn && <div className="dropdown">
                     <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src={avatarImage} alt="user avatar" />
+                        <img className="img_avatar" src={avatarImage} alt="user avatar" />
                     </button>
                     <ul className="dropdown-menu">
                         <li>

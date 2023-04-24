@@ -2,7 +2,7 @@ import { doc, getDoc } from "firebase/firestore";
 import db from "../components/firestoreStart";
 
 const getFirestoreData = async (userCollection, userId) => {
-    console.log('testing favorites: '+userId);
+    //console.log('testing favorites: '+userId);
     
     const docRef = doc(db, userCollection, userId)
     const docSnap = await getDoc(docRef);
