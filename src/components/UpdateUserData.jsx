@@ -4,11 +4,7 @@ import setFirestoreData from "../controllers/setFirestoreData";
 import { useParams } from "react-router-dom";
 
 const UpdateUserData = (props) => {
-
-    /*  const loadImage = (event) => {
-         //event.preventDefault();
-         console.log('TO-DO - upload image');
-     } */
+  
 
     const {userId} = useParams(); 
 

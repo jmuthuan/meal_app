@@ -29,12 +29,8 @@ const Instruction = (props) => {
     const confirmInstruction = () => {
         const inputValue = document.getElementById(`mealInstructions${props.actualStepInstruction}`).value;
 
-        if (true || inputValue.length > 10) {
-            props.confirmInstruction(inputValue, props.actualStepInstruction);
-            /*  setConfirm(false);
-             setEdit(true);
-             setTrash(true);
-             setShowInput(false); */
+        if (inputValue.length > 10) {
+            props.confirmInstruction(inputValue, props.actualStepInstruction);           
         } else {
             alert('Instruction too short, please verify!');
         }

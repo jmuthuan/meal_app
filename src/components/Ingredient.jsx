@@ -12,14 +12,14 @@ const Ingredient = (props) => {
         const inputIngredient = document.getElementById(`mealIngredient${props.actualStepIngredient}`).value;
         const inputMeasure = document.getElementById(`mealMeasure${props.actualStepIngredient}`).value;
 
-        if (true || (inputIngredient.length > 10 && inputMeasure.length > 10)) {
+        if ((inputIngredient.length > 2 && inputMeasure.length > 0)) {
             props.confirmIngredient({
                 ingredient: inputIngredient,
                 measure: inputMeasure
             },
                 props.actualStepIngredient);           
         } else {
-            alert('Instruction too short, please verify!');
+            alert('Ingredient or Measure too short, please verify!');
         }
     }
 

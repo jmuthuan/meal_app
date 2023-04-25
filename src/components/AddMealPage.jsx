@@ -4,6 +4,7 @@ import Instruction from "./Instruction";
 import { FaPlusSquare } from 'react-icons/fa'
 import './AddMealPage.css';
 import Ingredient from "./Ingredient";
+import setFirestoreUserMeal from "../controllers/setFirestoreUserMeal";
 
 const AddMealPage = () => {
 
@@ -38,32 +39,55 @@ const AddMealPage = () => {
         e.preventDefault();
         console.log("saving meal...");
 
+        let alertMessage = 'Please check the following input data: \n';
+        let alertFlag = false;
+
         const idMeal = Date.now(); //
-        const srtMeal = document.getElementById('mealName').value;
+        const strMeal = document.getElementById('mealName').value;
+        
+        if(strMeal === ''){
+            alertMessage+='Name meal \n';
+            alertFlag = true;
+        }
 
-        const strInstructions = instructions.concat();
+        const strInstructions = instructions.concat();        
+        for(let i=0; i< strInstructions.length; i++){
+            if(strInstructions[i]===''){
+                strInstructions.splice(i,1);
+            }
+        }
+        if(strInstructions.length ===0){
+            alertMessage+='Fill Instructions data \n';
+            alertFlag=true;
+        }
+
         const strIngredient = ingredients.concat();
+        for(let i=0; i<strIngredient.length; i++){
+            if(strIngredient[i].ingredient ===''){
+                strIngredient.splice(i,1);
+            }
+        }
+        if(strIngredient.length===0){
+            alertMessage+='Fill ingredients data \n';
+            alertFlag=true; 
+        }
 
-        const strMealThumb = document.getElementById('strMealThumb').files;
+        const strMealThumb = document.getElementById('strMealThumb').files[0];
+      
+        const docData = {            
+            strMeal: strMeal,
+            strInstructions: strInstructions,
+            strMealThumb: strMealThumb,
+            strIngredient: strIngredient
+        }
 
-        console.log(idMeal);
-        console.log(srtMeal);
-        console.log(strInstructions);
-        console.log(strIngredient);
-        console.log(strMealThumb);
-
-        //TO-DO send to Firebase
-
-        {
-            /* 
-            idMeal
-            strMeal
-            strInstructions
-            strMealThumb
-            strIngredient[]
-            strMeasure[]
-            */}
-
+        if(alertFlag){
+            alert(alertMessage);
+        }
+        else{
+            console.log(docData);            
+            setFirestoreUserMeal(docData, 'myMeals', userId, idMeal);        
+        }
     }
 
     //instructions controllers
@@ -280,7 +304,7 @@ const AddMealPage = () => {
             <h2>Add your personal meal</h2>
             <form className="add_meal_form">
                 <label htmlFor="mealName">Meal Name</label><br />
-                <input type="text" id="mealName" required/><br />
+                <input type="text" id="mealName" required /><br />
                 <label htmlFor={`mealInstructions${instructions.length}`}>Set Instructions</label><br />
 
                 <section className="meal_instructions_wrapper">
@@ -343,7 +367,7 @@ const AddMealPage = () => {
                     />
                 </section>
 
-                <input type="file" id="strMealThumb"/>           
+                <input type="file" id="strMealThumb" />
                 <button type="submit" onClick={saveMeal}>Save</button>
             </form>
         </div>

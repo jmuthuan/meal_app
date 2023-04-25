@@ -65,7 +65,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path='/home'
+            path='/'
             element={<>
               <Header
                 user={user}
@@ -110,18 +110,18 @@ function App() {
                 app={app}
                 auth={auth}
               />} />
-          {/* <Route
+          <Route
             path='/addMeal/:userId'
             element={
               <AddMealPage  />
             }
-          /> */}
-          <Route
+          />
+          {/* <Route
             path='/'
             element={
               <AddMealPage />
             }
-          />
+          /> */}
 
 
         </Routes>
