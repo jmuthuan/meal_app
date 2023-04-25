@@ -22,14 +22,49 @@ const AddMealPage = () => {
     const [instructionId, setInstructionId] = useState([0]);
 
     //ingredients State
-    const [ingredients, setIngredients] = useState(['']);
+    const [ingredients, setIngredients] = useState([{
+        ingredient: '',
+        measure: ''
+    }]);
     const [ingredientsId, setIngredientsId] = useState([0]);
-
+    const [iconsState, setIconsState] = useState([defaultItemState]);
 
     useEffect(() => {
         console.log('rendering add meal');
 
     }, [])
+
+    const saveMeal = (e) => {
+        e.preventDefault();
+        console.log("saving meal...");
+
+        const idMeal = Date.now(); //
+        const srtMeal = document.getElementById('mealName').value;
+
+        const strInstructions = instructions.concat();
+        const strIngredient = ingredients.concat();
+
+        const strMealThumb = document.getElementById('strMealThumb').files;
+
+        console.log(idMeal);
+        console.log(srtMeal);
+        console.log(strInstructions);
+        console.log(strIngredient);
+        console.log(strMealThumb);
+
+        //TO-DO send to Firebase
+
+        {
+            /* 
+            idMeal
+            strMeal
+            strInstructions
+            strMealThumb
+            strIngredient[]
+            strMeasure[]
+            */}
+
+    }
 
     //instructions controllers
     const addInstruction = () => {
@@ -44,7 +79,7 @@ const AddMealPage = () => {
             showInput: true
         });
 
-        let updateIds = instructionId;
+        let updateIds = instructionId.concat();
         updateIds.push(updateIds[updateIds.length - 1] + 1);
 
 
@@ -52,12 +87,11 @@ const AddMealPage = () => {
         setInstructions(updateInstructions);
         setItemsState(updateItemState);
         setInstructionId(updateIds);
-
     }
 
     const deleteInstruction = (stepNumber) => {
         console.log('delete instruction');
-        console.log('position: ' + stepNumber);
+
         let updateInstructions = instructions.map(element => element);
         let updateIds = instructionId;
         let updateItemState = itemsState;
@@ -77,14 +111,13 @@ const AddMealPage = () => {
                 }
             } */
 
-
             console.log('after...');
             console.log(updateInstructions);
 
             setInstructions(updateInstructions);
             setItemsState(updateItemState);
             setInstructionId(updateIds);
-            //setStepInstruction(updateInstructions.length - 1);
+
         } else {
             setInstructions(['']);
             setItemsState([defaultItemState]);
@@ -102,9 +135,9 @@ const AddMealPage = () => {
         let updateIds = instructionId;
 
         updateInstructions.splice(position, 1, newInstruction);
-       
+
         if ((position + 1) === updateInstructions.length) {
-            
+
             updateInstructions.push('');
             updateItemState.push({
                 confirm: true,
@@ -145,70 +178,176 @@ const AddMealPage = () => {
     }
 
 
+    //ingredients controllers
+    const addIngredient = () => {
+        let updateIngredient = ingredients.concat();
+        updateIngredient.push({
+            ingredient: '',
+            measure: ''
+        });
+
+        let updateIconState = iconsState.concat();
+        updateIconState.push({
+            confirm: true,
+            edit: false,
+            trash: true,
+            showInput: true
+        });
+
+        let updateIngredientId = ingredientsId.concat();
+        updateIngredientId.push(updateIngredientId[updateIngredientId.length - 1] + 1);
+
+        setIngredients(updateIngredient);
+        setIngredientsId(updateIngredientId);
+        setIconsState(updateIconState);
+
+        console.log('add ingredient');
+    }
+
+    const confirmIngredient = (newIngredient, position) => {
+        let updateIngredient = ingredients.concat();
+        let updateIconState = iconsState.concat();
+        let updateIds = ingredientsId.concat();
+
+        updateIngredient.splice(position, 1, newIngredient)
+
+        if ((position + 1) === updateIngredient.length) {
+
+            updateIngredient.push({
+                ingredient: '',
+                measure: ''
+            });
+            updateIconState.push({
+                confirm: true,
+                edit: false,
+                trash: true,
+                showInput: true
+            });
+
+            updateIds.push(updateIds[updateIds.length - 1] + 1);
+
+            setIngredientsId(updateIds);
+        }
+
+        updateIconState[position] = {
+            confirm: false,
+            edit: true,
+            trash: true,
+            showInput: false
+        }
+
+        setIngredients(updateIngredient);
+        setIconsState(updateIconState);
+    }
+
+    const editIngredient = (position) => {
+        let updateIconState = iconsState.concat();
+
+        updateIconState[position] = {
+            confirm: true,
+            edit: false,
+            trash: true,
+            showInput: true
+        }
+        setIconsState(updateIconState);
+    }
+
+    const deleteIngredient = (stepNumber) => {
+        let updateIngredient = ingredients.concat();
+        let updateIds = ingredientsId.concat();
+        let updateIconState = iconsState.concat();
+
+        if (ingredients.length > 1) {
+            updateIngredient.splice(stepNumber, 1)
+            updateIconState.splice(stepNumber, 1);
+            updateIds.splice(stepNumber, 1);
+
+            setIngredients(updateIngredient);
+            setIconsState(updateIconState);
+            setIngredientsId(updateIds);
+        } else {
+            setIngredients([{
+                ingredient: '',
+                measure: ''
+            }]);
+            setIconsState([defaultItemState])
+            setIngredientsId([updateIds[updateIds.length - 1] + 1])
+        }
+    }
+
     return (
         <div className="add_meal_wrapper">
             <h2>Add your personal meal</h2>
             <form className="add_meal_form">
                 <label htmlFor="mealName">Meal Name</label><br />
-                <input type="text" id="mealName" /><br />
-                <label htmlFor={`mealInstructions${instructions.length}`}>Instructions</label><br />
+                <input type="text" id="mealName" required/><br />
+                <label htmlFor={`mealInstructions${instructions.length}`}>Set Instructions</label><br />
 
                 <section className="meal_instructions_wrapper">
-
-                    {instructions.map((instruction, index) => {
-                        return (
-                            <Instruction
-                                key={instructionId[index]}
-                                actualStepInstruction={index}
-                                instructions={instruction}
-                                itemState={itemsState[index]}                                
-                                setInstructions={setInstructions}
-                                confirmInstruction={confirmInstruction}
-                                editInstruction = {editInstruction}                                
-                                deleteInstruction={deleteInstruction}
-                            />
-                        )
-                    })}
+                    <table>
+                        <tbody>
+                            {instructions.map((instruction, index) => {
+                                return (
+                                    <Instruction
+                                        key={instructionId[index]}
+                                        actualStepInstruction={index}
+                                        instructions={instruction}
+                                        itemState={itemsState[index]}
+                                        confirmInstruction={confirmInstruction}
+                                        editInstruction={editInstruction}
+                                        deleteInstruction={deleteInstruction}
+                                    />
+                                )
+                            })}
+                        </tbody>
+                    </table>
 
                     <FaPlusSquare
                         onClick={addInstruction}
                     />
 
-                    <label htmlFor={`mealIngredients${instructions.length}`}>Ingredients</label><br />
-                    <section className="meal_ingredients_wrapper">
-                        {
-                            ingredients.map((ingredient, index)=>{
-                                return(
-                                    <Ingredient 
-                                    
-                                    />
-                                )
-                            })
-
-                        }
-
-
-                    </section>
-
                 </section>
 
+                <label htmlFor={`mealIngredients${instructions.length}`}>Ingredients</label><br />
+                <section className="meal_ingredients_wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Measure/Quantity</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                ingredients.map((ingredient, index) => {
+                                    return (
+                                        <Ingredient
+                                            key={ingredientsId[index]}
+                                            ingredient={ingredient}
+                                            actualStepIngredient={index}
+                                            itemState={iconsState[index]}
+                                            confirmIngredient={confirmIngredient}
+                                            editIngredient={editIngredient}
+                                            deleteIngredient={deleteIngredient}
+                                        />
+                                    )
+                                })
 
+                            }
+                        </tbody>
+                    </table>
 
-                {
-/* 
-idMeal
-strMeal
-strInstructions
-strMealThumb
-strIngredient[]
-strMeasure[]
-*/}
+                    <FaPlusSquare
+                        onClick={addIngredient}
+                    />
+                </section>
 
+                <input type="file" id="strMealThumb"/>           
+                <button type="submit" onClick={saveMeal}>Save</button>
             </form>
-
         </div>
     )
-
 }
 
 export default AddMealPage;
