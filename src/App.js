@@ -12,6 +12,7 @@ import MealList from './components/MealsList';
 import MealDetail from './components/MealDetail';
 import getFirestoreData from './controllers/getFirestoreData'
 import AddMealPage from './components/AddMealPage';
+import FavoriteMeals from './components/FavoriteMeals';
 
 function App() {
 
@@ -113,15 +114,19 @@ function App() {
           <Route
             path='/addMeal/:userId'
             element={
-              <AddMealPage  />
-            }
-          />
-          {/* <Route
-            path='/'
-            element={
               <AddMealPage />
             }
-          /> */}
+          />
+
+          <Route
+            path='/favoriteUserMeals/:userId'
+            element={
+              <FavoriteMeals
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+
 
 
         </Routes>

@@ -1,11 +1,11 @@
 //import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, setPersistence, browserSessionPersistence } from 'firebase/auth'
 import { emailVerification } from './emailVerification';
 import firebaseStart from '../components/firebaseStart';
 
 
 const getAuthMeal = (buttonName, email, password) => {
-    
+
     // Initialize Firebase
     const app = firebaseStart();
 
@@ -45,13 +45,16 @@ const newUser = (email, password) => {
 
 const logInInUser = (email, password) => {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
+    setPersistence(auth, browserSessionPersistence)
+        .then(() => {
+            return signInWithEmailAndPassword(auth, email, password)
+        })
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
             console.log('Signed In!!!');
             console.log(userCredential);
-        
+
             // ...
         })
         .catch((error) => {

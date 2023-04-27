@@ -11,7 +11,7 @@ const MealList = (props) => {
     const [mealsList, setMealsList] = useState([]);   
 
     const getAllMeals = async (category) => {
-        setMealsList(await getAllMealsByCategory(categorieName))
+        setMealsList(await getAllMealsByCategory(category))
     }    
 
 

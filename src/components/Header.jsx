@@ -9,6 +9,8 @@ const Header = (props) => {
     let avatarImage = userImage;
 
     const navigate = useNavigate();
+
+
     //LogIn Form - LogOut
     const logInEvent = (event) => {
         event.preventDefault();
@@ -40,8 +42,9 @@ const Header = (props) => {
     //favorite user Meals
     const favoriteMeals = () => {
         //event.preventDefault();
-        console.log('TO-DO navigate to user favorite meals')
-        //TO-DO navigate to user favorite meals
+        //console.log('TO-DO navigate to user favorite meals')
+        navigate(`/favoriteUserMeals/${props.user.uid}`)
+     
     }
 
     const addMeal = () =>{
