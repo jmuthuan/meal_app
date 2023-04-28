@@ -96,7 +96,11 @@ function App() {
 
           <Route
             path='/categorie/:categorieName/:id'
-            element={<MealDetail />} />
+            element={
+              <MealDetail
+                isUser={false} />
+            }
+          />
 
           <Route
             path='/singup'
@@ -123,6 +127,15 @@ function App() {
             element={
               <FavoriteMeals
                 isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+
+          <Route
+            path='/favoriteUserMeals/:userId/:id'
+            element={
+              <MealDetail
+                isUser={true}
               />
             }
           />

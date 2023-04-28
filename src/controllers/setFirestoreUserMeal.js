@@ -6,7 +6,7 @@ import firebaseStart from "../components/firebaseStart";
 const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {  
     console.log('adding meal...');   
    
-    const docRef = doc(db, userCollection, userId, 'userMeals', dataId.toString());   
+    const docRef = doc(db, userCollection, userId, 'userMeals', `user${dataId}`);   
     
     const app = firebaseStart();
     //const auth = getAuth(app);
