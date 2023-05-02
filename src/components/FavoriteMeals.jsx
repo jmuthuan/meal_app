@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom";
-//import firebaseStart from "./firebaseStart";
 import db from "./firestoreStart";
 
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
-import { Component, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import getMealById from "../controllers/getMealById";
 import MealCard from "./MealCard";
 
@@ -59,13 +58,6 @@ const FavoriteMeals = (props) => {
     const [favsMeals, setFavsMeals] = useState([]);
     const [userMeals, setUserMeals] = useState([Object.create(defaultUserMeal)]);
 
-    //traer datos de Firebase:
-    //1- desde los id Favoritos: 'favorites/(userId)/idList
-
-    //2- desde myMeals: myMeals/(userId)/userMeals/
-
-    //concatenar la informacion con el mismo formato JSON/Objeto
-
     const { userId } = useParams();
     const docFavIdRef = doc(db, 'favorites', userId);
 
@@ -88,21 +80,10 @@ const FavoriteMeals = (props) => {
         mealsArray.push(test);
     }
 
-    //get data: user meals
-    //const docUserMyMeal = doc(db, 'myMeals', userId, 'userMeals');
+    //get data: user meals    
     const colRef = collection(db, 'myMeals', userId, 'userMeals');
 
     const getUserMeals = async () => {
-        //const docSnap = await getDocs(colRef);
-
-        /* if (docSnap.exists()) {
-            console.log("Document data userMeals:", docSnap.data());
-            //setFavsIds(docSnap.data().idList);
-          } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-          } */
-
         let myMealsArray = [];
         let myMeal = {};
 
@@ -116,28 +97,16 @@ const FavoriteMeals = (props) => {
 
             for (let i = 0; i < 20; i++) {                
                 if(doc.data().strIngredient[i]){
-                    //console.log('if: '+doc.data().strIngredient[i])
                     myMeal[`strIngredient${i + 1}`] = doc.data().strIngredient[i].ingredient;
                     myMeal[`strMeasure${i + 1}`] = doc.data().strIngredient[i].measure;                
                 }
-                else{
-                    //console.log('else: '+doc.data().strInstructions[i])
+                else{                    
                     myMeal[`strIngredient${i + 1}`] = '';
                     myMeal[`strMeasure${i + 1}`] = '';
-                }        
-                     
-            }
-            //console.log('mymeal', myMeal)   
-
-            // doc.data() is never undefined for query doc snapshots
-            //console.log(doc.id, " => ", doc.data());
-            //console.log(myMeal);
+                }      
+            }            
             myMealsArray.push(myMeal);
-            //console.log('after...');
-            //console.log(myMealsArray);
-            
         });
-        console.log(myMealsArray);
         setUserMeals(myMealsArray);
     }
 
@@ -156,16 +125,10 @@ const FavoriteMeals = (props) => {
         getUserMeals();
     }, [favsIds.length])
 
-    const onClickTest = () => {
-        console.log(userMeals);    
-    }
-
 
     return (
         <div className="favorite_meal_wrapper">
             <h2>My Favorite Meals</h2>
-
-            <button type="button" onClick={onClickTest}>Test</button>
 
             {favsMeals && favsMeals.map((meal) => {
                 return (
@@ -199,8 +162,6 @@ const FavoriteMeals = (props) => {
                 )
             })
             }
-
-
         </div>
     )
 

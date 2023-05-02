@@ -19,7 +19,7 @@ const MealList = (props) => {
         getAllMeals(categorieName);       
     }, [])
 
-    console.log(props.favoriteIdList);
+    //console.log(props.favoriteIdList);
     
 
     return (

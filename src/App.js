@@ -20,6 +20,7 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState();
   const [favoriteIdList, setFavoriteIdList] = useState(null);
+  const [mealName, setMealName] = useState('Testing');
 
 
   const app = firebaseStart();
@@ -60,6 +61,10 @@ function App() {
     //console.log(favoriteIdList)
   }
 
+  const mealNameMealDetail = (name) =>{
+    setMealName(name);
+  }
+
 
   return (
     <div className="App">
@@ -71,6 +76,7 @@ function App() {
               <Header
                 user={user}
                 isLoggedIn={isLoggedIn}
+                breadCrumb={1}
                 mainLogOut={logOut}
                 mainLogIn={logIn}
               />
@@ -78,27 +84,48 @@ function App() {
                 user={user}
                 isLoggedIn={isLoggedIn}
               />
-              <Footer />
             </>}
           />
 
           <Route
             path='/categorie/:categorieName'
             element={
-              <MealList
-                isLoggedIn={isLoggedIn}
-                userId={userId}
-                favoriteIdList={favoriteIdList}
-                mainLogIn={logIn}
-                favoriteList={favoriteList}
-              />}
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb = {2}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                />
+                <MealList
+                  isLoggedIn={isLoggedIn}
+                  userId={userId}
+                  favoriteIdList={favoriteIdList}
+                  mainLogIn={logIn}
+                  favoriteList={favoriteList}
+                />
+              </>
+            }
           />
 
           <Route
             path='/categorie/:categorieName/:id'
             element={
-              <MealDetail
-                isUser={false} />
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb={3}
+                  mealName={mealName}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                />
+                <MealDetail
+                  isUser={false}
+                  setMealName={mealNameMealDetail}
+                />
+              </>
             }
           />
 
@@ -118,33 +145,60 @@ function App() {
           <Route
             path='/addMeal/:userId'
             element={
-              <AddMealPage />
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb={6}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                />
+                <AddMealPage />
+              </>
+
             }
           />
 
           <Route
             path='/favoriteUserMeals/:userId'
             element={
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb={7}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                />
               <FavoriteMeals
                 isLoggedIn={isLoggedIn}
               />
+              </>
             }
           />
 
           <Route
             path='/favoriteUserMeals/:userId/:id'
             element={
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb={8}
+                  mealName={mealName}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                />
               <MealDetail
                 isUser={true}
+                setMealName={mealNameMealDetail}
               />
+              </>
             }
           />
-
-
-
         </Routes>
       </BrowserRouter>
-
+      <Footer />
     </div>
   );
 }

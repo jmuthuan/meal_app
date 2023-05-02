@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import getAuthMeal from "../controllers/getAuthMeal";
 import './Header.css';
 import userImage from '../img/user-avatar.svg';
@@ -7,8 +7,46 @@ import bootstrap from 'bootstrap';
 const Header = (props) => {
 
     let avatarImage = userImage;
-
     const navigate = useNavigate();
+
+    //breadCrumb Configs
+    const dinamicParam = useParams();
+    let breadCrumbArray = [];
+
+    switch (props.breadCrumb) {
+        case 1:
+            breadCrumbArray.push({ name: 'Home' })
+            break;
+        case 2:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: dinamicParam['categorieName'] });
+            break;
+        case 3:
+            breadCrumbArray.push({ name: 'Home', path: '/' },
+                { name: dinamicParam['categorieName'], path: `/categorie/${dinamicParam['categorieName']}` },
+                { name: props.mealName }
+            );
+            break;
+        case 4:
+        case 5:
+        case 6:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Add Your Meal' });
+            break;
+        case 7:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'My Favorites' });
+            break;
+        case 8:
+            breadCrumbArray.push({ name: 'Home', path: '/' },
+                { name: 'My Favorites', path: `/favoriteUserMeals/${dinamicParam['userId']}` },
+                { name: props.mealName }
+            );
+            break;
+        case 9:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'About' })
+            break;
+
+        default:
+            break;
+    }
 
 
     //LogIn Form - LogOut
@@ -41,28 +79,46 @@ const Header = (props) => {
 
     //favorite user Meals
     const favoriteMeals = () => {
-        //event.preventDefault();
-        //console.log('TO-DO navigate to user favorite meals')
         navigate(`/favoriteUserMeals/${props.user.uid}`)
-     
+
     }
 
-    const addMeal = () =>{
+    const addMeal = () => {
         console.log('TO-DO add personal meal');
         navigate(`/addMeal/${props.user.uid}`);
     }
 
-    if(props.isLoggedIn){
+    if (props.isLoggedIn) {
         avatarImage = props.user.photoURL ? props.user.photoURL : userImage;
-        console.log('avatar');
-        console.log(avatarImage);
     }
-    
+
+    const searchMyMeal = (e) => {
+        e.preventDefault();
+        console.log('search button click');
+        const searchBarValue = e.target.search_bar.value;
+        const searchByValue = e.target.searchBy['value'];
+
+        console.log(searchBarValue);
+        console.log(searchByValue);
+    }
+
 
     return (
         <header className="App-header">
             <div className="header_wrapper">
-                <input type="text" className="search_bar" placeholder="Search a meal!" />
+                <div className="search_wrapper">
+                    <form className="search_meal_form" onSubmit={searchMyMeal}>
+                        <input type="text" className="search_bar" id="search_bar" placeholder="Search a meal!" />
+                        <button type="submit"> Search!</button>
+                        <label>Search meal by: </label>
+                        <input type="radio" id="mealName" name={'searchBy'} value={'name'} defaultChecked />
+                        <label htmlFor="mealName">Name</label>
+                        <input type="radio" id="mainIngredient" name={'searchBy'} value={'ingredient'}/>
+                        <label htmlFor="mainIngredient">Main Ingredient</label>
+                    </form>
+
+                </div>
+
                 <div className="login_wrapper">
                     <form onSubmit={logInEvent}>
                         {!props.isLoggedIn && <input
@@ -122,6 +178,22 @@ const Header = (props) => {
                                 value='logout' >Log Out</button></li>
                     </ul>
                 </div>}
+
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        {
+                            breadCrumbArray && breadCrumbArray.map(element => {
+                                return (
+                                    <li
+                                        key={element.name}
+                                        className={`breadcrumb-item ${element.path ? '' : 'active'}`}>
+                                        {element.path ? <a href={element.path}>{element.name}</a> : element.name}
+                                    </li>
+                                )
+                            })
+                        }
+                    </ol>
+                </nav>
 
             </div>
         </header>

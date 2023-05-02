@@ -58,6 +58,7 @@ const MealDetail = (props) => {
                     measureList.push(mealDetail['strMeasure' + i])
                 }
             }
+            props.setMealName(mealDetail.strMeal);
         }
     
 
@@ -78,7 +79,7 @@ const MealDetail = (props) => {
                 </section>
 
                 <h3>Ingredients</h3>
-                {props.isUser? console.log(imgIngredients):'image from mealDB'}
+                {/* {props.isUser? console.log(imgIngredients):'image from mealDB'} */}
                 <section className="meal_ingredients">
                     {
                         ingredientList && ingredientList.map((ingredient, index) => {

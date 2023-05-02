@@ -12,7 +12,7 @@ const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {
     //const auth = getAuth(app);
 
     const storage = getStorage(app);
-    const storageRef = ref(storage, `/users_meals_photos/${userId}`);   
+    const storageRef = ref(storage, `/users_meals_photos/${userId}/${dataId}`);   
     
 
     //store meal picture

@@ -11,3 +11,7 @@
     position: relative;
     right: 5px;
 }
+
+nav{
+    --bs-breadcrumb-divider: '>';
+}
