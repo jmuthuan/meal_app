@@ -13,6 +13,8 @@ import MealDetail from './components/MealDetail';
 import getFirestoreData from './controllers/getFirestoreData'
 import AddMealPage from './components/AddMealPage';
 import FavoriteMeals from './components/FavoriteMeals';
+import SearchResults from './components/SearchResults';
+
 
 function App() {
 
@@ -20,7 +22,9 @@ function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState();
   const [favoriteIdList, setFavoriteIdList] = useState(null);
-  const [mealName, setMealName] = useState('Testing');
+  const [mealName, setMealName] = useState('');
+  const [searchBarValue, setSearchBarValue] = useState('');
+  const [searchByValue, setSearchByValue] = useState('name');
 
 
   const app = firebaseStart();
@@ -57,12 +61,16 @@ function App() {
   }
 
   const favoriteList = async (userId) => {
-    setFavoriteIdList(await getFirestoreData('favorites', userId))
-    //console.log(favoriteIdList)
+    setFavoriteIdList(await getFirestoreData('favorites', userId))   
   }
 
-  const mealNameMealDetail = (name) =>{
+  const mealNameMealDetail = (name) => {
     setMealName(name);
+  }
+
+  const onClickSearchBar = (text, byValue) => {
+    setSearchBarValue(text);
+    setSearchByValue(byValue);
   }
 
 
@@ -79,6 +87,7 @@ function App() {
                 breadCrumb={1}
                 mainLogOut={logOut}
                 mainLogIn={logIn}
+                onClickSearchBar={onClickSearchBar}
               />
               <MealCategories
                 user={user}
@@ -94,9 +103,10 @@ function App() {
                 <Header
                   user={user}
                   isLoggedIn={isLoggedIn}
-                  breadCrumb = {2}
+                  breadCrumb={2}
                   mainLogOut={logOut}
                   mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
                 />
                 <MealList
                   isLoggedIn={isLoggedIn}
@@ -120,6 +130,7 @@ function App() {
                   mealName={mealName}
                   mainLogOut={logOut}
                   mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
                 />
                 <MealDetail
                   isUser={false}
@@ -152,6 +163,7 @@ function App() {
                   breadCrumb={6}
                   mainLogOut={logOut}
                   mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
                 />
                 <AddMealPage />
               </>
@@ -169,10 +181,11 @@ function App() {
                   breadCrumb={7}
                   mainLogOut={logOut}
                   mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
                 />
-              <FavoriteMeals
-                isLoggedIn={isLoggedIn}
-              />
+                <FavoriteMeals
+                  isLoggedIn={isLoggedIn}
+                />
               </>
             }
           />
@@ -188,14 +201,61 @@ function App() {
                   mealName={mealName}
                   mainLogOut={logOut}
                   mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
                 />
-              <MealDetail
-                isUser={true}
-                setMealName={mealNameMealDetail}
-              />
+                <MealDetail
+                  isUser={true}
+                  setMealName={mealNameMealDetail}
+                />
               </>
             }
           />
+
+          <Route
+            path='/searchResults'
+            element={
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb={10}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
+                />
+                <SearchResults
+                  isLoggedIn={isLoggedIn}
+                  userId={userId}
+                  searchBarValue={searchBarValue}
+                  searchByValue={searchByValue}
+                  favoriteIdList={favoriteIdList}
+                />
+              </>
+            }
+          />
+
+          <Route
+            path='/searchResults/:id'
+            element={
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb={11}
+                  mealName={mealName}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
+                />
+                <MealDetail
+                  isUser={true}
+                  setMealName={mealNameMealDetail}
+                />
+              </>
+            }
+          />
+
+
         </Routes>
       </BrowserRouter>
       <Footer />

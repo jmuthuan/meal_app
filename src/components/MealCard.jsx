@@ -14,22 +14,17 @@ const MealCard = (props) => {
     const [isUser, setIsUser] = useState(false);
     const [linkPath, setLinkPath] = useState(`/categorie/${props.mealCategory}/${props.mealId}`);
 
-    /*     const isUserMeal = (fromFavorites) => {  
-            console.log(fromFavorites);        
-                setLinkPath(`/favoriteUserMeals/${props.userId}/${props.mealId}`);
-                setIsUser(true);               
-        } */
 
         useEffect(()=>{
             if (props.fromFavorites) {
                 setLinkPath(`/favoriteUserMeals/${props.userId}/${props.mealId}`);
                 setIsUser(true);
-            }
-            /* if(props.fromFavorites){
-    
-            }
-            isUserMeal(props.fromFavorites);
-            console.log('isUserMeal???'); */
+            } 
+            if (props.fromSearch) {
+                setLinkPath(`/searchResults/${props.mealId}`);
+                //setIsUser(true);
+            }   
+            
         },[])
     
 
@@ -49,9 +44,8 @@ const MealCard = (props) => {
 
     return (
         <div className="meal_card_wrapper">
-
-            {/* <Link to={`/categorie/${props.mealCategory}/${props.mealId}`}> */}
-            <Link to={linkPath} state={{ userMeal: props.userMeals }}>
+                      
+            <Link to={linkPath} state={{ userMeal: props.userMeals, fullMealData: props.fullMealData }}>
                 <img src={props.mealImage} alt={`of ${props.nameMeal} meal`} />
                 <h2>{props.nameMeal}</h2>
             </Link>

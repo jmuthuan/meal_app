@@ -10,56 +10,69 @@ const MealDetail = (props) => {
     const { id } = useParams();
     let { state } = useLocation();
 
-    const [mealDetail, setMealDetail] = useState(state.userMeal);
+
+    const [mealDetail, setMealDetail] = useState() //(state.userMeal);
     const [imgIngredients, setImgIngredients] = useState([]);
+    const [ingredientListState, setIngredientListState] = useState([]);
+    const [measureListState, setMeasureListState] = useState([]);
 
     const getMeal = async (id) => {
         setMealDetail(await getMealById(id))
     }
-  
-    const getIngredientImage = async (ingredient, array) => {
 
-        try {
-            const srcImg = await axios.get(`https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`);
-            array.push(`https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`);
-
-        } catch (error) {
-            console.log('an error has ocured, ingredient :' + ingredient + ' not found')
-            array.push(defaultImgIngredient);        
+    const getIngredientImage = async (ingredientArray) => {
+        let imgResults = [];
+        for(let i=0; i<ingredientArray.length ; i++){
+            try {
+                const srcImg = await axios.get(`https://www.themealdb.com/images/ingredients/${ingredientArray[i]}-Small.png`);
+                imgResults.push(`https://www.themealdb.com/images/ingredients/${ingredientArray[i]}-Small.png`);
+    
+            } catch (error) {
+                console.log('an error has ocured, ingredient :' + ingredientArray[i] + ' not found')
+                imgResults.push(defaultImgIngredient);
+            }
         }
-        setImgIngredients(array);
+        
+        setImgIngredients(imgResults);
     }
 
     let ingredientList = [];
     let measureList = [];
 
     useEffect(() => {
+        //console.log('fullMealData', state.fullMealData)
         if (!id.includes('user')) {
-            getMeal(id)            
+            if(!state.fullMealData){
+                getMeal(id);           
+            }else{
+                setMealDetail(state.userMeal);
+            }
+            
+        } else {           
+            setMealDetail(state.userMeal);
         }
+
 
         if (mealDetail) {
-            let imgSrc = [];
-            for (let i = 1; i <= 20; i++) {
-                if (mealDetail['strIngredient' + i] !== "") {
-                    getIngredientImage(mealDetail['strIngredient' + i], imgSrc);         
-                }
-            }            
-        }
+            //let imgSrc = [];
+            ingredientList = [];     
 
-    }, [mealDetail?.strMeal])
-    
-        if (mealDetail) {          
-            for (let i = 1; i <= 20; i++) {
-                if (mealDetail['strIngredient' + i] !== "") {
-                    ingredientList.push(mealDetail['strIngredient' + i])   
+            for (let i = 1; i <= 20; i++) {               
+                if (mealDetail['strIngredient' + i]) {                    
+                    ingredientList.push(mealDetail['strIngredient' + i]);
                 }
                 if (mealDetail['strMeasure' + i]) {
-                    measureList.push(mealDetail['strMeasure' + i])
+                    measureList.push(mealDetail['strMeasure' + i]);                        
                 }
-            }
+            }   
+
+            getIngredientImage(ingredientList);           
+            setMeasureListState(measureList);
+            setIngredientListState(ingredientList);
             props.setMealName(mealDetail.strMeal);
         }
+
+    }, [mealDetail?.strMeal]);
     
 
     return (
@@ -67,10 +80,11 @@ const MealDetail = (props) => {
 
             {mealDetail && <>
                 <h2>{mealDetail.strMeal}</h2>
+
                 <img className="meal_detail_img" src={mealDetail.strMealThumb} />
                 <section className="meal_instructions">
                     <ol>
-                        {mealDetail.strInstructions.split('\r\n').map((paragraph) => {
+                        {mealDetail.strInstructions?.split('\r\n').map((paragraph) => {
                             return (
                                 <li key={Math.random()}>{paragraph}</li>
                             )
@@ -79,18 +93,20 @@ const MealDetail = (props) => {
                 </section>
 
                 <h3>Ingredients</h3>
-                {/* {props.isUser? console.log(imgIngredients):'image from mealDB'} */}
+
                 <section className="meal_ingredients">
+                    
                     {
-                        ingredientList && ingredientList.map((ingredient, index) => {
-                            
+                        ingredientList &&
+                        ingredientListState.map((ingredient, index) => {
+
                             return (
-                                <div className="ingredient_card" key={ingredient+Math.random()}>
-                                    <img                                        
-                                        src={props.isUser?`${imgIngredients[index]}`:`https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`}
+                                <div className="ingredient_card" key={ingredient + Math.random()}>                                   
+                                    <img
+                                        src={props.isUser ? `${imgIngredients[index]}` : `https://www.themealdb.com/images/ingredients/${ingredient}-Small.png`}
                                         alt={`of ${ingredient}`} />
                                     <div className="ingredient_name">{ingredient}</div>
-                                    <div className="ingredient_measure">({measureList[index]})</div>
+                                    <div className="ingredient_measure">({measureListState[index]})</div>
                                 </div>
                             )
                         })

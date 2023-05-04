@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import getAuthMeal from "../controllers/getAuthMeal";
 import './Header.css';
 import userImage from '../img/user-avatar.svg';
@@ -44,6 +44,15 @@ const Header = (props) => {
             breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'About' })
             break;
 
+        case 10:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Results' })
+            break;
+
+        case 11:
+            breadCrumbArray.push({ name: 'Home', path: '/' },
+                { name: 'Results', path: '/searchResults' },
+                { name: props.mealName });
+            break;
         default:
             break;
     }
@@ -94,12 +103,12 @@ const Header = (props) => {
 
     const searchMyMeal = (e) => {
         e.preventDefault();
-        console.log('search button click');
         const searchBarValue = e.target.search_bar.value;
         const searchByValue = e.target.searchBy['value'];
 
-        console.log(searchBarValue);
-        console.log(searchByValue);
+        props.onClickSearchBar(searchBarValue, searchByValue);
+
+        navigate(`/searchResults`);
     }
 
 
@@ -113,7 +122,7 @@ const Header = (props) => {
                         <label>Search meal by: </label>
                         <input type="radio" id="mealName" name={'searchBy'} value={'name'} defaultChecked />
                         <label htmlFor="mealName">Name</label>
-                        <input type="radio" id="mainIngredient" name={'searchBy'} value={'ingredient'}/>
+                        <input type="radio" id="mainIngredient" name={'searchBy'} value={'ingredient'} />
                         <label htmlFor="mainIngredient">Main Ingredient</label>
                     </form>
 
@@ -186,8 +195,9 @@ const Header = (props) => {
                                 return (
                                     <li
                                         key={element.name}
-                                        className={`breadcrumb-item ${element.path ? '' : 'active'}`}>
-                                        {element.path ? <a href={element.path}>{element.name}</a> : element.name}
+                                        className={`breadcrumb-item ${element.path ? '' : 'active'}`}>                                        
+                                        {element.path ? <Link to={element.path}>{element.name}</Link>  : element.name}
+                                        
                                     </li>
                                 )
                             })
