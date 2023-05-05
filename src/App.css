@@ -1,6 +1,31 @@
+:root {
+ /* Main Primary color */
+  --rgba-primary-0: rgba(45, 136, 45, 1); 
+  --rgba-primary-1: rgba(135, 204, 135, 1);
+  --rgba-primary-2: rgba(84, 170, 84, 1);
+  --rgba-primary-3: rgba(17, 102, 17, 1);
+  --rgba-primary-4: rgba(0, 68, 0, 1);
+  --rgba-primary-5: rgba(150,195,150,0.8);
+  
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+}
+
 .App {
   text-align: center;
+  color: white;
+  /* font-size: 62.5%; */
+  /* Font family */
+   
+  font-family: 'Grandstander', cursive;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -14,17 +39,18 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: var(--rgba-primary-0);
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  border-bottom: 5px solid var(--rgba-primary-4);
 }
 
-.App-link {
+/* .App-link {
   color: #61dafb;
 }
 
@@ -32,14 +58,15 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
-
-.form_item{
+/* 
+.form_item {
   display: block;
   text-align: start;
   margin: 1rem 0;
-}
+} */

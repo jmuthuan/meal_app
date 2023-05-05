@@ -18,8 +18,8 @@ const MealCategories = (props) => {
    
     return (
         <main>
-            <div>
-                Meal categories             
+            <div className="main_wrapper">
+                <h2>Meal categories</h2>
                 <div className="meal_categories_wrapper">
                     {
                         categories.map((element, index) => {

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import db from "./firestoreStart";
+import db from '../controllers/firestoreStart';
 
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
 import { useEffect, useState } from "react";

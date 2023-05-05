@@ -1,5 +1,5 @@
 import { getAuth, updateEmail } from "firebase/auth";
-import firebaseStart from "../components/firebaseStart";
+import firebaseStart from "./firebaseStart";
 import { emailVerification } from "./emailVerification";
 
 export function updateUserEmail(email) {

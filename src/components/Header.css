@@ -1,10 +1,23 @@
+:root {
+    /* Main Primary color */
+     --rgba-primary-0: rgba(45, 136, 45, 1); 
+     --rgba-primary-1: rgba(135, 204, 135, 1);
+     --rgba-primary-2: rgba(84, 170, 84, 1);
+     --rgba-primary-3: rgba(17, 102, 17, 1);
+     --rgba-primary-4: rgba(0, 68, 0, 1);
+   }
+
 .App-header{
     height: auto;
     width: 100%;
-    padding: 2rem;
+    padding-right: 1rem;
+}
+nav{
+    --bs-breadcrumb-divider: '>';
+    grid-area: bread;
 }
 
-.img_avatar{
+.img_avatar {
     width: 48px;
     height: auto;
     clip-path: circle(50% at 50% 50%);
@@ -12,6 +25,224 @@
     right: 5px;
 }
 
-nav{
-    --bs-breadcrumb-divider: '>';
+#dropdown_avatar {
+    border-radius: 40px;
+    background-color: var(--rgba-primary-4);
 }
+
+@media screen and (min-width: 360px) {
+    .header_wrapper {
+        display: grid;
+        grid-template-columns: 20% 60% 20%;
+        grid-template-areas:    "burger title login"                         
+                                "search search search"
+                                "bread  bread .";
+        font-size: 1.3rem;                        
+    }
+
+    .burger_menu_wrapper {       
+        grid-area: burger;
+    }
+
+    .about_link{
+        display: none;
+    }
+
+    .main_title_app {
+        font-weight: 700;
+        font-size: 7vw;
+    }
+
+    .login_button, .search_button {
+        color: white;
+        border: none;
+        background-color: var(--rgba-primary-3);
+        border-radius: 15px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);        
+        padding: 5px 15px 0 15px;
+    }
+
+    .form_section_bar{     
+        margin-top: 5px;
+        text-align: center;
+        padding: 0 10vw;       
+        font-size: 1.3rem;
+     }
+
+     .form_section_radio{       
+        margin-top: 5px;
+        text-align: start;        
+        padding: 0 10.5vw;       
+        font-size: 1.1rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+     }
+
+     .search_bar {
+        width: 50vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+       
+    }
+    
+    .search_button {
+        width: 25vw;
+    }
+
+    #mealName, #mainIngredient{
+        margin: 0vh 0.3vw 0 1vw;
+        bottom: 1px;
+        position: relative;
+    }
+    
+    .search_by_label {
+        margin: 0vh 1vw;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .header_wrapper {       
+        grid-template-columns: 15% 70% 15%;        
+    }
+
+    .burger_menu_wrapper {
+        /* display: none; */
+        grid-area: burger;
+    }
+
+    .about_link {
+        display: none;        
+    }
+
+    .form_section_bar{
+        padding: 0 10vw;       
+        font-size: 1.6rem;
+     }
+
+     .form_section_radio{
+        display: inherit;
+        padding: 0 13.5vw;       
+        font-size: 1.5rem;
+     }
+
+     .search_bar {            
+        font-size: 1.8rem;
+    }
+    
+    .search_button {
+        width: 20vw;
+        font-size: 1.8rem;
+    }
+
+    #mealName, #mainIngredient{
+        margin: 0vh 0.3vw 0 1vw;
+    }
+    
+    .search_by_label {
+        margin: 0vh 1vw;
+    }
+     
+}
+
+@media screen and (min-width: 1200px) {
+    .header_wrapper {        
+        grid-template-columns: 10% 80% 10%;
+        grid-template-areas:    "about title login"                         
+                                "search search search"
+                                "bread  bread .";  
+        font-size: 1.8rem;      
+    }
+
+    .burger_menu_wrapper {
+        display: none;
+        grid-area: burger;
+    }
+    .about_link{
+        display: inline;
+    }
+
+    .main_title_app {
+        font-weight: 700;
+        font-size: 5vw;
+    }
+
+    .form_section_bar{
+        padding: 0 20vw;
+        margin-top: 5px;
+        text-align: start;
+        font-size: 1.6rem;
+     }
+
+     .form_section_radio{
+        padding: 0 20vw;       
+        font-size: 1.8rem;
+
+     }
+
+     .search_bar {
+        width: 40vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        font-size: 1.8rem;
+    }
+    
+    .search_button {
+        width: 10vw;
+        font-size: 1.8rem;
+    }
+
+    #mealName, #mainIngredient{
+        margin: 0vh 0.3vw 0 1vw;
+    }
+    
+    .search_by_label {
+        margin: 0vh 1vw;
+    }
+     
+}
+
+
+
+.login_wrapper {
+    grid-area: login;
+    padding-top: 5vh;
+}
+
+.about_link{
+    grid-area: about;
+    padding-top: 5vh;
+}
+
+.about_link >a, .about_link>a:visited { 
+    color: white;
+    text-decoration: none;
+    text-shadow: 6px 6px 4px var(--rgba-primary-4);
+}
+
+.about_link >a:hover {
+    color: white;
+    font-weight: 700;
+}
+
+
+.dropdown{
+    grid-area: login;
+    padding-top: 5vh;
+}
+.main_title_app {
+    grid-area: title;
+    padding-top: 5vh;
+    text-shadow: 6px 6px 4px var(--rgba-primary-4);
+}
+
+.search_wrapper{
+    grid-area: search;
+}
+

@@ -3,6 +3,7 @@ import getAuthMeal from "../controllers/getAuthMeal";
 import './Header.css';
 import userImage from '../img/user-avatar.svg';
 import bootstrap from 'bootstrap';
+import BurgerMenu from "./BurgerMenu";
 
 const Header = (props) => {
 
@@ -15,7 +16,7 @@ const Header = (props) => {
 
     switch (props.breadCrumb) {
         case 1:
-            breadCrumbArray.push({ name: 'Home' })
+            breadCrumbArray = null;
             break;
         case 2:
             breadCrumbArray.push({ name: 'Home', path: '/' }, { name: dinamicParam['categorieName'] });
@@ -59,25 +60,25 @@ const Header = (props) => {
 
 
     //LogIn Form - LogOut
-    const logInEvent = (event) => {
-        event.preventDefault();
-        getAuthMeal(event.target.button.value, event.target.email.value, event.target.password.value);
-        props.mainLogIn();
+    const logInEvent = () => {
+        //event.preventDefault();
+        //getAuthMeal(event.target.button.value, event.target.email.value, event.target.password.value);
+        //props.mainLogIn();
+        navigate('singIn');
     }
 
     //singUp 
     const singUpEvent = (event) => {
         event.preventDefault();
-
-        console.log("SingUp Event...")
         navigate('/singup');
-
     }
     //Log Out
     const logOutEvent = (event) => {
         event.preventDefault();
         getAuthMeal(event.target.value, "", "");
         props.mainLogOut();
+
+        navigate('/');
     }
 
     //edit Profile
@@ -93,7 +94,6 @@ const Header = (props) => {
     }
 
     const addMeal = () => {
-        console.log('TO-DO add personal meal');
         navigate(`/addMeal/${props.user.uid}`);
     }
 
@@ -101,6 +101,7 @@ const Header = (props) => {
         avatarImage = props.user.photoURL ? props.user.photoURL : userImage;
     }
 
+    //search bar onClick
     const searchMyMeal = (e) => {
         e.preventDefault();
         const searchBarValue = e.target.search_bar.value;
@@ -114,71 +115,39 @@ const Header = (props) => {
 
     return (
         <header className="App-header">
+            {console.log('user', props.user)}
             <div className="header_wrapper">
-                <div className="search_wrapper">
-                    <form className="search_meal_form" onSubmit={searchMyMeal}>
-                        <input type="text" className="search_bar" id="search_bar" placeholder="Search a meal!" />
-                        <button type="submit"> Search!</button>
-                        <label>Search meal by: </label>
-                        <input type="radio" id="mealName" name={'searchBy'} value={'name'} defaultChecked />
-                        <label htmlFor="mealName">Name</label>
-                        <input type="radio" id="mainIngredient" name={'searchBy'} value={'ingredient'} />
-                        <label htmlFor="mainIngredient">Main Ingredient</label>
-                    </form>
-
+                <div className='burger_menu_wrapper'>
+                    <BurgerMenu 
+                    avatarImage = {avatarImage}
+                    userId = {props.user?.uid}
+                    isLoggedIn={props.isLoggedIn}
+                    logOut={logOutEvent}
+                    />
                 </div>
 
-                <div className="login_wrapper">
-                    <form onSubmit={logInEvent}>
-                        {!props.isLoggedIn && <input
-                            type='email'
-                            className="email_login"
-                            name='email'
-                            placeholder="email"
-                            required />}
-                        {!props.isLoggedIn && <input
-                            type='password'
-                            className="password_login"
-                            name="password"
-                            placeholder="password"
-                            required />}
-
-                        {!props.isLoggedIn && <button
-                            type="submit"
-                            className="login_button"
-                            name='button'
-                            value='login'>Log In</button>}
-                    </form>
-
-                    {!props.isLoggedIn && <button
-                        type="submit"
-                        className="singup_button"
-                        onClick={singUpEvent}
-                        name='button'
-                        value='singup'>Sing Up</button>}
-                </div>
 
                 {props.isLoggedIn && <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button className="btn btn-secondary dropdown-toggle" id="dropdown_avatar" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img className="img_avatar" src={avatarImage} alt="user avatar" />
                     </button>
                     <ul className="dropdown-menu">
-                        <li>
+                        <li key={Math.random()}>
                             <button
                                 className="dropdown-item"
                                 type="button"
                                 onClick={favoriteMeals}>My Favorite Meals</button></li>
-                        <li>
+                        <li key={Math.random()}>
                             <button
                                 className="dropdown-item"
                                 type="button"
                                 onClick={addMeal}>Add a Meal</button></li>
-                        <li>
+                        <li key={Math.random()}>
                             <button
                                 className="dropdown-item"
                                 type="button"
                                 onClick={editProfile}>Edit my profile</button></li>
-                        <li>
+                        <li key={Math.random()}>
                             <button
                                 className="dropdown-item logout_button"
                                 type="submit"
@@ -188,6 +157,37 @@ const Header = (props) => {
                     </ul>
                 </div>}
 
+                <div className="login_wrapper">                   
+                        {!props.isLoggedIn && <button
+                            type="submit"
+                            className="login_button"
+                            name='button'
+                            value='login'
+                            onClick={logInEvent}>Log In</button>}                 
+                </div>
+
+                <span className="about_link"><a href="/about">About</a></span>
+                <h1 className="main_title_app">YumMeal App</h1>
+
+
+
+                <div className="search_wrapper">
+                    <form className="search_meal_form" onSubmit={searchMyMeal}>
+                        <div className="form_section_bar">
+                            <input type="text" className="search_bar" id="search_bar" placeholder="Search a meal!" />
+                            <button type="submit" className="search_button"> Search!</button>
+                        </div>
+                        <div className="form_section_radio">
+                            <label className="search_by_label">Search meal by: </label>
+                            <input type="radio" id="mealName" name={'searchBy'} value={'name'} defaultChecked />
+                            <label htmlFor="mealName">Name</label>
+                            <input type="radio" id="mainIngredient" name={'searchBy'} value={'ingredient'} />
+                            <label htmlFor="mainIngredient">Main Ingredient</label>
+                        </div>
+                    </form>
+
+                </div>
+
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
                         {
@@ -195,9 +195,9 @@ const Header = (props) => {
                                 return (
                                     <li
                                         key={element.name}
-                                        className={`breadcrumb-item ${element.path ? '' : 'active'}`}>                                        
-                                        {element.path ? <Link to={element.path}>{element.name}</Link>  : element.name}
-                                        
+                                        className={`breadcrumb-item ${element.path ? '' : 'active'}`}>
+                                        {element.path ? <Link to={element.path}>{element.name}</Link> : element.name}
+
                                     </li>
                                 )
                             })

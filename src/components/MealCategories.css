@@ -1,6 +1,107 @@
-.meal_categories_wrapper{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;    
+
+main{
+    background-color: var(--rgba-primary-5);
+    color: var(--rgba-primary-4);
+    font-size: 4rem;
+    padding: 2rem 0 2rem 4rem;
+    text-align: start;
+    font-weight: 700;
+    text-shadow: 3px 3px 4px var(--rgba-primary-3);
+  }
+
+
+@media screen and (min-width: 360px) {
+    .meal_categories_wrapper{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;  
+        padding: 0px;  
+    }
+
+    .main_wrapper>h2{
+        font-size: 3.5rem;
+        font-weight: 700;
+        padding-left: 2.5vw;
+    }  
+
+    .meal_card_wrapper{
+        background-color: var(--rgba-primary-2);
+        width: 90%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 4px 4px 4px var(--rgba-primary-4);
+        margin: 1rem 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .meal_card_wrapper>a{
+        text-decoration: none;
+    }
+
+    .favorite_icon{
+        z-index: 10;
+        position: relative;
+        left: 17rem;
+        bottom: 12rem;
+    }
 }
+
+
+@media screen and (min-width: 640px) {
+    .meal_categories_wrapper{        
+        flex-direction: row;          
+    }
+
+    .main_wrapper>h2{
+        font-size: 4rem;       
+    }  
+    
+}
+
+
+
+/* Meal List Style */
+
+@media screen and (min-width: 360px) {
+    .meal_list_wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;  
+        padding: 0px;  
+    }
+
+    .meal_card_wrapper{
+        background-color: var(--rgba-primary-2);
+        width: 90%;
+        height: auto;
+        border-radius: 20px;
+        box-shadow: 4px 4px 4px var(--rgba-primary-4);
+        margin: 1rem 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    
+}
+
+
+@media screen and (min-width: 640px) {
+    .meal_list_wrapper {      
+        flex-direction: row;       
+    }
+
+    .meal_card_wrapper{
+        width: 45%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .meal_card_wrapper{
+        width: 30%;
+    }
+}
+
+

@@ -6,10 +6,7 @@ import deleteFirestoreData from "../controllers/deleteFirestoreData";
 import { useEffect, useState } from "react";
 
 
-
-
 const MealCard = (props) => {
-
     const [isFavorite, setIsFavorite] = useState(props.isFavorite);
     const [isUser, setIsUser] = useState(false);
     const [linkPath, setLinkPath] = useState(`/categorie/${props.mealCategory}/${props.mealId}`);
@@ -21,15 +18,12 @@ const MealCard = (props) => {
                 setIsUser(true);
             } 
             if (props.fromSearch) {
-                setLinkPath(`/searchResults/${props.mealId}`);
-                //setIsUser(true);
-            }   
-            
+                setLinkPath(`/searchResults/${props.mealId}`);                
+            }               
         },[])
     
 
-    const favoriteToggle = () => {       
-
+    const favoriteToggle = () => {
         if (props.userId && !isFavorite) {
             setFirestoreData(props.mealId, 'favorites', props.userId);
             setIsFavorite(true);
@@ -46,10 +40,10 @@ const MealCard = (props) => {
         <div className="meal_card_wrapper">
                       
             <Link to={linkPath} state={{ userMeal: props.userMeals, fullMealData: props.fullMealData }}>
-                <img src={props.mealImage} alt={`of ${props.nameMeal} meal`} />
-                <h2>{props.nameMeal}</h2>
+                <img className="card_image" src={props.mealImage} alt={`of ${props.nameMeal} meal`} />
+                <h3 className="card_name">{props.nameMeal}</h3>
             </Link>
-            <span onClick={favoriteToggle} style={{ zIndex: 10 }}>
+            <span className="favorite_icon" onClick={favoriteToggle} style={{ zIndex: 10 }}>
                 {isFavorite ? <FaStar /> : <FaRegStar />}
             </span>
         </div>

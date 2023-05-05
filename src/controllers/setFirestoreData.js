@@ -1,5 +1,5 @@
 import { doc, updateDoc, setDoc, arrayUnion, getDoc } from "firebase/firestore";
-import db from "../components/firestoreStart";
+import db from "./firestoreStart";
 
 const setFirestoreData = async (data, userCollection, userId) =>{
 

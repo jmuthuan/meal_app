@@ -1,5 +1,5 @@
 import { doc, updateDoc, arrayRemove } from "firebase/firestore";
-import db from "../components/firestoreStart";
+import db from "./firestoreStart";
 
 const deleteFirestoreData = async (data, userCollection, userId) =>{   
     console.log('delete item firestore');

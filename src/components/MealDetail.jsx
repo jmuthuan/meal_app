@@ -40,7 +40,7 @@ const MealDetail = (props) => {
     let measureList = [];
 
     useEffect(() => {
-        //console.log('fullMealData', state.fullMealData)
+        
         if (!id.includes('user')) {
             if(!state.fullMealData){
                 getMeal(id);           
@@ -53,8 +53,7 @@ const MealDetail = (props) => {
         }
 
 
-        if (mealDetail) {
-            //let imgSrc = [];
+        if (mealDetail) {            
             ingredientList = [];     
 
             for (let i = 1; i <= 20; i++) {               

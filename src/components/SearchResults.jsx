@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import getMealsByName from "../controllers/getMealsByName";
-import getMealsByIngredient from "./getMealsByIngredient";
+import getMealsByIngredient from "../controllers/getMealsByIngredient";
 import MealCard from "./MealCard";
 
 
@@ -31,8 +31,7 @@ const SearchResults = (props) => {
     }, [props.searchBarValue])
 
 
-    return (
-        //TO-DO map from array with results add <MealCard />
+    return (       
         <div className="search_results_wrapper">TO-DO
             {
                 nameMealResult && nameMealResult.map(meal => {
@@ -52,9 +51,7 @@ const SearchResults = (props) => {
                     )
                 })
             }
-
         </div>
-
     )
 }
 

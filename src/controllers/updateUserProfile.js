@@ -1,5 +1,5 @@
 import { getAuth, updateProfile } from "firebase/auth";
-import firebaseStart from "../components/firebaseStart";
+import firebaseStart from "./firebaseStart";
 import { getStorage, ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 
 export function updateUserProfile(displayName, photoURL, user, app, auth) {

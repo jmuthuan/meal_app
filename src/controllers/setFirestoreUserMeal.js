@@ -1,7 +1,7 @@
-import db from "../components/firestoreStart";
+import db from "./firestoreStart";
 import { doc, setDoc} from "firebase/firestore";
 import { getStorage, ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
-import firebaseStart from "../components/firebaseStart";
+import firebaseStart from "./firebaseStart";
 
 const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {  
     console.log('adding meal...');   

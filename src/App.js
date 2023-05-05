@@ -6,7 +6,7 @@ import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import SingUpPage from './components/SingUpPage';
 import Footer from './components/Footer';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import firebaseStart from "./components/firebaseStart";
+import firebaseStart from "./controllers/firebaseStart";
 import UpdateUserData from './components/UpdateUserData';
 import MealList from './components/MealsList';
 import MealDetail from './components/MealDetail';
@@ -14,6 +14,8 @@ import getFirestoreData from './controllers/getFirestoreData'
 import AddMealPage from './components/AddMealPage';
 import FavoriteMeals from './components/FavoriteMeals';
 import SearchResults from './components/SearchResults';
+import SingInPage from './components/SingInPage';
+import AboutPage from './components/AboutPage';
 
 
 function App() {
@@ -61,7 +63,7 @@ function App() {
   }
 
   const favoriteList = async (userId) => {
-    setFavoriteIdList(await getFirestoreData('favorites', userId))   
+    setFavoriteIdList(await getFirestoreData('favorites', userId))
   }
 
   const mealNameMealDetail = (name) => {
@@ -139,11 +141,18 @@ function App() {
               </>
             }
           />
+          <Route
+            path='/singIn'
+            element={
+              <SingInPage
+                isLoggedIn={isLoggedIn}
+                mainLogIn={logIn}
+              />}
+          />
 
           <Route
             path='/singup'
             element={<SingUpPage />}
-
           />
           <Route
             path='/updateProfile/:userId'
@@ -251,6 +260,24 @@ function App() {
                   isUser={true}
                   setMealName={mealNameMealDetail}
                 />
+              </>
+            }
+          />
+
+<Route
+            path='/about'
+            element={
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb={12}
+                  mealName={mealName}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
+                />
+                <AboutPage />
               </>
             }
           />

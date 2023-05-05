@@ -1,5 +1,5 @@
 import { doc, getDoc } from "firebase/firestore";
-import db from "../components/firestoreStart";
+import db from "./firestoreStart";
 
 const getFirestoreData = async (userCollection, userId) => {
     //console.log('testing favorites: '+userId);

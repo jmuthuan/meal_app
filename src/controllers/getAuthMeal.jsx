@@ -1,7 +1,7 @@
 //import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, setPersistence, browserSessionPersistence } from 'firebase/auth'
 import { emailVerification } from './emailVerification';
-import firebaseStart from '../components/firebaseStart';
+import firebaseStart from './firebaseStart';
 
 
 const getAuthMeal = (buttonName, email, password) => {
