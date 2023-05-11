@@ -53,7 +53,8 @@
     }
 
     .card_name{      
-        font-size: 3.5rem;    
+        font-size: 3.5rem; 
+        margin: 1rem 0;   
     }
     
 }

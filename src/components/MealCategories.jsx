@@ -6,7 +6,7 @@ import getAllCategories from "../controllers/getAllCategories";
 
 const MealCategories = (props) => {
 
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState();
     
     const getCategories = async () => {        
         setCategories(await getAllCategories());
@@ -22,7 +22,7 @@ const MealCategories = (props) => {
                 <h2>Meal categories</h2>
                 <div className="meal_categories_wrapper">
                     {
-                        categories.map((element, index) => {
+                       categories && categories.map((element, index) => {
                             return (
                                 <MealCategoryCard
                                     key={element.idCategory}

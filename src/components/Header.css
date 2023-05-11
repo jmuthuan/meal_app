@@ -76,7 +76,8 @@ nav{
         font-size: 1.1rem;
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: wrap;        
+        text-shadow: 2px 2px 2px var(--rgba-primary-4);
      }
 
      .search_bar {

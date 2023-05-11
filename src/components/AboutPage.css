@@ -1,0 +1,320 @@
+/* About Header Style */
+@media screen and (min-width: 360px) {
+   /*    
+    .about_home {
+      font-family: Turret;
+      position: relative;
+      text-align: start;
+      color: white;
+      font-size: 1.4rem;
+      display: flex;
+      margin: 1rem 3rem 0 0;
+      padding: 0;
+      flex-direction: row-reverse;
+      z-index: 2;
+      top: 10px;
+      text-shadow: 6px 3px 3px white;
+    } */
+  
+  /*   .about_home:hover {
+      font-weight: 700;
+      color: white;
+    } */
+  
+    .about_technologies_logos{
+      text-align: center;
+      margin: 1rem 0;
+     
+    }
+  
+    .developer_social_media>a>img{
+      height: 32px;
+      margin: 1rem 1rem;
+    }
+    
+    .form_item{
+      display: block;
+      width: 85%;
+      margin: 0.5rem 0 0.5rem 5vw;    
+      border-radius: 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  
+    .about_contact_form>input {
+      box-shadow: 4px 4px 4px #878585;
+      margin-bottom: 2rem;
+      position: relative;
+      bottom: 0px;
+      right: 0px;
+      transition: all 0.2s ease-out;
+    }
+  
+    .about_contact_form>input:hover{
+      box-shadow: 4px 4px 4px white;
+      transition: all 0.2s ease-in;
+      bottom: 5px;    
+      right: 5px;
+      position: relative;
+    }
+  
+    .form_text_area{
+      box-shadow: 4px 4px 4px #878585;
+      margin-bottom: 2rem;
+      resize: none;
+      height: 15rem;
+      position: relative;
+      bottom: 0px;
+      right: 0px;
+      transition: all 0.2s ease-out;
+    }
+  
+    .form_text_area:hover{
+      box-shadow: 4px 4px 4px white;
+      transition: all 0.2s ease-in;
+      bottom: 5px;    
+      right: 5px;
+      position: relative;
+    }
+    
+    .form_item::placeholder{
+      padding-left: 2vw;
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+  
+    .btn_submit {
+      width: auto;
+      border-radius: 0.5rem;
+      height: auto;
+      padding: 0 4vw;
+      background-color: #504F4F;
+      box-shadow: 4px 4px 4px #878585;
+      border: none;
+      color: white;
+      font-weight: 700;
+      position: relative;    
+      left: 30vw;
+    }
+  }
+  
+  @media screen and (min-width: 640px) {
+    /* .about_header {
+      height: 8rem;
+    } */
+  
+    /* .about_header_container>div {
+      font-size: 3.5rem;
+      bottom: 3.5rem;
+      padding-left: 15vw;
+    } */
+  }
+  
+  @media screen and (min-width: 768px) {
+    .form_item{
+      display: block;
+      width: 50%;
+      margin: 0.5rem 0 0.5rem 5vw;    
+      border-radius: 10px;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .form_text_area{
+      margin-bottom: 2rem;
+    }
+  
+    .btn_submit {
+      width: auto;
+      border-radius: 0.5rem;
+      height: auto;
+      left: 15vw;   
+    }
+  }
+  
+  
+  @media screen and (min-width: 1200px) {
+   /*  .about_header {
+      height: 10rem;
+      display: flex;
+    } */
+  
+    /* .about_header_container>div {
+      font-size: 5rem;
+      position: relative;
+      left: 6vw;  
+      padding-left: 15vw;
+      bottom: 4rem;
+    } */
+  
+    /* .about_header_container {
+      width: 100%;
+      display: inline-block;
+    } */
+  }
+  
+  /* About Main Style */
+  
+/*   .main_about {
+    background: linear-gradient(to bottom,
+        rgba(25, 25, 25, 0.4) 0%, rgba(25, 25, 25, 0.8) 40%, rgba(0, 0, 0, 1) 100%),
+        url(http://localhost:3000/static/media/pacman_background.cfad07f61082dd2c3a68.png); 
+    background-repeat: repeat;
+    background-size: auto;
+    border-bottom: 3px solid #504F4F;
+  } */
+  
+  
+  @media screen and (min-width: 360px) {
+    p {
+      font-weight: 400;
+      margin-top: 0;
+      font-size: 1.3rem;
+      text-decoration: none;
+    }
+    .about_page_wrapper {      
+      font-size: 1.1rem;
+      color: white;
+      width: 90%;
+      text-align: justify;
+      position: relative;
+      left: 5vw;
+    }
+  
+    .about_page_wrapper>section>span {
+      font-weight: 700;
+      margin: 2rem 0 0 0;
+      font-size: 1.5rem;
+      color: var(--rgba-primary-4);
+      /* text-decoration: underline; */
+      display: inline-block;
+      width: 100%;
+    }
+  
+    .about_page_info,
+    .about_technologies_info,
+    .about_developers_info,
+    .about_contact_form
+    {
+      background-color: var(--rgba-primary-2);
+      border-radius: 20px;
+      box-shadow: 4px 4px 4px var(--rgba-primary-4);         
+      padding: 1rem;
+    }
+  
+    .img_logo{
+      height: 32px;
+      margin: 1rem 0.5rem;
+      animation: logo_animation 4s ease-in-out 0s infinite;
+    }
+  
+    .about_avatar {
+      clip-path: circle(50% at 50% 50%);
+      width: 25vw;
+    }
+  
+    .about_developer_avatar_name{
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+  
+    /* .about_developers_info>div{
+      text-align: center;
+    } */
+  
+    .about_developers_person{
+      text-align: start;
+    }
+  
+  }
+  
+  @media screen and (min-width: 640px) {
+    p {
+      font-size: 1.4rem;    
+    }
+  
+    .about_page_wrapper {
+      font-size: 1.3rem;
+    }
+  
+    .about_page_wrapper>section>span {    
+      font-size: 1.8rem;    
+    }
+    .img_logo{
+      height: 64px;    
+    }
+  
+    .about_avatar {
+      clip-path: circle(50% at 50% 50%);
+      width: 25vw;
+    }
+    
+  }
+  
+  @media screen and (min-width: 1200px) {
+    p {    
+      font-size: 1.5rem;    
+    }
+  
+    .about_page_wrapper>section>span {   
+      font-size: 4rem;   
+    }
+  
+    .about_developers {
+      display: inline-block;
+    }
+  
+    .about_developers_info>div{
+      text-align: center;    
+    }
+    .about_developer_avatar_name {
+      width: 25%;
+      display: inline-block;
+      margin-left: 8vw;
+    }
+    .developer_name{
+      font-size: 2rem;
+    }
+    .developer_titles{
+      font-size: 1.5rem;
+    }
+  
+    .about_developers_person {
+      display: inline-block;
+      width: 60%;
+      position: relative;
+      text-align: start;    
+       bottom: 10rem;
+  
+    }
+  
+    .about_avatar {
+      clip-path: circle(50% at 50% 50%);
+      width: 15vw;
+    }
+  
+    .about_contact_form{
+      margin: 0 0 5rem 0;
+  
+    }
+  
+  }
+  
+  
+  @keyframes logo_animation {
+    0%{
+        transform: rotateX(0deg);
+    }
+    25%{
+      transform: rotateX(90deg);
+    }
+    50%{
+      transform: rotateY(180deg);
+    }
+    75%{
+      transform: rotateY(270deg);
+    }
+    100%{
+      transform: rotateY(360deg);
+    }
+    
+  }

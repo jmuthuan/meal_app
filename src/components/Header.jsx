@@ -115,7 +115,7 @@ const Header = (props) => {
 
     return (
         <header className="App-header">
-            {console.log('user', props.user)}
+           {/*  {console.log('user', props.user)} */}
             <div className="header_wrapper">
                 <div className='burger_menu_wrapper'>
                     <BurgerMenu 
