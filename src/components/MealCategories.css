@@ -1,84 +1,42 @@
-main {
-    background-color: var(--rgba-primary-5);
-    color: var(--rgba-primary-4);
-    font-size: 4rem;
-    padding: 2rem 0 2rem 4rem;
-    text-align: start;
-    font-weight: 700;
-    text-shadow: 3px 3px 4px var(--rgba-primary-3);
-}
-
-
-@media screen and (min-width: 360px) {
-    .meal_categories_wrapper {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-        padding: 0px;
-    }
-
-    .main_wrapper>h2 {
-        font-size: 3.5rem;
-        font-weight: 700;
-        padding-left: 2.5vw;
-    }
-
-    .meal_card_wrapper {
-        background-color: var(--rgba-primary-2);
-        width: 90%;
-        height: auto;
-        border-radius: 20px;
-        box-shadow: 4px 4px 4px var(--rgba-primary-4);
-        margin: 1rem 0;
-        padding: 0;
-        text-align: center;
-    }
-
-    .meal_card_wrapper>a {
-        text-decoration: none;
-    }
-
-    .favorite_icon {
-        z-index: 10;
-        position: relative;
-        left: 0rem;       
-        top: -10rem;
-        background-color: white;
-        clip-path: circle(50% at 50% 50%);
-        width: 6rem;
-        display: inline;
-    }
-
-    .favorite_icon > svg {
-        position: relative;
-        top: 4px;
-    }
-}
-
-
-@media screen and (min-width: 640px) {
-    .meal_categories_wrapper {
-        flex-direction: row;
-    }
-
-    .main_wrapper>h2 {
-        font-size: 4rem;
-    }
-
-}
-
 
 
 /* Meal List Style */
 
 @media screen and (min-width: 360px) {
-    .meal_list_wrapper {
+    main {
+        background-color: var(--rgba-primary-5);
+        color: var(--rgba-primary-4);
+        font-size: 4rem;
+        padding: 2rem 2rem 2rem 2rem;
+        text-align: start;
+        font-weight: 700;
+        text-shadow: 3px 3px 4px var(--rgba-primary-3);
+    }
+    
+
+    .meal_categories_wrapper {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-content: center;
+        padding: 0px;
+    }
+
+    .main_wrapper>h2 {
+        font-size: 3rem;
+        font-weight: 700;
+        padding-left: 2.5vw;
+    }
+
+    .meal_list_wrapper,
+    .favorite_meal_wrapper {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         justify-content: space-evenly;
         padding: 0px;
+        align-content: center;
     }
 
     .meal_card_wrapper {
@@ -89,7 +47,30 @@ main {
         box-shadow: 4px 4px 4px var(--rgba-primary-4);
         margin: 1rem 0;
         padding: 1.5rem 0 0 0; 
-        text-align: center;
+        text-align: center;       
+    }
+
+    
+    .meal_card_wrapper>a {
+        text-decoration: none;
+    }
+
+    .favorite_icon {
+        z-index: 10;
+        position: absolute;
+        left: 88%;       
+        top: 85%;
+        background-color: var(--rgba-primary-5);
+        clip-path: circle(4vw at 50% 50%);
+        width: 6rem;
+        display: inline;
+    }
+
+    .favorite_icon > svg {
+        position: relative;
+        top: 4px;
+        width: 5vw;
+        color: var(--rgba-primary-4);       
     }
 
 
@@ -97,17 +78,61 @@ main {
 
 
 @media screen and (min-width: 640px) {
-    .meal_list_wrapper {
+    main {        
+        padding: 2rem 4rem 2rem 4rem;       
+    }
+
+    .meal_list_wrapper,
+    .favorite_meal_wrapper {
         flex-direction: row;
     }
 
     .meal_card_wrapper {
         width: 45%;
     }
+
+    .meal_categories_wrapper {
+        flex-direction: row;
+    }
+
+    .main_wrapper>h2 {
+        font-size: 4rem;
+    }
+
+    .favorite_icon {       
+        left: 82%;       
+        top: 80%;    
+        clip-path: circle(2.5vw at 50% 50%);    
+    }
+
+    .favorite_icon > svg {        
+        width: 3.2vw;
+        top: 3px;
+    }
 }
 
 @media screen and (min-width: 900px) {
     .meal_card_wrapper {
         width: 30%;
+    }
+
+    .favorite_icon {       
+        left: 80%;       
+        top: 78%;    
+        clip-path: circle(2vw at 50% 50%);    
+    }
+
+    .favorite_icon > svg {        
+        width: 3vw;
+        top: 3px;
+    }
+}
+
+
+@media screen and (min-width: 1200px) {  
+
+    .favorite_icon {       
+        left: 85%;       
+        top: 82%;  
     }
 }

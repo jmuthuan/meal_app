@@ -3,7 +3,7 @@ import Header from './components/Header';
 import MealCategories from './components/MealCategories';
 import { useEffect, useState } from "react";
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import SingUpPage from './components/SingUpPage';
+import SignUpPage from './components/SignUpPage';
 import Footer from './components/Footer';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import firebaseStart from "./controllers/firebaseStart";
@@ -14,7 +14,7 @@ import getFirestoreData from './controllers/getFirestoreData'
 import AddMealPage from './components/AddMealPage';
 import FavoriteMeals from './components/FavoriteMeals';
 import SearchResults from './components/SearchResults';
-import SingInPage from './components/SingInPage';
+import SignInPage from './components/SignInPage';
 import AboutPage from './components/AboutPage';
 
 
@@ -144,24 +144,59 @@ function App() {
           <Route
             path='/singIn'
             element={
-              <SingInPage
-                isLoggedIn={isLoggedIn}
-                mainLogIn={logIn}
-              />}
+              <>
+                <Header
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  breadCrumb={4}
+                  mealName={mealName}
+                  mainLogOut={logOut}
+                  mainLogIn={logIn}
+                  onClickSearchBar={onClickSearchBar}
+                />
+                <SignInPage
+                  isLoggedIn={isLoggedIn}
+                  mainLogIn={logIn}
+                />
+              </>
+            }
           />
 
           <Route
             path='/singup'
-            element={<SingUpPage />}
+            element={<>
+              <Header
+                user={user}
+                isLoggedIn={isLoggedIn}
+                breadCrumb={13}
+                mealName={mealName}
+                mainLogOut={logOut}
+                mainLogIn={logIn}
+                onClickSearchBar={onClickSearchBar}
+              />
+              <SignUpPage />
+            </>
+            }
           />
+
           <Route
             path='/updateProfile/:userId'
-            element={
+            element={<>
+              <Header
+                user={user}
+                isLoggedIn={isLoggedIn}
+                breadCrumb={5}
+                mealName={mealName}
+                mainLogOut={logOut}
+                mainLogIn={logIn}
+                onClickSearchBar={onClickSearchBar}
+              />
               <UpdateUserData
                 user={user}
                 app={app}
                 auth={auth}
-              />} />
+              />
+            </>} />
           <Route
             path='/addMeal/:userId'
             element={
@@ -264,7 +299,7 @@ function App() {
             }
           />
 
-<Route
+          <Route
             path='/about'
             element={
               <>

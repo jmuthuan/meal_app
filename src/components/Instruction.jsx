@@ -53,13 +53,13 @@ const Instruction = (props) => {
                     type="text"
                     id={`mealInstructions${props.actualStepInstruction}`}
                     placeholder={`Step ${props.actualStepInstruction + 1}`}
-                    className={`input ${props.itemState.showInput ? 'showItem' : 'hideItem'}`}
+                    className={`inputInstruction ${props.itemState.showInput ? 'showItem' : 'hideItem'}`}
                     value={actualInstruction}
                     onChange={actualInstructionChange}
                 />
-                <span
+                <p
                     className={`text_instruction ${!props.itemState.showInput ? 'showItem' : 'hideItem'}`}>
-                    {props.instructions}</span>
+                    {props.instructions}</p>
             </td>
             <td>
                 <FaCheck

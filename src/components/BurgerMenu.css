@@ -53,8 +53,10 @@
 /* General sidebar styles */
 .bm-menu {
   background: #373a47;
-  padding: 2.5em 1.5em 0;
+  background-color: var(--rgba-primary-6);
+  padding: 1em 1.5em 0;
   font-size: 1.15em;
+  box-shadow: 5px 0px 6px var(--rgba-primary-5);
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -70,7 +72,7 @@
 
 /* Individual item */
 .bm-item {
-  display: inline-block;
+  display: inline-block;  
 }
 
 /* Styling of overlay */
@@ -81,4 +83,25 @@
 .menu-item {
   display: block;
   margin: 2vh 0;
+  /*  */
+  color: white;
+  border: none;
+  background-color: var(--rgba-primary-6);
+  font-size: 1.8rem;
+}
+
+.menu-item:focus,
+.menu-item:hover {    
+    font-weight: 700;
+    font-size: 2rem;
+    transition: all 0.2s ease-out;
+}
+
+.img_avatar_burger {
+  width: 96px;
+  height: auto;
+  clip-path: circle(50% at 50% 50%);
+  position: relative;
+  right: 5px;
+  margin-bottom: 2rem;
 }

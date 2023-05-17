@@ -13,6 +13,8 @@ const Header = (props) => {
     //breadCrumb Configs
     const dinamicParam = useParams();
     let breadCrumbArray = [];
+    let hide_items_log_in = false;
+
 
     switch (props.breadCrumb) {
         case 1:
@@ -28,7 +30,13 @@ const Header = (props) => {
             );
             break;
         case 4:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Log In' });
+            hide_items_log_in = true;
+            break;
+
         case 5:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Update your profile' });
+            break;
         case 6:
             breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Add Your Meal' });
             break;
@@ -54,6 +62,16 @@ const Header = (props) => {
                 { name: 'Results', path: '/searchResults' },
                 { name: props.mealName });
             break;
+
+        case 12:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'About' })
+            break;
+
+        case 13:
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Sing Up' });
+            hide_items_log_in = true;
+            break;
+
         default:
             break;
     }
@@ -115,14 +133,14 @@ const Header = (props) => {
 
     return (
         <header className="App-header">
-           {/*  {console.log('user', props.user)} */}
+            {/*  {console.log('user', props.user)} */}
             <div className="header_wrapper">
                 <div className='burger_menu_wrapper'>
-                    <BurgerMenu 
-                    avatarImage = {avatarImage}
-                    userId = {props.user?.uid}
-                    isLoggedIn={props.isLoggedIn}
-                    logOut={logOutEvent}
+                    <BurgerMenu
+                        avatarImage={avatarImage}
+                        userId={props.user?.uid}
+                        isLoggedIn={props.isLoggedIn}
+                        logOut={logOutEvent}
                     />
                 </div>
 
@@ -131,7 +149,7 @@ const Header = (props) => {
                     <button className="btn btn-secondary dropdown-toggle" id="dropdown_avatar" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img className="img_avatar" src={avatarImage} alt="user avatar" />
                     </button>
-                    <ul className="dropdown-menu">
+                    <ul className="dropdown-menu" id="dropdown-menu">
                         <li key={Math.random()}>
                             <button
                                 className="dropdown-item"
@@ -157,21 +175,21 @@ const Header = (props) => {
                     </ul>
                 </div>}
 
-                <div className="login_wrapper">                   
-                        {!props.isLoggedIn && <button
-                            type="submit"
-                            className="login_button"
-                            name='button'
-                            value='login'
-                            onClick={logInEvent}>Log In</button>}                 
+                <div className={`login_wrapper ${hide_items_log_in ? 'hide_log_in' : ''}`}>
+                    {!props.isLoggedIn && <button
+                        type="submit"
+                        className="login_button"
+                        name='button'
+                        value='login'
+                        onClick={logInEvent}>Log In</button>}
                 </div>
 
                 <span className="about_link"><a href="/about">About</a></span>
-                <h1 className="main_title_app">YumMeal App</h1>
+                <h1 className="main_title_app"><Link className="main_tittle_app_link" to={'/'}> YumMeal App</Link></h1>
 
 
 
-                <div className="search_wrapper">
+                <div className={`search_wrapper ${hide_items_log_in ? 'hide_log_in' : ''}`}>
                     <form className="search_meal_form" onSubmit={searchMyMeal}>
                         <div className="form_section_bar">
                             <input type="text" className="search_bar" id="search_bar" placeholder="Search a meal!" />
@@ -189,7 +207,7 @@ const Header = (props) => {
                 </div>
 
                 <nav aria-label="breadcrumb">
-                    <ol className="breadcrumb">
+                    <ol className="breadcrumb" id="breadcrumb">
                         {
                             breadCrumbArray && breadCrumbArray.map(element => {
                                 return (

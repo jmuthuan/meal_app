@@ -1,18 +1,19 @@
 :root {
     /* Main Primary color */
-     --rgba-primary-0: rgba(45, 136, 45, 1); 
-     --rgba-primary-1: rgba(135, 204, 135, 1);
-     --rgba-primary-2: rgba(84, 170, 84, 1);
-     --rgba-primary-3: rgba(17, 102, 17, 1);
-     --rgba-primary-4: rgba(0, 68, 0, 1);
-   }
+    --rgba-primary-0: rgba(45, 136, 45, 1);
+    --rgba-primary-1: rgba(135, 204, 135, 1);
+    --rgba-primary-2: rgba(84, 170, 84, 1);
+    --rgba-primary-3: rgba(17, 102, 17, 1);
+    --rgba-primary-4: rgba(0, 68, 0, 1);
+}
 
-.App-header{
+.App-header {
     height: auto;
     width: 100%;
     padding-right: 1rem;
 }
-nav{
+
+nav {
     --bs-breadcrumb-divider: '>';
     grid-area: bread;
 }
@@ -30,22 +31,62 @@ nav{
     background-color: var(--rgba-primary-4);
 }
 
+.main_tittle_app_link:visited,
+.main_tittle_app_link:link {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+/* BreadCrumb */
+#breadcrumb {
+    padding-left: 3vw;
+    color: white;
+    margin-top: 2rem;
+}
+
+#breadcrumb>li>a,
+#breadcrumb>li::before {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+#breadcrumb>li {
+    color: var(--rgba-primary-1);
+    font-size: 1.5rem;
+}
+
+.hide_log_in {
+    display: none;
+}
+
+
+/* meadia queries */
+
 @media screen and (min-width: 360px) {
     .header_wrapper {
         display: grid;
         grid-template-columns: 20% 60% 20%;
-        grid-template-areas:    "burger title login"                         
-                                "search search search"
-                                "bread  bread .";
-        font-size: 1.3rem;                        
+        grid-template-areas: "burger title login"
+            "search search search"
+            "bread  bread .";
+        font-size: 1.3rem;
     }
 
-    .burger_menu_wrapper {       
+    .burger_menu_wrapper {
         grid-area: burger;
     }
 
-    .about_link{
+    .about_link {
         display: none;
+    }
+
+    .login_wrapper {
+        grid-area: login;
+        padding-top: 5vh;       
     }
 
     .main_title_app {
@@ -53,61 +94,78 @@ nav{
         font-size: 7vw;
     }
 
-    .login_button, .search_button {
+    .login_button,
+    .search_button {
         color: white;
         border: none;
         background-color: var(--rgba-primary-3);
         border-radius: 15px;
-        box-shadow: 6px 6px 4px var(--rgba-primary-4);        
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
         padding: 5px 15px 0 15px;
     }
 
-    .form_section_bar{     
+    .form_section_bar {
         margin-top: 5px;
         text-align: center;
-        padding: 0 10vw;       
+        padding: 0 10vw;
         font-size: 1.3rem;
-     }
+    }
 
-     .form_section_radio{       
+    .form_section_radio {
         margin-top: 5px;
-        text-align: start;        
-        padding: 0 10.5vw;       
+        text-align: start;
+        padding: 0 10.5vw;
         font-size: 1.1rem;
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;        
+        flex-wrap: wrap;
         text-shadow: 2px 2px 2px var(--rgba-primary-4);
-     }
+    }
 
-     .search_bar {
+    .search_bar {
         width: 50vw;
         margin: 1vh 1vw;
         border: none;
         border-radius: 10px;
         padding-top: 5px;
         box-shadow: 6px 6px 4px var(--rgba-primary-4);
-       
+
     }
-    
+
     .search_button {
         width: 25vw;
     }
 
-    #mealName, #mainIngredient{
+    #mealName,
+    #mainIngredient {
         margin: 0vh 0.3vw 0 1vw;
         bottom: 1px;
         position: relative;
     }
-    
+
     .search_by_label {
         margin: 0vh 1vw;
     }
+
+    #breadcrumb>li>a,
+    #breadcrumb>li::before {
+        font-size: 1.2rem;
+    }
+
+    #breadcrumb>li {
+        font-size: 1.2rem;
+    }
+
+    .dropdown {
+        display: none;
+    }
+
+
 }
 
 @media screen and (min-width: 640px) {
-    .header_wrapper {       
-        grid-template-columns: 15% 70% 15%;        
+    .header_wrapper {
+        grid-template-columns: 15% 70% 15%;
     }
 
     .burger_menu_wrapper {
@@ -115,55 +173,113 @@ nav{
         grid-area: burger;
     }
 
-    .about_link {
-        display: none;        
+    .form_section_bar {
+        padding: 0 10vw;
+        font-size: 1.6rem;
     }
 
-    .form_section_bar{
-        padding: 0 10vw;       
-        font-size: 1.6rem;
-     }
-
-     .form_section_radio{
+    .form_section_radio {
         display: inherit;
-        padding: 0 13.5vw;       
+        padding: 0 13.5vw;
         font-size: 1.5rem;
-     }
+    }
 
-     .search_bar {            
+    .search_bar {
         font-size: 1.8rem;
     }
-    
+
     .search_button {
         width: 20vw;
         font-size: 1.8rem;
     }
 
-    #mealName, #mainIngredient{
+    #mealName,
+    #mainIngredient {
         margin: 0vh 0.3vw 0 1vw;
     }
-    
+
     .search_by_label {
         margin: 0vh 1vw;
     }
-     
+
+    #breadcrumb>li>a,
+    #breadcrumb>li::before {
+        font-size: 1.5rem;
+    }
+
+    #breadcrumb>li {
+        font-size: 1.5rem;
+    }
+
+
 }
 
-@media screen and (min-width: 1200px) {
-    .header_wrapper {        
+@media screen and (min-width: 900px) {
+    .header_wrapper {
         grid-template-columns: 10% 80% 10%;
-        grid-template-areas:    "about title login"                         
-                                "search search search"
-                                "bread  bread .";  
-        font-size: 1.8rem;      
+        grid-template-areas: "about title login"
+            "search search search"
+            "bread  bread .";
     }
 
     .burger_menu_wrapper {
         display: none;
         grid-area: burger;
     }
-    .about_link{
+    
+    .about_link {
         display: inline;
+        font-size: 1.8rem;
+    }
+
+
+    .search_bar {
+        width: 40vw;
+    }
+
+    .search_button {
+        width: 15vw;
+    }
+
+    .dropdown {
+        display: block;
+    }
+
+
+    /* DropDown */
+    #dropdown-menu {
+        border: none;
+        background-color: var(--rgba-primary-4);
+        border-radius: 15px;
+        box-shadow: 4px 4px 4px var(--rgba-primary-3);
+        padding: 7px 7px 0 7px;
+        height: 12vw;
+        width: 17vw;
+    }
+
+    #dropdown-menu>li>button {
+        color: white;
+        font-size: 1.5vw;
+    }
+
+    #dropdown-menu>li>button:focus,
+    #dropdown-menu>li>button:hover {
+        background-color: var(--rgba-primary-4);
+        text-shadow: 4px 4px 4px var(--rgba-primary-2);
+        font-weight: 700;
+        font-size: 1.6vw;
+        transition: all 0.2s ease-out;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .header_wrapper {
+
+        grid-template-areas: "about title login"
+            "search search search"
+            "bread  bread .";
+        font-size: 1.8rem;
     }
 
     .main_title_app {
@@ -171,20 +287,20 @@ nav{
         font-size: 5vw;
     }
 
-    .form_section_bar{
+    .form_section_bar {
         padding: 0 20vw;
         margin-top: 5px;
         text-align: start;
         font-size: 1.6rem;
-     }
+    }
 
-     .form_section_radio{
-        padding: 0 20vw;       
+    .form_section_radio {
+        padding: 0 20vw;
         font-size: 1.8rem;
 
-     }
+    }
 
-     .search_bar {
+    .search_bar {
         width: 40vw;
         margin: 1vh 1vw;
         border: none;
@@ -193,57 +309,67 @@ nav{
         box-shadow: 6px 6px 4px var(--rgba-primary-4);
         font-size: 1.8rem;
     }
-    
+
     .search_button {
         width: 10vw;
         font-size: 1.8rem;
     }
 
-    #mealName, #mainIngredient{
+    #mealName,
+    #mainIngredient {
         margin: 0vh 0.3vw 0 1vw;
     }
-    
+
     .search_by_label {
         margin: 0vh 1vw;
     }
-     
+
+    /* DropDown */
+    #dropdown-menu {        
+        height: 10vw;
+        width: 15vw;
+    }
+
+    #dropdown-menu>li>button {
+        font-size: 1.2vw;
+    }
+
+    #dropdown-menu>li>button:focus,
+    #dropdown-menu>li>button:hover {             
+        font-size: 1.3vw;       
+    }
+
 }
 
-
-
-.login_wrapper {
-    grid-area: login;
-    padding-top: 5vh;
-}
-
-.about_link{
+.about_link {
     grid-area: about;
     padding-top: 5vh;
 }
 
-.about_link >a, .about_link>a:visited { 
+.about_link>a,
+.about_link>a:visited {
     color: white;
     text-decoration: none;
     text-shadow: 6px 6px 4px var(--rgba-primary-4);
 }
 
-.about_link >a:hover {
+.about_link>a:hover {
     color: white;
     font-weight: 700;
 }
 
 
-.dropdown{
+.dropdown {
     grid-area: login;
     padding-top: 5vh;
 }
+
 .main_title_app {
     grid-area: title;
     padding-top: 5vh;
     text-shadow: 6px 6px 4px var(--rgba-primary-4);
 }
 
-.search_wrapper{
+.search_wrapper {
     grid-area: search;
 }
-

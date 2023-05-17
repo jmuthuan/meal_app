@@ -1,12 +1,13 @@
 import { updateUserProfile } from "../controllers/updateUserProfile";
-import {updateUserEmail} from '../controllers/updateUserEmail'
+import { updateUserEmail } from '../controllers/updateUserEmail'
 import setFirestoreData from "../controllers/setFirestoreData";
 import { useParams } from "react-router-dom";
+import './UpdateUserData.css';
 
 const UpdateUserData = (props) => {
-  
 
-    const {userId} = useParams(); 
+
+    const { userId } = useParams();
 
     const updateData = (event) => {
         event.preventDefault();
@@ -18,14 +19,14 @@ const UpdateUserData = (props) => {
         console.log(event.target.files);
         console.log(photo);
 
-        if(name || photo){
+        if (name || photo) {
             updateUserProfile(name, photo, props.user, props.app, props.auth);
         }
-        
 
-        if(email){
+
+        if (email) {
             updateUserEmail(email);
-        } 
+        }
 
         /* if(photo){
             setFirestoreData(photo, 'user_photos', userId )
@@ -36,43 +37,49 @@ const UpdateUserData = (props) => {
     console.log(props.user);
 
     return (
-        <div className="update_user_data_wrapper">
+        <main>
+            <div className="main_wrapper">
+                <h2>Edit Your Profile</h2>
+                <div className="update_user_data_wrapper">
 
-            <form onSubmit={updateData}>
-                <label
-                    className="form_item"
-                    htmlFor="inputDisplayName">New Display Name: </label>
-                <input
-                    className="form_item"
-                    type="text"
-                    id="inputDisplayName"
-                    name="displayName" />
+                    <form className="update_profile_form" onSubmit={updateData}>
+                        <label
+                            className="form_item_profile"
+                            htmlFor="inputDisplayName">New Display Name: </label>
+                        <input
+                            className="form_item_input"
+                            type="text"
+                            id="inputDisplayName"
+                            name="displayName" />
 
-                <label
-                    className="form_item"
-                    htmlFor="inputPhotoURL">New Photo</label>
-                <input
-                    className="form_item"
-                    type="file"
-                    id="inputPhotoURL"
-                    name="photoURL"
-                    accept="image/png, image/jpeg"                    
-                />
-                <label
-                    className="form_item"
-                    htmlFor="inputEmail">New Email</label>
-                <input 
-                    className="form_item"
-                    type="email"
-                    id="inputEmail"
-                    name="newEmail" />
-                <button
-                    className="form_item"
-                    type="submit"
-                >Update!</button>
+                        <label
+                            className="form_item_profile"
+                            htmlFor="inputPhotoURL">New Photo</label>
+                        <input
+                            className="form_item_profile label_input_photo"
+                            type="file"
+                            id="inputPhotoURL"
+                            name="photoURL"
+                            accept="image/png, image/jpeg"
+                        />
+                        <label
+                            className="form_item_profile"
+                            htmlFor="inputEmail">New Email</label>
+                        <input
+                            className="form_item_input"
+                            type="email"
+                            id="inputEmail"
+                            name="newEmail" />
+                        <button
+                            className="form_item_profile save_profile_button"
+                            type="submit"
+                        >Update!</button>
 
-            </form>
-        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
     )
 }
 

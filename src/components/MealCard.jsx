@@ -23,7 +23,8 @@ const MealCard = (props) => {
     }, [])
 
 
-    const favoriteToggle = () => {
+    const favoriteToggle = (e) => {
+        e.preventDefault();
         if (props.userId && !isFavorite) {
             setFirestoreData(props.mealId, 'favorites', props.userId);
             setIsFavorite(true);
@@ -38,14 +39,18 @@ const MealCard = (props) => {
 
     return (
         <div className="meal_card_wrapper">
-            <span className="favorite_icon" onClick={favoriteToggle}>
-                {isFavorite ? <FaHeart /> : <FaRegHeart />}
-            </span>
+
             <Link to={linkPath} state={{ userMeal: props.userMeals, fullMealData: props.fullMealData }}>
-                <img className="card_image" src={props.mealImage} alt={`of ${props.nameMeal} meal`} />
-                <h3 className="card_name">{props.nameMeal}</h3>                
+                <div className="image_wrapper">
+                    <img className="card_image" src={props.mealImage} alt={`of ${props.nameMeal} meal`} />
+                    <span className="favorite_icon" onClick={favoriteToggle}>
+                        {isFavorite ? <FaHeart /> : <FaRegHeart />}
+                    </span>
+                </div>
+
+                <h3 className="card_name">{props.nameMeal}</h3>
             </Link>
-            
+
 
         </div>
 

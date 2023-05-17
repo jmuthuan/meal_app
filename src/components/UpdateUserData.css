@@ -1,0 +1,98 @@
+@media screen and (min-width: 360px) {
+    .form_item_input {
+        font-size: 1.2rem;
+        width: 80vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        position: relative;
+        /* bottom: 2rem; */
+        display: block;
+    }
+
+    .update_profile_form>label {
+        font-size: 1.8rem;
+        font-weight: 400;
+    }
+
+    #inputPhotoURL {
+        font-size: 2.8vw;
+        width: 80vw;
+        border-radius: 0;
+        box-shadow: none;
+        position: relative;
+        bottom: 0.5rem;
+        display: block;
+        margin: 1vh 1vw;
+        border: none;
+        padding-top: 5px;
+    }
+
+    .label_input_photo {
+        position: relative;
+        bottom: 2rem;
+    }
+
+    .save_profile_button {
+        color: white;
+        border: none;
+        background-color: var(--rgba-primary-3);
+        border-radius: 15px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        padding: 0.5rem 1.5rem 0 1.5rem;
+        width: 30vw;
+        font-size: 1.8rem;
+        position: relative;
+        left: 30%;
+    }
+
+
+}
+
+@media screen and (min-width: 640px) {
+    .update_profile_form>label {
+        font-size: 2.5rem;
+    }
+
+    .form_item_input {
+        font-size: 1.8rem;       
+    }
+
+
+    .save_profile_button {
+        padding: 5px 15px 0 15px;
+        width: 20rem;
+        font-size: 1.8rem;
+        left: 25%;
+    }
+
+    #inputPhotoURL {
+        font-size: 1.5rem;
+        width: 80vw;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .update_profile_form>label {
+        font-size: 3rem;
+    }
+
+    .form_item_input {
+        font-size: 2rem;       
+    }
+
+    .save_profile_button {
+        padding: 5px 15px 0 15px;
+        width: 20rem;
+        font-size: 1.8rem;
+        left: 25%;
+    }
+
+    #inputPhotoURL {
+        font-size: 1.8rem;
+        width: 80vw;
+    }
+
+}

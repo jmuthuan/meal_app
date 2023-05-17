@@ -95,16 +95,16 @@ const FavoriteMeals = (props) => {
             myMeal.strMealThumb = doc.data().strMealThumb;
             myMeal.strInstructions = doc.data().strInstructions.join('\r\n');
 
-            for (let i = 0; i < 20; i++) {                
-                if(doc.data().strIngredient[i]){
+            for (let i = 0; i < 20; i++) {
+                if (doc.data().strIngredient[i]) {
                     myMeal[`strIngredient${i + 1}`] = doc.data().strIngredient[i].ingredient;
-                    myMeal[`strMeasure${i + 1}`] = doc.data().strIngredient[i].measure;                
+                    myMeal[`strMeasure${i + 1}`] = doc.data().strIngredient[i].measure;
                 }
-                else{                    
+                else {
                     myMeal[`strIngredient${i + 1}`] = '';
                     myMeal[`strMeasure${i + 1}`] = '';
-                }      
-            }            
+                }
+            }
             myMealsArray.push(myMeal);
         });
         setUserMeals(myMealsArray);
@@ -127,42 +127,45 @@ const FavoriteMeals = (props) => {
 
 
     return (
-        <div className="favorite_meal_wrapper">
-            <h2>My Favorite Meals</h2>
+        <main>
+            <div className="main_wrapper">
+                <h2>My Favorite Meals</h2>
+                <div className="favorite_meal_wrapper">
+                    {favsMeals && favsMeals.map((meal) => {
+                        return (
+                            <MealCard
+                                key={meal.idMeal}
+                                nameMeal={meal.strMeal}
+                                mealImage={meal.strMealThumb}
+                                mealId={meal.idMeal}
+                                isFavorite={true}
+                                isLoggedIn={props.isLoggedIn}
+                                userId={userId}
+                                fromFavorites={true}
+                            />
+                        )
+                    })
+                    }
 
-            {favsMeals && favsMeals.map((meal) => {
-                return (
-                    <MealCard
-                        key={meal.idMeal}
-                        nameMeal={meal.strMeal}
-                        mealImage={meal.strMealThumb}
-                        mealId={meal.idMeal}                        
-                        isFavorite={true}
-                        isLoggedIn={props.isLoggedIn}
-                        userId={userId}
-                        fromFavorites={true}
-                    />
-                )
-            })
-            }
-
-            {userMeals && userMeals.map((meal) => {
-                return (
-                    <MealCard
-                        key={meal.idMeal}
-                        nameMeal={meal.strMeal}
-                        mealImage={meal.strMealThumb}
-                        mealId={meal.idMeal}                        
-                        isFavorite={true}
-                        isLoggedIn={props.isLoggedIn}
-                        userId={userId}
-                        userMeals={meal}
-                        fromFavorites={true}
-                    />
-                )
-            })
-            }
-        </div>
+                    {userMeals && userMeals.map((meal) => {
+                        return (
+                            <MealCard
+                                key={meal.idMeal}
+                                nameMeal={meal.strMeal}
+                                mealImage={meal.strMealThumb}
+                                mealId={meal.idMeal}
+                                isFavorite={true}
+                                isLoggedIn={props.isLoggedIn}
+                                userId={userId}
+                                userMeals={meal}
+                                fromFavorites={true}
+                            />
+                        )
+                    })
+                    }
+                </div>
+            </div>
+        </main>
     )
 
 }

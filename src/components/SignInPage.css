@@ -1,0 +1,150 @@
+@media screen and (min-width: 360px) {
+    .main_login_wrapper {
+        display: grid;
+        grid-template-areas: "title"
+                            "login"; 
+        margin: 1rem 0rem;
+    }
+
+    .form_login{
+         line-height: 1.5rem;
+    }
+
+    .img_meal_wrapper,
+    .img_meal_wrapper>img {       
+        display: none;       
+    }
+
+    .login_wrapper {
+        grid-area: login;
+    }
+
+    .sing_in_title {
+        grid-area: title;
+        font-size: 3rem;
+        font-weight: 700;
+        padding-left: 2.5vw;
+        align-self: end;
+    }
+
+    .sing_up_title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        padding-left: 2.5vw;
+        margin-top: 3rem;
+    }
+
+    .email_login,
+    .password_login {
+        font-size: 1.2rem;
+        width: 80vw;
+        margin: 2vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-left: 2rem;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        position: relative;
+        left: 4vw;
+    }
+
+    .login_button_submit,
+    .singup_button_submit {
+        color: white;
+        border: none;
+        background-color: var(--rgba-primary-3);
+        border-radius: 15px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        padding: 0.5rem 1.5rem 0 1.5rem;
+        width: 30vw;
+        font-size: 1.8rem;
+        position: relative;
+        left: 30%;
+        margin-top: 4vh;
+        height: 3rem;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .main_login_wrapper {     
+        grid-template-areas: "img title"
+                            "img login";        
+        gap: 0 2rem;
+        margin: 4vh 0;
+    }
+
+    .form_login{
+        line-height: 2.5rem;
+    }
+
+    .email_login,
+    .password_login {
+        font-size: 1.5rem;
+        width: 40vw;     
+        
+    }
+
+    .img_meal_wrapper {
+        grid-area: img;
+        width: 40vw;
+        display: block;
+        background-color: var(--rgba-primary-2);
+        border-radius: 20px;
+        box-shadow: 4px 4px 4px var(--rgba-primary-4);
+        padding: 1rem;
+        align-self: center;
+    }
+
+    .img_meal_wrapper>img {
+        display: block;
+        width: 100%;
+    }
+
+    .login_button_submit,
+    .singup_button_submit { 
+        width: 15rem;        
+        left: 30%;
+    }
+
+}
+
+@media screen and (min-width: 900px) {
+    .sing_in_title {
+        font-size: 4rem;
+    }
+
+    .sing_up_title {
+        font-size: 4rem;
+    }
+
+    .email_login,
+    .password_login {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    .main_login_wrapper {
+        display: grid;
+        grid-template-areas: "img title"
+                                "img login";
+        
+        gap: 0 5rem;
+        margin: 4rem 1rem;
+    }
+
+   
+
+    .img_meal_wrapper {        
+        width: 40vw;     
+       
+    }
+
+    .login_button_submit,
+    .singup_button_submit {      
+        padding: 0.5rem 1.5rem 0 1.5rem;
+        width: 20rem;        
+        left: 25%;
+    }
+}

@@ -1,25 +1,4 @@
-/* About Header Style */
 @media screen and (min-width: 360px) {
-   /*    
-    .about_home {
-      font-family: Turret;
-      position: relative;
-      text-align: start;
-      color: white;
-      font-size: 1.4rem;
-      display: flex;
-      margin: 1rem 3rem 0 0;
-      padding: 0;
-      flex-direction: row-reverse;
-      z-index: 2;
-      top: 10px;
-      text-shadow: 6px 3px 3px white;
-    } */
-  
-  /*   .about_home:hover {
-      font-weight: 700;
-      color: white;
-    } */
   
     .about_technologies_logos{
       text-align: center;
@@ -42,12 +21,13 @@
     }
   
     .about_contact_form>input {
-      box-shadow: 4px 4px 4px #878585;
+      box-shadow: 6px 6px 4px var(--rgba-primary-4); 
       margin-bottom: 2rem;
       position: relative;
       bottom: 0px;
       right: 0px;
       transition: all 0.2s ease-out;
+      border: none;
     }
   
     .about_contact_form>input:hover{
@@ -59,7 +39,7 @@
     }
   
     .form_text_area{
-      box-shadow: 4px 4px 4px #878585;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4); 
       margin-bottom: 2rem;
       resize: none;
       height: 15rem;
@@ -84,30 +64,22 @@
     }
   
     .btn_submit {
-      width: auto;
-      border-radius: 0.5rem;
-      height: auto;
-      padding: 0 4vw;
-      background-color: #504F4F;
-      box-shadow: 4px 4px 4px #878585;
-      border: none;
-      color: white;
-      font-weight: 700;
+      width: auto;      
+      height: auto;font-weight: 700;
       position: relative;    
       left: 30vw;
+      color: white;
+      border: none;
+      background-color: var(--rgba-primary-3);
+      border-radius: 15px;
+      box-shadow: 6px 6px 4px var(--rgba-primary-4);        
+      padding: 5px 15px 0 15px;
+
     }
   }
   
   @media screen and (min-width: 640px) {
-    /* .about_header {
-      height: 8rem;
-    } */
-  
-    /* .about_header_container>div {
-      font-size: 3.5rem;
-      bottom: 3.5rem;
-      padding-left: 15vw;
-    } */
+    
   }
   
   @media screen and (min-width: 768px) {
@@ -125,7 +97,7 @@
   
     .btn_submit {
       width: auto;
-      border-radius: 0.5rem;
+      border-radius: 20px;
       height: auto;
       left: 15vw;   
     }
@@ -133,35 +105,10 @@
   
   
   @media screen and (min-width: 1200px) {
-   /*  .about_header {
-      height: 10rem;
-      display: flex;
-    } */
-  
-    /* .about_header_container>div {
-      font-size: 5rem;
-      position: relative;
-      left: 6vw;  
-      padding-left: 15vw;
-      bottom: 4rem;
-    } */
-  
-    /* .about_header_container {
-      width: 100%;
-      display: inline-block;
-    } */
+   
   }
   
   /* About Main Style */
-  
-/*   .main_about {
-    background: linear-gradient(to bottom,
-        rgba(25, 25, 25, 0.4) 0%, rgba(25, 25, 25, 0.8) 40%, rgba(0, 0, 0, 1) 100%),
-        url(http://localhost:3000/static/media/pacman_background.cfad07f61082dd2c3a68.png); 
-    background-repeat: repeat;
-    background-size: auto;
-    border-bottom: 3px solid #504F4F;
-  } */
   
   
   @media screen and (min-width: 360px) {
@@ -216,11 +163,7 @@
       margin-bottom: 2rem;
       text-align: center;
     }
-  
-    /* .about_developers_info>div{
-      text-align: center;
-    } */
-  
+
     .about_developers_person{
       text-align: start;
     }
@@ -293,8 +236,7 @@
     }
   
     .about_contact_form{
-      margin: 0 0 5rem 0;
-  
+      margin: 0 0 5rem 0;  
     }
   
   }

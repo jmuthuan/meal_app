@@ -1,0 +1,154 @@
+@media screen and (min-width: 360px) {
+    .main_singup_wrapper {
+        display: grid;
+        grid-template-areas: "title"
+                            "signup"
+                            "req";
+        margin: 1rem 0rem;
+    }
+
+    .sign_up_title {
+        grid-area: title;        
+        font-size: 6.5vw;
+        font-weight: 700;
+        padding-left: 2.5vw;
+        align-self: end;
+    }
+
+    .signup_wrapper {
+        grid-area: signup;
+    }
+
+    .password_requirements {
+        grid-area: req;
+        margin-top: 3rem;
+    }
+
+    .password_requirements>p{
+        font-size: 3.6vw;
+        list-style: circle;
+    }
+
+    .password_rules{
+        font-size: 1.2rem;
+        font-weight: 400;
+    }
+
+    .password_rules >li >span {
+        margin-left: 0.5rem;
+    }
+
+    .form_sign_up {
+        line-height: 1.5rem;
+    }
+
+    .input_sign_up {
+        font-size: 1.2rem;
+        width: 80vw;
+        margin: 2vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-left: 2rem;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        position: relative;
+        left: 4vw;
+    }
+
+    .sign_up_button {
+        color: white;
+        border: none;
+        background-color: var(--rgba-primary-3);
+        border-radius: 15px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        padding: 0.5rem 1.5rem 0 1.5rem;
+        width: 40vw;
+        font-size: 1.8rem;
+        position: relative;
+        left: 25vw;
+        margin-top: 4vh;
+        height: 3rem;
+    }
+
+
+}
+
+@media screen and (min-width: 640px) {
+
+    .main_singup_wrapper {
+        grid-template-areas: "img title"
+            "img signup"
+            "req req";
+        margin: 4vh 0;
+        gap: 0 2rem;
+    }
+
+    .form_sign_up {
+        line-height: 2.5rem;
+    }
+
+    .sign_up_title {               
+        font-size: 3.1vw;        
+    }
+
+    .input_sign_up {
+        font-size: 1.5rem;
+        width: 40vw;
+    }
+    
+    .sign_up_button {
+        width: 15rem;
+        left: 30%;
+    }
+
+    .password_requirements>p{
+        font-size: 2.5vw;
+    }
+
+    .password_rules{
+        font-size: 1.4rem;
+    }
+
+
+}
+
+@media screen and (min-width: 900px) {
+    .main_singup_wrapper {
+        grid-template-areas: "img title"
+            "img signup"
+            "img req";
+        margin: 4vh 0;
+        gap: 0 2rem;
+    }
+   
+    .sign_up_title{
+        font-size: 3.1vw;
+    }
+
+    .input_sign_up {
+        font-size: 2rem;
+        width: 40vw;
+    }
+    
+    .password_rules{
+        font-size: 1.5vw;
+    }
+
+    .password_requirements>p{
+        font-size: 1.9vw;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    .main_singup_wrapper {
+        gap: 0 5rem;
+    }
+
+    .sign_up_button {
+        width: 20rem;
+        left: 25%;
+    }
+
+    
+}

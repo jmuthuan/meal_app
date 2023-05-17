@@ -1,3 +1,284 @@
-.hideItem{
+.hideItem {
     display: none;
+}
+
+
+@media screen and (min-width: 360px) {
+    .add_meal_form {
+        text-align: start;
+        margin-top: 1rem;
+    }
+
+
+    tbody{
+        position: relative;
+    }
+
+    .add_meal_form>label {
+        font-size: 1.8rem;
+        font-weight: 400;
+    }
+
+    .add_meal_form>input,
+    .inputInstruction {
+        font-size: 1.2rem;
+        width: 60vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-left: 1rem;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        position: relative;      
+    }
+
+    .text_instruction {
+        font-weight: 400;
+        font-size: 1.2rem;
+        width: 60vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-left: 2rem;
+        box-shadow: 6px 6px 4px var(--rgba-primary-2);        
+        position: relative;
+        bottom: 0px;
+        background-color: var(--rgba-primary-4);
+        color: white;
+    }
+
+    .text_ingredient,
+    .text_measure {
+        font-weight: 400;
+        font-size: 1.8rem;
+        width: 20vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-left: 5rem;
+        box-shadow: 6px 6px 4px var(--rgba-primary-2);
+        font-size: 1.8rem;
+        position: relative;
+        bottom: 2px;
+        background-color: var(--rgba-primary-4);
+        color: white;
+    }
+
+
+    svg {
+        font-size: 1.5rem;
+    }
+
+    th {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 3rem;
+    }
+
+    tr{
+        line-height: 1.5rem;
+    }
+
+    td>svg{
+        margin-bottom: 0px;
+    }
+
+    .inputIngredient,
+    .inputMeasure {
+        font-size: 1.2rem;
+        width: 35vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);       
+        position: relative;      
+    }
+
+    .plus_meal_instruction,
+    .plus_meal_ingredient {
+        margin-left: 10rem;
+        margin-bottom: 2rem;      
+        position: relative;
+    }
+
+    #strMealThumb {
+        font-size: 2.8vw;
+        width: 80vw;
+        border-radius: 0;
+        box-shadow: none;
+        position: relative;
+        bottom: 15px;
+        display: block;
+    }
+
+
+    .save_button {
+        color: white;
+        border: none;
+        background-color: var(--rgba-primary-3);
+        border-radius: 15px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        padding: 0.5rem 1.5rem 0 1.5rem;
+        width: 30vw;
+        font-size: 1.8rem;
+        position: relative;
+        left: 30%;
+    }
+
+}
+
+@media screen and (min-width:640px) {
+    .add_meal_form {
+        margin-top: 2.5rem;
+    }
+
+    .add_meal_form>label {
+        font-size: 2.5rem;
+    }
+
+    .add_meal_form>input,
+    .inputInstruction {
+        font-size: 1.5rem;              
+    }
+
+    #add_mealName{
+        bottom: 5px;
+    }
+
+    .inputIngredient,
+    .inputMeasure {
+        font-size: 1.5rem;
+        width: 35vw;        
+    }
+
+
+    svg {
+        font-size: 1.8rem;
+        top: 3px;
+        position: relative;
+    }
+
+    td>svg{
+        margin-bottom: 5px;
+    }
+
+    th {
+        font-size: 2.5rem;
+        line-height: 3.5rem;
+    }
+
+    tr{
+        line-height: 1.8rem;
+    }
+
+    #strMealThumb {
+        font-size: 1.5rem;
+        width: 80vw;        
+    }
+
+    .text_instruction {        
+        font-size: 1.5rem;    
+    }
+
+    .save_button {        
+        padding: 5px 15px 0 15px;
+        width: 15rem;
+        font-size: 1.8rem;
+        left: 25%;
+    }
+}
+/* 
+@media screen and (min-width: 900px) {
+    .add_meal_form>label {
+        font-size: 2.5rem;
+    }
+
+    .add_meal_form>input,
+    .inputInstruction {
+        font-size: 1.5rem;
+        width: 60vw;        
+    }
+
+    .inputIngredient,
+    .inputMeasure {
+        font-size: 1.5rem;
+        width: 35vw;        
+    }
+
+
+    svg {
+        font-size: 2.5rem;
+        top: 3px;
+        position: relative;
+    }
+
+    th {
+        font-size: 2.5rem;
+    }
+
+    #strMealThumb {
+        font-size: 1.5rem;
+        width: 80vw;        
+    }
+} */
+
+@media screen and (min-width: 1200px) {
+    .add_meal_form>input,
+    .inputInstruction {
+        font-size: 2rem;        
+    }
+
+    .add_meal_form>label {
+        font-size: 3rem;
+    }
+
+
+    svg {
+        font-size: 2.5rem;
+    }
+
+    th {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }    
+
+    tr{
+        line-height: 2rem;
+    }
+
+    #strMealThumb {
+        font-size: 1.8rem;
+        width: 40vw;
+        border-radius: 0;
+        padding-top: 5px;
+        box-shadow: none;
+        position: relative;
+        bottom: 5px;
+    }
+
+    .inputIngredient,
+    .inputMeasure {
+        font-size: 1.8rem;
+        width: 20vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);       
+        position: relative;
+    }
+
+    #strMealThumb {
+        font-size: 1.8rem;
+        width: 40vw;     
+    }
+
+    .text_instruction {       
+        font-size: 1.8rem;   
+    }
+
+
 }

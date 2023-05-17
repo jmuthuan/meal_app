@@ -48,27 +48,27 @@ const Ingredient = (props) => {
                 <td><input
                     type="text"
                     id={`mealIngredient${props.actualStepIngredient}`}
-                    className={`input ${props.itemState.showInput ? 'showItem' : 'hideItem'}`}
+                    className={`inputIngredient ${props.itemState.showInput ? 'showItem' : 'hideItem'}`}
                     placeholder={`Ingredient ${props.actualStepIngredient + 1}`}
                     value={actualIngredient}
                     onChange={actualIngredientChange} />
 
-                    <span
+                    <p
                         className={`text_ingredient ${!props.itemState.showInput ? 'showItem' : 'hideItem'}`}>
-                        {props.ingredient.ingredient}</span>
+                        {props.ingredient.ingredient}</p>
                 </td>
 
                 <td><input
                     type="text"
                     id={`mealMeasure${props.actualStepIngredient}`}
-                    className={`input ${props.itemState.showInput ? 'showItem' : 'hideItem'}`}
+                    className={`inputMeasure ${props.itemState.showInput ? 'showItem' : 'hideItem'}`}
                     placeholder={`Measure ingredient ${props.actualStepIngredient + 1}`}
                     value={actualMeasure}
                     onChange={actualMeasureChange}
                 />
-                    <span
+                    <p
                         className={`text_measure ${!props.itemState.showInput ? 'showItem' : 'hideItem'}`}>
-                        {props.ingredient.measure}</span>
+                        {props.ingredient.measure}</p>
                 </td>
                 <td>
                     <FaCheck
