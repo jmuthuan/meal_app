@@ -10,7 +10,7 @@
     }
 
 
-    tbody{
+    tbody {
         position: relative;
     }
 
@@ -29,7 +29,7 @@
         padding-top: 5px;
         padding-left: 1rem;
         box-shadow: 6px 6px 4px var(--rgba-primary-4);
-        position: relative;      
+        position: relative;
     }
 
     .text_instruction {
@@ -41,7 +41,7 @@
         border-radius: 10px;
         padding-top: 5px;
         padding-left: 2rem;
-        box-shadow: 6px 6px 4px var(--rgba-primary-2);        
+        box-shadow: 6px 6px 4px var(--rgba-primary-2);
         position: relative;
         bottom: 0px;
         background-color: var(--rgba-primary-4);
@@ -77,11 +77,11 @@
         line-height: 3rem;
     }
 
-    tr{
+    tr {
         line-height: 1.5rem;
     }
 
-    td>svg{
+    td>svg {
         margin-bottom: 0px;
     }
 
@@ -93,27 +93,50 @@
         border: none;
         border-radius: 10px;
         padding-top: 5px;
-        box-shadow: 6px 6px 4px var(--rgba-primary-4);       
-        position: relative;      
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        position: relative;
     }
 
     .plus_meal_instruction,
     .plus_meal_ingredient {
         margin-left: 10rem;
-        margin-bottom: 2rem;      
+        margin-bottom: 2rem;
         position: relative;
     }
 
-    #strMealThumb {
-        font-size: 2.8vw;
-        width: 80vw;
-        border-radius: 0;
-        box-shadow: none;
-        position: relative;
-        bottom: 15px;
+    input[type="file"] {
+        display: none;
+    }
+
+    .custom_label_upload {
         display: block;
     }
 
+    .custom_file_upload {        
+        cursor: pointer;
+        background-color: white;
+        font-size: 3vw;
+        width: 33vw;
+        margin: 1vh 1vw;
+        border: none;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-left: 1rem;
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
+        position: relative;
+        display: inline-block;
+    }
+
+    .custom_file_upload>svg{
+        width: 3vw;
+        height: auto;
+        margin: 0 1vw 1vw 0;
+    }
+
+    .custom_photo_name{
+        font-size: 2.8vw;
+        width: 50vw;
+    }
 
     .save_button {
         color: white;
@@ -141,17 +164,17 @@
 
     .add_meal_form>input,
     .inputInstruction {
-        font-size: 1.5rem;              
+        font-size: 1.5rem;
     }
 
-    #add_mealName{
+    #add_mealName {
         bottom: 5px;
     }
 
     .inputIngredient,
     .inputMeasure {
         font-size: 1.5rem;
-        width: 35vw;        
+        width: 35vw;
     }
 
 
@@ -161,7 +184,7 @@
         position: relative;
     }
 
-    td>svg{
+    td>svg {
         margin-bottom: 5px;
     }
 
@@ -170,26 +193,41 @@
         line-height: 3.5rem;
     }
 
-    tr{
+    tr {
         line-height: 1.8rem;
     }
 
     #strMealThumb {
         font-size: 1.5rem;
-        width: 80vw;        
+        width: 80vw;
     }
 
-    .text_instruction {        
-        font-size: 1.5rem;    
+
+    .custom_file_upload {  
+        font-size: 2rem;
+        width: 20rem;     
     }
 
-    .save_button {        
+    .custom_file_upload>svg{
+        width: 2rem;
+    }
+
+    .custom_photo_name{
+        font-size: 1.8rem;  
+    }
+
+    .text_instruction {
+        font-size: 1.5rem;
+    }
+
+    .save_button {
         padding: 5px 15px 0 15px;
         width: 15rem;
         font-size: 1.8rem;
         left: 25%;
     }
 }
+
 /* 
 @media screen and (min-width: 900px) {
     .add_meal_form>label {
@@ -226,9 +264,10 @@
 } */
 
 @media screen and (min-width: 1200px) {
+
     .add_meal_form>input,
     .inputInstruction {
-        font-size: 2rem;        
+        font-size: 2rem;
     }
 
     .add_meal_form>label {
@@ -243,9 +282,9 @@
     th {
         font-size: 3rem;
         line-height: 3.5rem;
-    }    
+    }
 
-    tr{
+    tr {
         line-height: 2rem;
     }
 
@@ -267,17 +306,17 @@
         border: none;
         border-radius: 10px;
         padding-top: 5px;
-        box-shadow: 6px 6px 4px var(--rgba-primary-4);       
+        box-shadow: 6px 6px 4px var(--rgba-primary-4);
         position: relative;
     }
 
     #strMealThumb {
         font-size: 1.8rem;
-        width: 40vw;     
+        width: 40vw;
     }
 
-    .text_instruction {       
-        font-size: 1.8rem;   
+    .text_instruction {
+        font-size: 1.8rem;
     }
 
 

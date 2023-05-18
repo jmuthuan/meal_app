@@ -18,15 +18,15 @@ const SingUpPage = () => {
     const singUp = (event) => {
         event.preventDefault();
 
-        console.log(event.target.email.value);
+       /*  console.log(event.target.email.value);
         console.log(event.target.password.value);
-        console.log(event.target.password_repeat.value);
+        console.log(event.target.password_repeat.value); */
 
         const passwordRules = [passLength, passLower, passUpper, passNumber, passSpecial];
 
         if (passwordCheck(event.target, passwordRules)) {
             getAuthMeal('singup', event.target.email.value, event.target.password.value)
-            console.log('passwords check!');
+            //console.log('passwords check!');
             navigate('/');
         }
 
@@ -134,8 +134,8 @@ const SingUpPage = () => {
 const passwordCheck = (passwords, rules) => {
     if (rules.every(rule => rule === true)) {
         if ((passwords.password.value === passwords.password_repeat.value)) {
-            console.log('passwords OK');
-            alert("welcome!!!");
+            //console.log('passwords OK');
+            //alert("welcome!!!");
             return true;
         } else {
             alert('Verify your passwords. (Both passwords must match)');

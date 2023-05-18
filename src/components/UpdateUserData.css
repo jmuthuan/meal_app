@@ -8,7 +8,6 @@
         padding-top: 5px;
         box-shadow: 6px 6px 4px var(--rgba-primary-4);
         position: relative;
-        /* bottom: 2rem; */
         display: block;
     }
 
@@ -17,17 +16,8 @@
         font-weight: 400;
     }
 
-    #inputPhotoURL {
-        font-size: 2.8vw;
-        width: 80vw;
-        border-radius: 0;
-        box-shadow: none;
-        position: relative;
-        bottom: 0.5rem;
-        display: block;
-        margin: 1vh 1vw;
-        border: none;
-        padding-top: 5px;
+    input[type="file"] {
+        display: none;
     }
 
     .label_input_photo {
@@ -68,10 +58,6 @@
         left: 25%;
     }
 
-    #inputPhotoURL {
-        font-size: 1.5rem;
-        width: 80vw;
-    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -89,10 +75,4 @@
         font-size: 1.8rem;
         left: 25%;
     }
-
-    #inputPhotoURL {
-        font-size: 1.8rem;
-        width: 80vw;
-    }
-
 }

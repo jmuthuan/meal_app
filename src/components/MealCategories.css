@@ -73,6 +73,11 @@
         color: var(--rgba-primary-4);       
     }
 
+    .empty_favorites{
+        font-size: 1.4rem;
+        margin-top: 2rem;
+    }
+
 
 }
 
@@ -109,6 +114,10 @@
         width: 3.2vw;
         top: 3px;
     }
+
+    .empty_favorites{
+        font-size: 2rem;
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -125,6 +134,10 @@
     .favorite_icon > svg {        
         width: 3vw;
         top: 3px;
+    }
+
+    .empty_favorites{
+        font-size: 3rem;
     }
 }
 

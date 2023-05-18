@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Instruction from "./Instruction";
-import { FaPlusSquare } from 'react-icons/fa'
+import { FaPlusSquare, FaUpload } from 'react-icons/fa';
 import './AddMealPage.css';
 import Ingredient from "./Ingredient";
 import setFirestoreUserMeal from "../controllers/setFirestoreUserMeal";
@@ -29,6 +29,9 @@ const AddMealPage = () => {
     }]);
     const [ingredientsId, setIngredientsId] = useState([0]);
     const [iconsState, setIconsState] = useState([defaultItemState]);
+
+    //photo state
+    const [mealPhotoName, setMealPhotoName] = useState('');
 
     useEffect(() => {
         console.log('rendering add meal');
@@ -299,6 +302,19 @@ const AddMealPage = () => {
         }
     }
 
+
+    /* ************************************ */
+    const fileUploadClick = () => {
+        setMealPhotoName('');
+    }
+
+    const fileUpload = (e) => {
+        const strMealThumb = document.getElementById('strMealThumb').files[0];
+        if (strMealThumb?.name) {
+            setMealPhotoName(strMealThumb.name);
+        }
+    }
+
     return (
         <main>
             <div className="main_wrapper">
@@ -312,9 +328,9 @@ const AddMealPage = () => {
 
                         <section className="meal_instructions_wrapper">
                             <table>
-                            <thead>
+                                <thead>
                                     <tr>
-                                        <th>Set Instructions</th>                                        
+                                        <th>Set Instructions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -377,7 +393,20 @@ const AddMealPage = () => {
                             />
                         </section>
                         <label htmlFor="strMealThumb">Meal Photo (option) </label>
-                        <input type="file" id="strMealThumb" className="str_meal_photo" />
+                        <label htmlFor="strMealThumb" className="custom_label_upload">
+                            <span className="custom_file_upload">
+                                <FaUpload />Choose a file...
+                            </span>
+                            <span className="custom_photo_name">  {mealPhotoName}</span>
+                        </label>
+                        <input
+                            type="file"
+                            id="strMealThumb"
+                            className="str_meal_photo"
+                            onClick={fileUploadClick}
+                            onChange={fileUpload}
+                        />
+
                         <button type="submit" className="save_button" onClick={saveMeal}>Save</button>
                     </form>
                 </div>

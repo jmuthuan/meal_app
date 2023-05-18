@@ -1,11 +1,16 @@
 import { updateUserProfile } from "../controllers/updateUserProfile";
 import { updateUserEmail } from '../controllers/updateUserEmail'
 import setFirestoreData from "../controllers/setFirestoreData";
-import { useParams } from "react-router-dom";
+import { FaUpload } from 'react-icons/fa';
+import { useNavigate, useParams } from "react-router-dom";
 import './UpdateUserData.css';
+import { useState } from "react";
 
 const UpdateUserData = (props) => {
 
+    const [userPhotoName, setUserPhotoName] = useState('');
+
+    const navigate = useNavigate();
 
     const { userId } = useParams();
 
@@ -15,22 +20,35 @@ const UpdateUserData = (props) => {
         const photo = event.target.photoURL.files[0];
         const email = event.target.newEmail.value;
 
-        console.log('photo??');
-        console.log(event.target.files);
-        console.log(photo);
-
-        if (name || photo) {
-            updateUserProfile(name, photo, props.user, props.app, props.auth);
+        if(name || photo || email){
+            console.log('hay info');
+            if (name || photo) {
+                updateUserProfile(name, photo, props.user, props.app, props.auth);
+            }
+    
+            if (email) {
+                updateUserEmail(email);
+            }
+    
+            alert('Profile Updated...');
+            navigate('/');
         }
 
-
-        if (email) {
-            updateUserEmail(email);
+        else{
+            alert('Please complete the data that you want to update');
         }
+    }
 
-        /* if(photo){
-            setFirestoreData(photo, 'user_photos', userId )
-        } */
+    /* ************************************ */
+    const fileUploadClick = () => {
+        setUserPhotoName('');
+    }
+
+    const fileUpload = (e) => {
+        const strUserPhotoName = document.getElementById('inputPhotoURL').files[0];
+        if (strUserPhotoName?.name) {
+            setUserPhotoName(strUserPhotoName.name);
+        }
     }
 
     console.log(userId);
@@ -55,13 +73,24 @@ const UpdateUserData = (props) => {
                         <label
                             className="form_item_profile"
                             htmlFor="inputPhotoURL">New Photo</label>
+
+                        <label htmlFor="inputPhotoURL" className="custom_label_upload">
+                            <span className="custom_file_upload">
+                                <FaUpload />Choose a file...
+                            </span>
+                            <span className="custom_photo_name">  {userPhotoName}</span>
+                        </label>
+
                         <input
                             className="form_item_profile label_input_photo"
                             type="file"
                             id="inputPhotoURL"
                             name="photoURL"
                             accept="image/png, image/jpeg"
+                            onClick={fileUploadClick}
+                            onChange={fileUpload}
                         />
+
                         <label
                             className="form_item_profile"
                             htmlFor="inputEmail">New Email</label>

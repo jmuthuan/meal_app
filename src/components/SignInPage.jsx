@@ -20,14 +20,15 @@ const SingInPage = (props) => {
     //LogIn Form - LogOut
     const logInEvent = (event) => {
         event.preventDefault();
-        getAuthMeal(event.target.button.value, event.target.email.value, event.target.password.value);
-        props.mainLogIn();
+        getAuthMeal(event.target.button.value, event.target.email.value, event.target.password.value);        
+        //props.mainLogIn();
+        //navigate('/');
     }
 
     //singUp 
     const singUpEvent = (event) => {
         event.preventDefault();
-        navigate('/singup');
+        navigate('/signup');
     }
 
     return (

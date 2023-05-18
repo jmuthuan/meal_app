@@ -14,10 +14,9 @@ const getAuthMeal = (buttonName, email, password) => {
 
     //New Users
     if (buttonName === 'singup') {
-        console.log('singup test...');
         newUser(email, password);
     } else if (buttonName === 'login') {
-        logInInUser(email, password);
+        logInInUser(email, password);       
     } else if (buttonName === 'logout') {
         logOut();
     }
@@ -50,17 +49,27 @@ const logInInUser = (email, password) => {
             return signInWithEmailAndPassword(auth, email, password)
         })
         .then((userCredential) => {
-            // Signed in
-            const user = userCredential.user;
+            // Signed in            
             console.log('Signed In!!!');
-            console.log(userCredential);
-
+            console.log(userCredential); 
+            
+            if(userCredential.user.emailVerified){
+                console.log('email verified')
+            }
+            else{
+                console.log('email not verified');
+                alert('Please click the link that has been sent to your email account to verify your email and gain full access to the site.');                
+                //logOut();
+            }
             // ...
         })
         .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
-            console.warn(errorCode + ": " + errorMessage);
+            /* const errorMessage = error.message;
+            console.dir(error)
+            console.warn(errorCode);
+            console.log(errorMessage);// + ": " + errorMessage); */    
+            alert('an error has occured:  '+ errorCode);        
         });
 }
 

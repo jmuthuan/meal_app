@@ -14,11 +14,15 @@ const Header = (props) => {
     const dinamicParam = useParams();
     let breadCrumbArray = [];
     let hide_items_log_in = false;
+    let hide_items_search_bar = false;
 
 
     switch (props.breadCrumb) {
         case 1:
             breadCrumbArray = null;
+            if(!props.isLoggedIn){
+                hide_items_search_bar = true
+            }
             break;
         case 2:
             breadCrumbArray.push({ name: 'Home', path: '/' }, { name: dinamicParam['categorieName'] });
@@ -32,6 +36,7 @@ const Header = (props) => {
         case 4:
             breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Log In' });
             hide_items_log_in = true;
+            hide_items_search_bar = true;
             break;
 
         case 5:
@@ -69,7 +74,8 @@ const Header = (props) => {
 
         case 13:
             breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Sing Up' });
-            hide_items_log_in = true;
+            //hide_items_log_in = true;
+            hide_items_search_bar = true;
             break;
 
         default:
@@ -78,18 +84,10 @@ const Header = (props) => {
 
 
     //LogIn Form - LogOut
-    const logInEvent = () => {
-        //event.preventDefault();
-        //getAuthMeal(event.target.button.value, event.target.email.value, event.target.password.value);
-        //props.mainLogIn();
-        navigate('singIn');
+    const logInEvent = () => {        
+        navigate('/signIn');
     }
 
-    //singUp 
-    const singUpEvent = (event) => {
-        event.preventDefault();
-        navigate('/singup');
-    }
     //Log Out
     const logOutEvent = (event) => {
         event.preventDefault();
@@ -133,7 +131,6 @@ const Header = (props) => {
 
     return (
         <header className="App-header">
-            {/*  {console.log('user', props.user)} */}
             <div className="header_wrapper">
                 <div className='burger_menu_wrapper'>
                     <BurgerMenu
@@ -189,7 +186,7 @@ const Header = (props) => {
 
 
 
-                <div className={`search_wrapper ${hide_items_log_in ? 'hide_log_in' : ''}`}>
+                <div className={`search_wrapper ${hide_items_search_bar ? 'hide_log_in' : ''}`}>
                     <form className="search_meal_form" onSubmit={searchMyMeal}>
                         <div className="form_section_bar">
                             <input type="text" className="search_bar" id="search_bar" placeholder="Search a meal!" />

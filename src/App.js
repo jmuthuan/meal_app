@@ -16,6 +16,7 @@ import FavoriteMeals from './components/FavoriteMeals';
 import SearchResults from './components/SearchResults';
 import SignInPage from './components/SignInPage';
 import AboutPage from './components/AboutPage';
+import getAuthMeal from './controllers/getAuthMeal';
 
 
 function App() {
@@ -40,15 +41,18 @@ function App() {
     /* console.log("testing firebase auth"); */
     //const auth = getAuth();
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in
+      if (user) {        
         const uid = user.uid;
-        //console.log(user);
-
-        setUser(user);
-        setLoggedIn(true);
-        setUserId(uid);
-        favoriteList(uid);
+        if (user.emailVerified) {
+          setUser(user);
+          setLoggedIn(true);
+          setUserId(uid);
+          favoriteList(uid);
+        }
+        else {         
+          console.log('email not verified...');          
+          logOut();
+        }
 
       } else {
         // User is signed out    
@@ -60,6 +64,7 @@ function App() {
   const logOut = () => {
     setUser(null);
     setLoggedIn(false);
+    getAuthMeal('logout','','');    
   }
 
   const favoriteList = async (userId) => {
@@ -142,7 +147,7 @@ function App() {
             }
           />
           <Route
-            path='/singIn'
+            path='/signIn'
             element={
               <>
                 <Header
@@ -163,7 +168,7 @@ function App() {
           />
 
           <Route
-            path='/singup'
+            path='/signup'
             element={<>
               <Header
                 user={user}

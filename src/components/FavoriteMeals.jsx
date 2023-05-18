@@ -131,6 +131,10 @@ const FavoriteMeals = (props) => {
             <div className="main_wrapper">
                 <h2>My Favorite Meals</h2>
                 <div className="favorite_meal_wrapper">
+
+                {(favsMeals.length===0) && (userMeals.length===0) &&
+                 <p className="empty_favorites">You don't have favorite or presonal meals</p>}
+
                     {favsMeals && favsMeals.map((meal) => {
                         return (
                             <MealCard
@@ -163,6 +167,8 @@ const FavoriteMeals = (props) => {
                         )
                     })
                     }
+
+                   
                 </div>
             </div>
         </main>

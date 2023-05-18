@@ -12,7 +12,13 @@ const MealCategoryCard = (props) => {
 
 
     const onClickCategory = () => {
-        navigate(`categorie/${props.name}`);
+        if(props.name==='Beef' || props.isLoggedIn){
+            navigate(`categorie/${props.name}`);
+        }
+        else{
+            alert('Please Log In or create a free account to gain full access!!!');   
+        }
+        
     }
 
     return (

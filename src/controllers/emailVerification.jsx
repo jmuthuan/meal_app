@@ -7,6 +7,6 @@ export function emailVerification(auth){
     sendEmailVerification(auth.currentUser)
       .then(() => {
         // Email verification sent!
-        alert('check your email for validation...');
+        alert('Please click the link that has been sent to your email account to verify your email and gain full access to the site.');
       });
 }

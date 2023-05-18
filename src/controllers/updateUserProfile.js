@@ -9,7 +9,7 @@ export function updateUserProfile(displayName, photoURL, user, app, auth) {
     const storage = getStorage(app);
     const storageRef = ref(storage, `/user_photos/${user.uid}`);    
 
-    console.log('updating profile...');
+    //console.log('updating profile...');
 
     //Photo update
     if (photoURL) {
@@ -57,7 +57,7 @@ export function updateUserProfile(displayName, photoURL, user, app, auth) {
                         // An error occurred
                         // ...
                     });
-                });
+                });                
             }
         );
     } 
@@ -67,7 +67,7 @@ export function updateUserProfile(displayName, photoURL, user, app, auth) {
             displayName: displayName           
         }).then(() => {
             // Profile updated!
-            console.log('Name updated!')
+            //console.log('Name updated!')
             // ...
         }).catch((error) => {
             alert('An error occurred. Please try later...');
