@@ -1,22 +1,21 @@
 import { useState } from 'react';
 import './MealCategoryCard.css';
 import { useNavigate } from 'react-router-dom';
+import customSweetAlert from '../controllers/sweetAlert';
 
 const MealCategoryCard = (props) => {
     const [hover, setHover] = useState(false);
 
-    const navigate = useNavigate();
-    /* useEffect(() => {
-
-    }, [hover]) */
-
+    const navigate = useNavigate(); 
 
     const onClickCategory = () => {
         if(props.name==='Beef' || props.isLoggedIn){
             navigate(`categorie/${props.name}`);
         }
         else{
-            alert('Please Log In or create a free account to gain full access!!!');   
+            //alert('Please Log In or create a free account to gain full access!!!'); 
+            customSweetAlert('Log In or create a free account','You must be logged in to gain full access!!!','info');  
+            
         }
         
     }

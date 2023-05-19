@@ -3,6 +3,7 @@ import getAuthMeal from "../controllers/getAuthMeal";
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 import { useState } from "react";
 import './SignUpPage.css';
+import customSweetAlert from "../controllers/sweetAlert";
 
 const SingUpPage = () => {
     const [passLength, setPassLength] = useState(false);
@@ -11,7 +12,8 @@ const SingUpPage = () => {
     const [passNumber, setPassNumber] = useState(false);
     const [passSpecial, setPassSpecial] = useState(false);
 
-    const randomMeal = Math.floor(Math.random() * 6)+ 1;
+    const [randomMeal, setRandomMeal] = useState(Math.floor(Math.random() * 6) + 1);
+    //const randomMeal = Math.floor(Math.random() * 6)+ 1;
 
     const navigate = useNavigate();
 
@@ -133,18 +135,19 @@ const SingUpPage = () => {
 
 const passwordCheck = (passwords, rules) => {
     if (rules.every(rule => rule === true)) {
-        if ((passwords.password.value === passwords.password_repeat.value)) {
-            //console.log('passwords OK');
+        if ((passwords.password.value === passwords.password_repeat.value)) {            
             //alert("welcome!!!");
             return true;
         } else {
-            alert('Verify your passwords. (Both passwords must match)');
+            //alert('Verify your passwords. (Both passwords must match)');
+            customSweetAlert('Verify your passwords','Both passwords must match','error');
         }
 
     } else {
-        alert("Please verify the rules for your password");
+        //alert("Please verify the rules for your password");
+        customSweetAlert('Check your Password','Please verify the rules for your password','error')
     }
-    console.log('passwords failure...');
+    //console.log('passwords failure...');
     return false;
 }
 

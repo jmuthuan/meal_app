@@ -1,10 +1,11 @@
 import { updateUserProfile } from "../controllers/updateUserProfile";
 import { updateUserEmail } from '../controllers/updateUserEmail'
-import setFirestoreData from "../controllers/setFirestoreData";
+//import setFirestoreData from "../controllers/setFirestoreData";
 import { FaUpload } from 'react-icons/fa';
 import { useNavigate, useParams } from "react-router-dom";
 import './UpdateUserData.css';
 import { useState } from "react";
+import customSweetAlert from "../controllers/sweetAlert";
 
 const UpdateUserData = (props) => {
 
@@ -20,22 +21,21 @@ const UpdateUserData = (props) => {
         const photo = event.target.photoURL.files[0];
         const email = event.target.newEmail.value;
 
-        if(name || photo || email){
-            console.log('hay info');
+        if(name || photo || email){          
             if (name || photo) {
                 updateUserProfile(name, photo, props.user, props.app, props.auth);
             }
     
             if (email) {
                 updateUserEmail(email);
-            }
-    
-            alert('Profile Updated...');
+            }    
+            
+            customSweetAlert('','Profile Updated','success');
             navigate('/');
         }
 
         else{
-            alert('Please complete the data that you want to update');
+            customSweetAlert('Empty data','Please complete the data that you want to update','info')
         }
     }
 

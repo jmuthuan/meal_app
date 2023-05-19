@@ -32,9 +32,11 @@ function App() {
 
   const app = firebaseStart();
   const auth = getAuth(app);
+  
 
   useEffect(() => {
     logIn();
+    console.log('auth', auth);
   }, [])
 
   const logIn = () => {
@@ -48,10 +50,11 @@ function App() {
           setLoggedIn(true);
           setUserId(uid);
           favoriteList(uid);
+          console.log('validate user test');
         }
         else {         
           console.log('email not verified...');          
-          logOut();
+          //logOut();
         }
 
       } else {
@@ -64,6 +67,8 @@ function App() {
   const logOut = () => {
     setUser(null);
     setLoggedIn(false);
+    setUserId(null);
+    setFavoriteIdList(null);
     getAuthMeal('logout','','');    
   }
 

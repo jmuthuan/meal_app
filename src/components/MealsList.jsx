@@ -5,8 +5,7 @@ import getAllMealsByCategory from '../controllers/getAllMealsByCategory';
 
 
 const MealList = (props) => {
-    const { categorieName } = useParams();
-    //const userId = currentUser();
+    const { categorieName } = useParams();  
 
     const navigate = useNavigate();
 

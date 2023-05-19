@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaEdit, FaTrashAlt, FaCheck } from 'react-icons/fa'
+import customSweetAlert from "../controllers/sweetAlert";
 
 const Ingredient = (props) => {
 
@@ -18,8 +19,8 @@ const Ingredient = (props) => {
                 measure: inputMeasure
             },
                 props.actualStepIngredient);           
-        } else {
-            alert('Ingredient or Measure too short, please verify!');
+        } else {            
+            customSweetAlert('Ingredient or Measure too short', 'please verify!', 'error')
         }
     }
 

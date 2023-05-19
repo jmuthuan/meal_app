@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { FaEdit, FaTrashAlt, FaCheck } from 'react-icons/fa'
+import customSweetAlert from '../controllers/sweetAlert';
 
 const Instruction = (props) => {
 
@@ -32,7 +33,8 @@ const Instruction = (props) => {
         if (inputValue.length > 10) {
             props.confirmInstruction(inputValue, props.actualStepInstruction);           
         } else {
-            alert('Instruction too short, please verify!');
+            //alert('Instruction too short, please verify!');
+            customSweetAlert('Instruction too short', 'please verify!', 'error');
         }
     }
 

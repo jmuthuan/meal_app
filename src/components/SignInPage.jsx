@@ -1,15 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import getAuthMeal from "../controllers/getAuthMeal";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import './SignInPage.css';
 
 const SingInPage = (props) => {
 
     const navigate = useNavigate();
 
-    const randomMeal = Math.floor(Math.random() * 6) + 1;
- 
+    const [randomMeal, setRandomMeal] = useState(Math.floor(Math.random() * 6) + 1);
 
+    //const randomMeal = Math.floor(Math.random() * 6) + 1;
 
     useEffect(() => {
         if (props.isLoggedIn) {

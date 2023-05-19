@@ -1,9 +1,9 @@
 import { doc, updateDoc, setDoc, arrayUnion, getDoc } from "firebase/firestore";
 import db from "./firestoreStart";
+import customSweetAlert from "./sweetAlert";
 
 const setFirestoreData = async (data, userCollection, userId) =>{
-
-    console.log('add firestore item');
+    
     const docRef = doc(db, userCollection, userId)
     const docSnap = await getDoc (docRef);
     
@@ -20,10 +20,11 @@ const setFirestoreData = async (data, userCollection, userId) =>{
           }); 
         }       
 
-        console.log("Document written");
+        //console.log("Document written");
         
     } catch (e) {
-        console.error("Error adding element: ", e);
+        //console.error("Error adding element: ", e);
+        customSweetAlert('','An error occurred. Please try later...','error')
     }       
 }
 

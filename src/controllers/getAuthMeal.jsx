@@ -2,6 +2,7 @@
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, setPersistence, browserSessionPersistence } from 'firebase/auth'
 import { emailVerification } from './emailVerification';
 import firebaseStart from './firebaseStart';
+import customSweetAlert from './sweetAlert';
 
 
 const getAuthMeal = (buttonName, email, password) => {
@@ -31,7 +32,7 @@ const newUser = (email, password) => {
             const user = userCredential.user;
             // ...
             console.log('user credentials...');
-            console.log(userCredential);
+            console.log(userCredential);            
             emailVerification(auth);
         })
         .catch((error) => {
@@ -43,7 +44,7 @@ const newUser = (email, password) => {
 }
 
 const logInInUser = (email, password) => {
-    const auth = getAuth();
+    let auth = getAuth();
     setPersistence(auth, browserSessionPersistence)
         .then(() => {
             return signInWithEmailAndPassword(auth, email, password)
@@ -54,22 +55,22 @@ const logInInUser = (email, password) => {
             console.log(userCredential); 
             
             if(userCredential.user.emailVerified){
-                console.log('email verified')
+                console.log('email verified', auth);
             }
             else{
+                auth = getAuth();
                 console.log('email not verified');
-                alert('Please click the link that has been sent to your email account to verify your email and gain full access to the site.');                
+                console.log(auth);
+                //alert('Please click the link that has been sent to your email account to verify your email and gain full access to the site.');
+                customSweetAlert('Please verify your email before login','Please click the link that has been sent to your email account to verify your email and gain full access to the site.','info-footer');
                 //logOut();
             }
             // ...
         })
         .catch((error) => {
-            const errorCode = error.code;
-            /* const errorMessage = error.message;
-            console.dir(error)
-            console.warn(errorCode);
-            console.log(errorMessage);// + ": " + errorMessage); */    
-            alert('an error has occured:  '+ errorCode);        
+            const errorCode = error.code;             
+            //alert('an error has occured:  '+ errorCode);      
+            customSweetAlert('Authentication Error','an error has occured:  '+ errorCode ,'error')  
         });
 }
 

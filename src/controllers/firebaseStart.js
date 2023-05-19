@@ -18,9 +18,7 @@ function firebaseStart() {
     measurementId: "G-Z6TJM5ET7W"
   };
 
-  // Initialize Firebase
-  /* const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app); */
+  // Initialize Firebase 
   return initializeApp(firebaseConfig);
 }
 

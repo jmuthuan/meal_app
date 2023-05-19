@@ -5,6 +5,7 @@ import { FaPlusSquare, FaUpload } from 'react-icons/fa';
 import './AddMealPage.css';
 import Ingredient from "./Ingredient";
 import setFirestoreUserMeal from "../controllers/setFirestoreUserMeal";
+import customSweetAlert from "../controllers/sweetAlert";
 
 const AddMealPage = () => {
 
@@ -34,19 +35,17 @@ const AddMealPage = () => {
     const [mealPhotoName, setMealPhotoName] = useState('');
 
     useEffect(() => {
-        console.log('rendering add meal');
 
     }, [])
 
     const saveMeal = (e) => {
         e.preventDefault();
-        console.log("saving meal...");
-
-        let alertMessage = 'Please check the following input data: \n';
+  
+        let alertMessage = '';
         let alertFlag = false;
 
         const idMeal = Date.now(); //
-        const strMeal = document.getElementById('mealName').value;
+        const strMeal = document.getElementById('add_mealName').value;       
 
         if (strMeal === '') {
             alertMessage += 'Name meal \n';
@@ -71,7 +70,7 @@ const AddMealPage = () => {
             }
         }
         if (strIngredient.length === 0) {
-            alertMessage += 'Fill ingredients data \n';
+            alertMessage += 'Fill ingredients data';
             alertFlag = true;
         }
 
@@ -85,7 +84,8 @@ const AddMealPage = () => {
         }
 
         if (alertFlag) {
-            alert(alertMessage);
+            const arrayMessage = alertMessage.split('\n');           
+            customSweetAlert('Please check the following input data:',arrayMessage, 'error');
         }
         else {
             console.log(docData);

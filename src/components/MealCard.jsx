@@ -4,6 +4,7 @@ import setFirestoreData from "../controllers/setFirestoreData";
 import currentUser from "../controllers/currentUser";
 import deleteFirestoreData from "../controllers/deleteFirestoreData";
 import { useEffect, useState } from "react";
+import customSweetAlert from "../controllers/sweetAlert";
 
 
 const MealCard = (props) => {
@@ -23,17 +24,19 @@ const MealCard = (props) => {
     }, [])
 
 
-    const favoriteToggle = (e) => {
+    const favoriteToggle = (e) => {        
         e.preventDefault();
-        if (props.userId && !isFavorite) {
+       
+        if (props.isLoggedIn && !isFavorite) {
             setFirestoreData(props.mealId, 'favorites', props.userId);
             setIsFavorite(true);
 
-        } else if (props.userId && isFavorite) {
+        } else if (props.isLoggedIn && isFavorite) {
             deleteFirestoreData(props.mealId, 'favorites', props.userId);
             setIsFavorite(false);
         } else {
-            alert('You must be logged in to add/remove your favorite meals');
+            //alert('You must be logged in to add/remove your favorite meals');
+            customSweetAlert('Log In or create a free account','You must be logged in to add/remove your favorite meals','info');
         }
     }
 
