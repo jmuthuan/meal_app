@@ -25,6 +25,7 @@ It's fully responsive so you can navigate trough it from almost any device.
 On the site you can search for your favorite meals and have detailed information about them.
 
 You must be logged in order to have full access to the site. Loggin In allows you to explore all the meal categories, search meals by name or main ingredient, edit your personal profile, select your favourites meals to add them in your personal meal list, and add your own meal!!!.
+[Link to the site](https://clever-bienenstitch-02a01e.netlify.app/)
 
 
 ## Technologies
