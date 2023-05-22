@@ -4,23 +4,16 @@ import customSweetAlert from '../controllers/sweetAlert';
 
 const Instruction = (props) => {
 
-    const [edit, setEdit] = useState(false);
+    //const [edit, setEdit] = useState(false);
     //const [add, setAdd] = useState(false);
-    const [confirm, setConfirm] = useState(true);
-    const [trash, setTrash] = useState(false);
-    const [showInput, setShowInput] = useState(props.showInput);
+    //const [confirm, setConfirm] = useState(true);
+    //const [trash, setTrash] = useState(false);
+    //const [showInput, setShowInput] = useState(props.showInput);
     const [actualInstruction, setActualInstruction] = useState(props.instructions)
-
-    //let textInstruction = props.instructions;
-    //console.log(textInstruction);
 
     useEffect(() => {
         setActualInstruction(props.instructions);
-        //setShowInput(props.showInput);
-        console.log('rendering instructions');
-
-
-    }, [props.stepInstruction, confirm, props.showInput])
+    }, [props.stepInstruction,/*  confirm, */ props.showInput])
 
 
     const deleteInstruction = () => {
@@ -33,7 +26,6 @@ const Instruction = (props) => {
         if (inputValue.length > 10) {
             props.confirmInstruction(inputValue, props.actualStepInstruction);           
         } else {
-            //alert('Instruction too short, please verify!');
             customSweetAlert('Instruction too short', 'please verify!', 'error');
         }
     }

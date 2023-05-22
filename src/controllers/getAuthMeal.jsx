@@ -6,7 +6,6 @@ import customSweetAlert from './sweetAlert';
 
 
 const getAuthMeal = (buttonName, email, password) => {
-
     // Initialize Firebase
     const app = firebaseStart();
 
@@ -21,7 +20,6 @@ const getAuthMeal = (buttonName, email, password) => {
     } else if (buttonName === 'logout') {
         logOut();
     }
-
 }
 
 const newUser = (email, password) => {
@@ -30,9 +28,7 @@ const newUser = (email, password) => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            // ...
-            console.log('user credentials...');
-            console.log(userCredential);            
+            // ...                     
             emailVerification(auth);
         })
         .catch((error) => {
@@ -50,26 +46,15 @@ const logInInUser = (email, password) => {
             return signInWithEmailAndPassword(auth, email, password)
         })
         .then((userCredential) => {
-            // Signed in            
-            console.log('Signed In!!!');
-            console.log(userCredential); 
+            // Signed in                       
             
-            if(userCredential.user.emailVerified){
-                console.log('email verified', auth);
-            }
-            else{
-                auth = getAuth();
-                console.log('email not verified');
-                console.log(auth);
-                //alert('Please click the link that has been sent to your email account to verify your email and gain full access to the site.');
+            if(!userCredential.user.emailVerified){   
+                auth = getAuth();                 
                 customSweetAlert('Please verify your email before login','Please click the link that has been sent to your email account to verify your email and gain full access to the site.','info-footer');
-                //logOut();
             }
-            // ...
         })
         .catch((error) => {
-            const errorCode = error.code;             
-            //alert('an error has occured:  '+ errorCode);      
+            const errorCode = error.code; 
             customSweetAlert('Authentication Error','an error has occured:  '+ errorCode ,'error')  
         });
 }
@@ -78,7 +63,7 @@ const logOut = () => {
     const auth = getAuth();
     signOut(auth).then(() => {
         // Sign-out successful.
-        console.log("Sign-outSuccessful");
+      
     }).catch((error) => {
         // An error happened.
         console.warn(error);

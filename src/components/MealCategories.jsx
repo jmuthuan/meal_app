@@ -28,7 +28,8 @@ const MealCategories = (props) => {
                                     key={element.idCategory}
                                     name={element.strCategory}
                                     image={element.strCategoryThumb}
-                                    enabled={!props.isLoggedIn && index > 0?false : true}                                   
+                                    enabled={!props.isLoggedIn && index > 0?false : true}  
+                                    isLoggedIn={props.isLoggedIn}                                 
                                 />
                             )
                         })

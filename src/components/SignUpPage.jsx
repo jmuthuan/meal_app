@@ -100,7 +100,7 @@ const SingUpPage = () => {
                                 placeholder="Repeat your password"
                                 name='password_repeat'
                                 required />
-                            <button className="sign_up_button" type="submit">Sing Up!!!</button>
+                            <button className="sign_up_button" type="submit">Sign Up!!!</button>
                         </form>
                     </div>
 
@@ -108,15 +108,15 @@ const SingUpPage = () => {
                         <p>Your password must complain the following rules:</p>
                         <ul className="password_rules">
                             <li>8 characters minimum length <span>
-                                {passLength ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />}</span></li>
+                                {passLength ? <FaCheckCircle className="svg_password_rules" color="green" /> : <FaTimesCircle className="svg_password_rules" color="red" />}</span></li>
                             <li>1 lower case <span>
-                                {passLower ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />}</span></li>
+                                {passLower ? <FaCheckCircle className="svg_password_rules" color="green" /> : <FaTimesCircle className="svg_password_rules" color="red" />}</span></li>
                             <li>1 upper case <span>
-                                {passUpper ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />}</span></li>
+                                {passUpper ? <FaCheckCircle className="svg_password_rules" color="green" /> : <FaTimesCircle className="svg_password_rules" color="red" />}</span></li>
                             <li>1 number <span>
-                                {passNumber ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />}</span></li>
+                                {passNumber ? <FaCheckCircle className="svg_password_rules" color="green" /> : <FaTimesCircle className="svg_password_rules" color="red" />}</span></li>
                             <li>special character <span>
-                                {passSpecial ? <FaCheckCircle color="green" /> : <FaTimesCircle color="red" />}</span></li>
+                                {passSpecial ? <FaCheckCircle className="svg_password_rules" color="green" /> : <FaTimesCircle className="svg_password_rules" color="red" />}</span></li>
                         </ul>
                     </div>
 

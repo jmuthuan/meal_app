@@ -6,10 +6,9 @@ const Ingredient = (props) => {
 
     const [actualIngredient, setActualIngredient] = useState(props.ingredient.ingredient);
     const [actualMeasure, setActualMeasure] = useState(props.ingredient.measure);
-
+    
 
     const confirmIngredient = () => {
-        console.log('confirm ingredient');
         const inputIngredient = document.getElementById(`mealIngredient${props.actualStepIngredient}`).value;
         const inputMeasure = document.getElementById(`mealMeasure${props.actualStepIngredient}`).value;
 
@@ -29,8 +28,7 @@ const Ingredient = (props) => {
         props.editIngredient(props.actualStepIngredient);
     }
 
-    const deleteIngredient = () => {
-        console.log('delete ingredient');
+    const deleteIngredient = () => {       
         props.deleteIngredient(props.actualStepIngredient);
     }
 

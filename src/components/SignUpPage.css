@@ -30,7 +30,7 @@
     }
 
     .password_rules{
-        font-size: 1.2rem;
+        font-size: 3vw;
         font-weight: 400;
     }
 
@@ -70,6 +70,11 @@
         height: 3rem;
     }
 
+    
+    .svg_password_rules{
+        font-size: 3.5vw;
+        top: 0px;
+    }
 
 }
 
@@ -106,9 +111,13 @@
     }
 
     .password_rules{
-        font-size: 1.4rem;
+        font-size: 2.2vw;
     }
 
+    .svg_password_rules{
+        top: 0px;
+        font-size: 2.5vw;
+    }
 
 }
 
@@ -136,6 +145,10 @@
 
     .password_requirements>p{
         font-size: 1.9vw;
+    }
+
+    .svg_password_rules{    
+        font-size: 1.8vw;
     }
 
 }

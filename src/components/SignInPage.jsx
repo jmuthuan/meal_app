@@ -70,7 +70,7 @@ const SingInPage = (props) => {
                             className="singup_button_submit"
                             onClick={singUpEvent}
                             name='button'
-                            value='singup'>Sing Up</button>}
+                            value='singup'>Sign Up</button>}
                     </div>
                 </div>
             </div>

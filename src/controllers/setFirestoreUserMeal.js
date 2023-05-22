@@ -2,9 +2,9 @@ import db from "./firestoreStart";
 import { doc, setDoc} from "firebase/firestore";
 import { getStorage, ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 import firebaseStart from "./firebaseStart";
+import customSweetAlert from "./sweetAlert";
 
-const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {  
-    console.log('adding meal...');   
+const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {     
    
     const docRef = doc(db, userCollection, userId, 'userMeals', `user${dataId}`);   
     
@@ -17,7 +17,6 @@ const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {
 
     //store meal picture
     if(data.strMealThumb){
-        console.log('updating photo...'+data.strMealThumb);
 
         // Create the file metadata             
         const metadata = {
@@ -47,8 +46,7 @@ const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {
             },
             () => {
                 // Upload completed successfully, now we can get the download URL
-                getDownloadURL(task.snapshot.ref).then((downloadURL) => {
-                    console.log('File available at', downloadURL);
+                getDownloadURL(task.snapshot.ref).then((downloadURL) => {             
                     data.strMealThumb = downloadURL;
 
                     try {
@@ -68,6 +66,8 @@ const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {
             console.error("Error adding meal: "+ error);
         } 
     }
+
+    customSweetAlert('Thumbs Up','You add a new meal','success');
 
 }
 

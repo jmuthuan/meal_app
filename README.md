@@ -1,70 +1,84 @@
-# Getting Started with Create React App
+# About this Site Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This site was created as a hobby and personal use. It is intended for all people who are passionate about cooking and discovering new meals and flavours. 
 
-## Available Scripts
+It's fully responsive so you can navigate trough it from almost any device.
 
-In the project directory, you can run:
+> Web Design
 
-### `npm start`
+<img src='public/img/readme/YumMeal_Home_1.png' width=80%>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+> Tablet Design
 
-### `npm test`
+<img src='public/img/readme/YumMeal_Home_6.png' width=80%>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+> Phone Design
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src='public/img/readme/YumMeal_Home_2.png' width=80%>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+On the site you can search for your favorite meals and have detailed information about them.
 
-### `npm run eject`
+You must be logged in order to have full access to the site. Loggin In allows you to explore all the meal categories, search meals by name or main ingredient, edit your personal profile, select your favourites meals to add them in your personal meal list, and add your own meal!!!.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies
+This site was built using React JS. Además se utilizó JSX, HTML, CSS, Bootstrap y Axios.
+All data is pulled from the [The MealDB](https://www.themealdb.com/) using Axios.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Site Description
 
-## Learn More
+### Home Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Home Page](public/img/readme/YumMeal_Home_1.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+You must be logged In to gain full access to the site
+![LogIn In](public/img/readme/YumMeal_Home_5.png)
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Login and Sign Up
+Click on the **Login Button**, enter your email and password to access to your site account.
 
-### Analyzing the Bundle Size
+![Log In](public/img/readme/YumMeal_LogIn_1.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+If you don't have an account you must **Sign Up**. Enter your email, and enter a password that complains with the rules showed.
+After the registration process you will recive an email so you can validate your account.
 
-### Making a Progressive Web App
+![SingUp](public/img/readme/YumMeal_SingUp_1.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+### Web Site Functions
+Once you are logged In you can:
+1.  Explore all the meal categories
+![Access to all categories](public/img/readme/YumMeal_Home_4.png)
+2.  Search meals by name or main ingredient
+![Search results](public/img/readme/YumMeal_SearchResults_1.png)
+3.  Edit your personal profile
+![Edit Profile](public/img/readme/YumMeal_UpdateProfile_1.png)
+4.  Select your favourites meals to add them in your personal meal list
+![Favourite Meals](public/img/readme/YumMeal_FavsMeal_1.png)
+5.  Add your own meal.
+![Add Meals](public/img/readme/YumMeal_AddMeal_1.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+### Meal Details
+You can see detailed information about the meals, regardless of whether you access by categories, through the search bar or the list of your favorite meals.
+![Meal Instructions](public/img/readme/YumMeal_MealDetail_1.png)
+![Meal Ingredients](public/img/readme/YumMeal_MealDetail_2.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+### About Page
+![About Page](public/img/readme/YumMeal_About_1.png)
+![About Page](public/img/readme/YumMeal_About_2.png)
+![About Page](public/img/readme/YumMeal_About_3.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Here you will find information about the site, the technologies used to develop it, as well as information about the developer and a contact form.
+
+
+*Hope you enjoy it!!!*

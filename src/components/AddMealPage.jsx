@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Instruction from "./Instruction";
 import { FaPlusSquare, FaUpload } from 'react-icons/fa';
 import './AddMealPage.css';
@@ -10,6 +10,7 @@ import customSweetAlert from "../controllers/sweetAlert";
 const AddMealPage = () => {
 
     const { userId } = useParams();
+    const navigate = useNavigate();
 
     const defaultItemState = {
         confirm: true,
@@ -35,7 +36,6 @@ const AddMealPage = () => {
     const [mealPhotoName, setMealPhotoName] = useState('');
 
     useEffect(() => {
-
     }, [])
 
     const saveMeal = (e) => {
@@ -85,12 +85,13 @@ const AddMealPage = () => {
 
         if (alertFlag) {
             const arrayMessage = alertMessage.split('\n');           
-            customSweetAlert('Please check the following input data:',arrayMessage, 'error');
+            customSweetAlert('Please check the following input data:',arrayMessage, 'error');           
         }
         else {
-            console.log(docData);
-            setFirestoreUserMeal(docData, 'myMeals', userId, idMeal);
+            setFirestoreUserMeal(docData, 'myMeals', userId, idMeal);       
+            navigate('/'); 
         }
+      
     }
 
     //instructions controllers
@@ -109,15 +110,12 @@ const AddMealPage = () => {
         let updateIds = instructionId.concat();
         updateIds.push(updateIds[updateIds.length - 1] + 1);
 
-
-        console.log(updateInstructions);
         setInstructions(updateInstructions);
         setItemsState(updateItemState);
         setInstructionId(updateIds);
     }
 
     const deleteInstruction = (stepNumber) => {
-        console.log('delete instruction');
 
         let updateInstructions = instructions.map(element => element);
         let updateIds = instructionId;
@@ -127,19 +125,6 @@ const AddMealPage = () => {
             updateInstructions.splice(stepNumber, 1)
             updateItemState.splice(stepNumber, 1);
             updateIds.splice(stepNumber, 1);
-
-
-            /* for (let i = 0; i < updateInstructions.length; i++) {
-                if (updateInstructions[i] === '') {
-                    updateInstructions.splice(i, 1)
-                    updateItemState.splice(i, 1);
-                    updateIds.splice(i, 1);
-                    i--;
-                }
-            } */
-
-            console.log('after...');
-            console.log(updateInstructions);
 
             setInstructions(updateInstructions);
             setItemsState(updateItemState);
@@ -153,9 +138,7 @@ const AddMealPage = () => {
 
     }
 
-    const confirmInstruction = (newInstruction, position) => {
-        console.log('confirm instruction');
-        //console.log(instructions);
+    const confirmInstruction = (newInstruction, position) => {  
 
         let updateInstructions = instructions.map(element => element);
         let updateItemState = itemsState;
@@ -184,13 +167,11 @@ const AddMealPage = () => {
             showInput: false
         }
 
-        //console.log(updateItemState);
         setInstructions(updateInstructions);
         setItemsState(updateItemState);
     }
 
     const editInstruction = (position) => {
-        console.log('edit instruction');
 
         let updateItemState = itemsState.concat();
 
@@ -200,7 +181,6 @@ const AddMealPage = () => {
             trash: true,
             showInput: true
         }
-        //console.log(updateItemState);
         setItemsState(updateItemState);
     }
 
@@ -227,8 +207,6 @@ const AddMealPage = () => {
         setIngredients(updateIngredient);
         setIngredientsId(updateIngredientId);
         setIconsState(updateIconState);
-
-        console.log('add ingredient');
     }
 
     const confirmIngredient = (newIngredient, position) => {

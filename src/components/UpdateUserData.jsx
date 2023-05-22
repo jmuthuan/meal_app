@@ -1,6 +1,5 @@
 import { updateUserProfile } from "../controllers/updateUserProfile";
-import { updateUserEmail } from '../controllers/updateUserEmail'
-//import setFirestoreData from "../controllers/setFirestoreData";
+import { updateUserEmail } from '../controllers/updateUserEmail';
 import { FaUpload } from 'react-icons/fa';
 import { useNavigate, useParams } from "react-router-dom";
 import './UpdateUserData.css';
@@ -50,9 +49,6 @@ const UpdateUserData = (props) => {
             setUserPhotoName(strUserPhotoName.name);
         }
     }
-
-    console.log(userId);
-    console.log(props.user);
 
     return (
         <main>

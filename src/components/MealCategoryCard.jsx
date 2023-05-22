@@ -9,15 +9,13 @@ const MealCategoryCard = (props) => {
     const navigate = useNavigate(); 
 
     const onClickCategory = () => {
+        
         if(props.name==='Beef' || props.isLoggedIn){
             navigate(`categorie/${props.name}`);
         }
-        else{
-            //alert('Please Log In or create a free account to gain full access!!!'); 
-            customSweetAlert('Log In or create a free account','You must be logged in to gain full access!!!','info');  
-            
-        }
-        
+        else{            
+            customSweetAlert('Log In or create a free account','You must be logged in to gain full access!!!','info');            
+        }        
     }
 
     return (

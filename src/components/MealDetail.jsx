@@ -3,7 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 import getMealById from "../controllers/getMealById";
 import axios from "axios";
 import './MealDetail.css';
-import defaultImgIngredient from '../img/No_Image_Available.jpg'
+import noImage from '../img/No_Image_Available.jpg'
 
 const MealDetail = (props) => {
 
@@ -29,7 +29,7 @@ const MealDetail = (props) => {
 
             } catch (error) {
                 console.log('an error has ocured, ingredient :' + ingredientArray[i] + ' not found')
-                imgResults.push(defaultImgIngredient);
+                imgResults.push(noImage);
             }
         }
 
@@ -79,11 +79,10 @@ const MealDetail = (props) => {
             <div className="main_wrapper">
 
                 {mealDetail && <><h2>{mealDetail.strMeal}</h2>
-                    <div className="meal_detail_wrapper">
-                        {/* <img className="meal_detail_img" src={mealDetail.strMealThumb} /> */}
+                    <div className="meal_detail_wrapper">                       
                         <section className="meal_instructions">
                             <div className="meal_img_wrapper">
-                                <img className="meal_detail_img" src={mealDetail.strMealThumb} />
+                                <img className="meal_detail_img" src={mealDetail.strMealThumb? mealDetail.strMealThumb :noImage} />
                             </div>
                             <ol>
                                 {mealDetail.strInstructions?.split('\r\n').map((paragraph) => {

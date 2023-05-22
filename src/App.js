@@ -35,8 +35,7 @@ function App() {
   
 
   useEffect(() => {
-    logIn();
-    console.log('auth', auth);
+    logIn();    
   }, [])
 
   const logIn = () => {
@@ -49,8 +48,7 @@ function App() {
           setUser(user);
           setLoggedIn(true);
           setUserId(uid);
-          favoriteList(uid);
-          console.log('validate user test');
+          favoriteList(uid);          
         }
         else {         
           console.log('email not verified...');          
@@ -59,7 +57,7 @@ function App() {
 
       } else {
         // User is signed out    
-        console.log('not user...signed out');
+        //console.log('not user...signed out');
       }
     });
   }

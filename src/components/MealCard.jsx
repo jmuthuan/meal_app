@@ -5,6 +5,7 @@ import currentUser from "../controllers/currentUser";
 import deleteFirestoreData from "../controllers/deleteFirestoreData";
 import { useEffect, useState } from "react";
 import customSweetAlert from "../controllers/sweetAlert";
+import noImage from '../img/No_Image_Available.jpg';
 
 
 const MealCard = (props) => {
@@ -34,8 +35,7 @@ const MealCard = (props) => {
         } else if (props.isLoggedIn && isFavorite) {
             deleteFirestoreData(props.mealId, 'favorites', props.userId);
             setIsFavorite(false);
-        } else {
-            //alert('You must be logged in to add/remove your favorite meals');
+        } else {            
             customSweetAlert('Log In or create a free account','You must be logged in to add/remove your favorite meals','info');
         }
     }
@@ -45,7 +45,8 @@ const MealCard = (props) => {
 
             <Link to={linkPath} state={{ userMeal: props.userMeals, fullMealData: props.fullMealData }}>
                 <div className="image_wrapper">
-                    <img className="card_image" src={props.mealImage} alt={`of ${props.nameMeal} meal`} />
+                    {console.log('mealImg', props.mealImage)}
+                    <img className="card_image" src={props.mealImage? props.mealImage : noImage} alt={`of ${props.nameMeal} meal`} />
                     <span className="favorite_icon" onClick={favoriteToggle}>
                         {isFavorite ? <FaHeart /> : <FaRegHeart />}
                     </span>
