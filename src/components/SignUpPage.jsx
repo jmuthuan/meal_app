@@ -13,22 +13,16 @@ const SingUpPage = () => {
     const [passSpecial, setPassSpecial] = useState(false);
 
     const [randomMeal, setRandomMeal] = useState(Math.floor(Math.random() * 6) + 1);
-    //const randomMeal = Math.floor(Math.random() * 6)+ 1;
-
+    
     const navigate = useNavigate();
 
     const singUp = (event) => {
         event.preventDefault();
 
-       /*  console.log(event.target.email.value);
-        console.log(event.target.password.value);
-        console.log(event.target.password_repeat.value); */
-
         const passwordRules = [passLength, passLower, passUpper, passNumber, passSpecial];
 
         if (passwordCheck(event.target, passwordRules)) {
-            getAuthMeal('singup', event.target.email.value, event.target.password.value)
-            //console.log('passwords check!');
+            getAuthMeal('singup', event.target.email.value, event.target.password.value);
             navigate('/');
         }
 

@@ -65,7 +65,7 @@
         width: 40vw;
         font-size: 1.8rem;
         position: relative;
-        left: 25vw;
+        margin-left: 25vw;
         margin-top: 4vh;
         height: 3rem;
     }
@@ -98,7 +98,7 @@
     
     .sign_up_button {
         width: 15rem;
-        left: 30%;
+        margin-left: 30%;
     }
 
     .password_requirements>p{
@@ -147,8 +147,38 @@
 
     .sign_up_button {
         width: 20rem;
-        left: 25%;
+        margin-left: 25%;
     }
 
     
+}
+
+
+
+
+.sign_up_button:active {   
+    animation: btnOnClick 0.2s ease-in-out 0s normal;
+}
+
+
+/* Buttons Animations */
+@keyframes btnOnClick {
+    0% {
+        top: 0px;
+        left: 0px;
+
+    }
+
+    50% {
+        top: 2px;
+        left: 2px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-2);
+
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+    }
+
 }

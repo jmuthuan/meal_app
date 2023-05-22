@@ -43,8 +43,7 @@ html{
   border-bottom: 5px solid var(--rgba-primary-4);
 }
 
-footer {
-  height: auto;
+footer {  
   font-size: calc(0.8rem + 2vmin);
   text-shadow: 2px 2px 2px var(--rgba-primary-4);
   color: white;
@@ -57,3 +56,27 @@ footer {
   align-items: center;
   height: 10rem;
 }
+
+
+.swal2-container.swal2-top{
+  font-family: 'Grandstander', cursive;
+  font-size: 4rem;
+}
+
+#swal2-html-container{
+  font-size: 1.5rem;
+}
+
+body.swal2-shown > [aria-hidden="true"] {
+  transition: 0.1s filter;
+  filter: blur(10px);
+}
+
+.swal2-popup{  
+  width: 40em !important;
+}
+
+.swal2-styled.swal2-confirm {  
+  font-size: 1.5rem !important;
+}
+

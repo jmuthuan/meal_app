@@ -36,7 +36,7 @@ const AboutPage = () => {
                             <a href="https://getbootstrap.com/"><img className='img_logo' src="img/logos/bootstrap.svg" alt='bootstrap logo' /></a>
                         </div>
                         <p>
-                            All data is pulled from the <strong><a href='https://www.themealdb.com/api.php'>The MealDB</a></strong> using Axios.
+                            All data is pulled from the <strong><a className='db_link' href='https://www.themealdb.com/api.php'>The MealDB</a></strong> using Axios.
                         </p>
 
                     </div>

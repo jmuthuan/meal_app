@@ -29,8 +29,15 @@
         padding-left: 2.5vw;
     }
 
+    .search_description{
+        font-weight: 400;
+        font-size: 1.5rem;
+        display: block;
+    }
+
     .meal_list_wrapper,
-    .favorite_meal_wrapper {
+    .favorite_meal_wrapper,
+    .search_results_wrapper {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -59,7 +66,7 @@
         z-index: 10;
         position: absolute;
         left: 88%;       
-        top: 85%;
+        top: 80%;
         background-color: var(--rgba-primary-5);
         clip-path: circle(4vw at 50% 50%);
         width: 6rem;
@@ -88,7 +95,8 @@
     }
 
     .meal_list_wrapper,
-    .favorite_meal_wrapper {
+    .favorite_meal_wrapper,
+    .search_results_wrapper {
         flex-direction: row;
     }
 
@@ -102,6 +110,11 @@
 
     .main_wrapper>h2 {
         font-size: 4rem;
+    }
+
+    .search_description{
+        font-weight: 400;
+        font-size: 2rem;
     }
 
     .favorite_icon {       

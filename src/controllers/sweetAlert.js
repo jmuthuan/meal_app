@@ -28,8 +28,6 @@ const customSweetAlert = (title, message, type) => {
             break;
     }
 
-
-
 }
 
 
@@ -50,10 +48,10 @@ const customError = (title, message) => {
 
     Swal.fire({
         position: 'top',
-        icon: 'error',
+        icon: 'error',         
+        confirmButtonColor: '#116611',
         title: title,
         html: htmlText
-
     })
 }
 
@@ -61,6 +59,7 @@ const customInfo = (title, message) => {
     Swal.fire({
         position: 'top',
         icon: 'info',
+        confirmButtonColor: '#116611',       
         title: title,
         html: message
 
@@ -76,12 +75,12 @@ const customInfoFooter = (title, message) => {
         html: message,
         confirmButtonText: 'Send new email?',
         showCloseButton: true,
+        confirmButtonColor: '#116611',
        
     }).then((result)=>{
         if (result.isConfirmed) {          
             const auth = getAuth();
-            emailVerification(auth)
-           // console.log(auth);
+            emailVerification(auth);
         }
     })
 }
@@ -89,7 +88,8 @@ const customInfoFooter = (title, message) => {
 const customSuccess = (title, message) => {
     Swal.fire({
         position: 'top',
-        icon: 'success',
+        icon: 'success',        
+        confirmButtonColor: '#116611',
         title: title,
         html: message
     })

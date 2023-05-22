@@ -9,21 +9,31 @@ const SearchResults = (props) => {
     const [nameMealResult, setNameMealResult] = useState([]);
     const [fullMealData, setFullMealData] = useState(false);
 
+    let searchBarValue = props.searchBarValue;
+    let searchByValue = props.searchByValue;
+
+    if(searchBarValue){
+        sessionStorage.setItem('searchBarValue', props.searchBarValue);
+        sessionStorage.setItem('searchByValue', props.searchByValue);
+    }
+    else{
+        searchBarValue = sessionStorage.getItem('searchBarValue');
+        searchByValue = sessionStorage.getItem('searchByValue');
+    }
+
     const getMeals = async () => {
         let meals;
-        console.log('searchByValue', props.searchByValue)
-        console.log('bar value', props.searchBarValue);
-        if (props.searchByValue === 'name') {
-            meals = await getMealsByName(props.searchBarValue);
+       
+        if (searchByValue === 'name') {
+            meals = await getMealsByName(searchBarValue.replaceAll(' ','_'));
             setFullMealData(true);
         }
         else {
-            meals = await getMealsByIngredient(props.searchBarValue);
+            meals = await getMealsByIngredient(searchBarValue.replaceAll(' ','_'));
             setFullMealData(false);
         }
         setNameMealResult(meals);
-
-        console.log('meals', meals);
+      
     }
 
     useEffect(() => {
@@ -31,27 +41,36 @@ const SearchResults = (props) => {
     }, [props.searchBarValue])
 
 
-    return (       
-        <div className="search_results_wrapper">TO-DO
-            {
-                nameMealResult && nameMealResult.map(meal => {
-                    return (
-                        <MealCard
-                            key={meal.idMeal}
-                            nameMeal={meal.strMeal}
-                            mealImage={meal.strMealThumb}
-                            mealId={meal.idMeal}
-                            isFavorite={props.favoriteIdList?.includes(meal.idMeal) ? true : false}
-                            isLoggedIn={props.isLoggedIn}
-                            userId={props.userId}
-                            userMeals={meal}
-                            fromSearch={true}
-                            fullMealData={fullMealData}
-                        />
-                    )
-                })
-            }
-        </div>
+    return (
+        <main>
+            <div className="main_wrapper">
+                <h2>Search Results 
+                    <span className="search_description">{` (for ${searchBarValue.toUpperCase()}, search by ${searchByValue.toUpperCase()})`}
+                    </span>
+                    </h2>
+                <div className="search_results_wrapper">
+                    {
+                        nameMealResult && nameMealResult.map(meal => {
+                            return (
+                                <MealCard
+                                    key={meal.idMeal}
+                                    nameMeal={meal.strMeal}
+                                    mealImage={meal.strMealThumb}
+                                    mealId={meal.idMeal}
+                                    isFavorite={props.favoriteIdList?.includes(meal.idMeal) ? true : false}
+                                    isLoggedIn={props.isLoggedIn}
+                                    userId={props.userId}
+                                    userMeals={meal}
+                                    fromSearch={true}
+                                    fullMealData={fullMealData}
+                                />
+                            )
+                        })
+                    }
+                </div>
+
+            </div>
+        </main>
     )
 }
 

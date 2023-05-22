@@ -26,6 +26,9 @@ const Header = (props) => {
             break;
         case 2:
             breadCrumbArray.push({ name: 'Home', path: '/' }, { name: dinamicParam['categorieName'] });
+            if(!props.isLoggedIn){
+                hide_items_search_bar = true;
+            }
             break;
         case 3:
             breadCrumbArray.push({ name: 'Home', path: '/' },
@@ -69,7 +72,8 @@ const Header = (props) => {
             break;
 
         case 12:
-            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'About' })
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'About' });
+            hide_items_search_bar = true;
             break;
 
         case 13:

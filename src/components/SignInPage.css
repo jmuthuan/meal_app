@@ -2,17 +2,17 @@
     .main_login_wrapper {
         display: grid;
         grid-template-areas: "title"
-                            "login"; 
+            "login";
         margin: 1rem 0rem;
     }
 
-    .form_login{
-         line-height: 1.5rem;
+    .form_login {
+        line-height: 1.5rem;
     }
 
     .img_meal_wrapper,
-    .img_meal_wrapper>img {       
-        display: none;       
+    .img_meal_wrapper>img {
+        display: none;
     }
 
     .login_wrapper {
@@ -59,29 +59,29 @@
         width: 30vw;
         font-size: 1.8rem;
         position: relative;
-        left: 30%;
+        margin-left: 30%;
         margin-top: 4vh;
         height: 3rem;
     }
 }
 
 @media screen and (min-width: 640px) {
-    .main_login_wrapper {     
+    .main_login_wrapper {
         grid-template-areas: "img title"
-                            "img login";        
+            "img login";
         gap: 0 2rem;
         margin: 4vh 0;
     }
 
-    .form_login{
+    .form_login {
         line-height: 2.5rem;
     }
 
     .email_login,
     .password_login {
         font-size: 1.5rem;
-        width: 40vw;     
-        
+        width: 40vw;
+
     }
 
     .img_meal_wrapper {
@@ -101,9 +101,9 @@
     }
 
     .login_button_submit,
-    .singup_button_submit { 
-        width: 15rem;        
-        left: 30%;
+    .singup_button_submit {
+        width: 15rem;
+        margin-left: 30%;
     }
 
 }
@@ -128,23 +128,53 @@
     .main_login_wrapper {
         display: grid;
         grid-template-areas: "img title"
-                                "img login";
-        
+            "img login";
+
         gap: 0 5rem;
         margin: 4rem 1rem;
     }
 
-   
 
-    .img_meal_wrapper {        
-        width: 40vw;     
-       
+
+    .img_meal_wrapper {
+        width: 40vw;
+
     }
 
     .login_button_submit,
-    .singup_button_submit {      
+    .singup_button_submit {
         padding: 0.5rem 1.5rem 0 1.5rem;
-        width: 20rem;        
-        left: 25%;
+        width: 20rem;
+        margin-left: 25%;
     }
+}
+
+
+
+.login_button_submit:active,
+.singup_button_submit:active {   
+    animation: btnOnClick 0.2s ease-in-out 0s normal;
+}
+
+
+/* Buttons Animations */
+@keyframes btnOnClick {
+    0% {
+        top: 0px;
+        left: 0px;
+
+    }
+
+    50% {
+        top: 2px;
+        left: 2px;
+        box-shadow: 6px 6px 4px var(--rgba-primary-2);
+
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+    }
+
 }
