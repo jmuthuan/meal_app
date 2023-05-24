@@ -2,7 +2,7 @@
 import { getAuth } from 'firebase/auth';
 import Swal from 'sweetalert2';
 import { emailVerification } from './emailVerification';
-import firebaseStart from './firebaseStart';
+//import firebaseStart from './firebaseStart';
 
 
 const customSweetAlert = (title, message, type) => {
@@ -23,7 +23,7 @@ const customSweetAlert = (title, message, type) => {
         case 'info-footer':
             customInfoFooter(title, message);
             break;
-
+           
         default:
             break;
     }
@@ -95,6 +95,8 @@ const customSuccess = (title, message) => {
     })
 
 }
+
+
 
 
 

@@ -257,6 +257,7 @@ function App() {
                 />
                 <MealDetail
                   isUser={true}
+                  user={user}
                   setMealName={mealNameMealDetail}
                 />
               </>

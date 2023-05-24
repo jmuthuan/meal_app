@@ -75,10 +75,25 @@ const FavoriteMeals = (props) => {
     }
 
     let mealsArray = [];
-    const getFavoriteMealsById = async (id) => {
-        const test = await getMealById(id)
-        mealsArray.push(test);
+    const getMeals = async () =>{        
+        if (favsIds.length > 0) {            
+            mealsArray = [];
+            
+            favsIds.forEach(id => {
+               getFavoriteMealsById(id);
+            });            
+            setFavsMeals(mealsArray);
+        }
     }
+    
+    const getFavoriteMealsById = async (id) => {       
+        if (!id.includes('user')) {           
+            const meal = await getMealById(id);
+            mealsArray.push(meal); 
+        }
+    }
+
+
 
     //get data: user meals    
     const colRef = collection(db, 'myMeals', userId, 'userMeals');
@@ -111,17 +126,9 @@ const FavoriteMeals = (props) => {
     }
 
 
-    useEffect(() => {
+    useEffect(() => {        
         getFavoritesId();
-        if (favsIds.length > 0) {
-            mealsArray = favsMeals.concat();
-            favsIds.forEach(id => {
-                getFavoriteMealsById(id);
-            });
-            setFavsMeals(mealsArray);
-
-        }
-
+        getMeals();
         getUserMeals();
     }, [favsIds.length])
 
@@ -132,10 +139,10 @@ const FavoriteMeals = (props) => {
                 <h2>My Favorite Meals</h2>
                 <div className="favorite_meal_wrapper">
 
-                {(favsMeals.length===0) && (userMeals.length===0) &&
-                 <p className="empty_favorites">You don't have favorite or presonal meals</p>}
-
-                    {favsMeals && favsMeals.map((meal) => {
+                    {(favsMeals.length === 0) && (userMeals.length === 0) &&
+                        <p className="empty_favorites">You don't have favorite or presonal meals</p>}
+                    
+                    {favsMeals.length > 0 && favsMeals.map((meal) => {
                         return (
                             <MealCard
                                 key={meal.idMeal}
@@ -168,7 +175,7 @@ const FavoriteMeals = (props) => {
                     })
                     }
 
-                   
+
                 </div>
             </div>
         </main>

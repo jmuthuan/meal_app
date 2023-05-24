@@ -34,13 +34,12 @@ export function updateUserProfile(displayName, photoURL, user, app, auth) {
             () => {
                 // Upload completed successfully, now we can get the download URL
                 getDownloadURL(task.snapshot.ref).then((downloadURL) => {
-                    console.log('File available at', downloadURL);
                     
                     updateProfile(auth.currentUser, {  
                         photoURL: downloadURL
                     }).then(() => {
                         // Profile updated!
-                        console.log('Photo updated!')
+                        //console.log('Photo updated!')
                         // ...
                     }).catch((error) => {
                         //alert('An error occurred. Please try later...');

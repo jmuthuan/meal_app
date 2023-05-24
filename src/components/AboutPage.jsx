@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import './AboutPage.css';
+import customSweetAlert from '../controllers/sweetAlert';
 
 const AboutPage = () => {
+   
     return (
         <main>
             <div className="about_page_wrapper">

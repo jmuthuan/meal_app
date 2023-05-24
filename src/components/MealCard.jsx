@@ -44,8 +44,7 @@ const MealCard = (props) => {
         <div className="meal_card_wrapper">
 
             <Link to={linkPath} state={{ userMeal: props.userMeals, fullMealData: props.fullMealData }}>
-                <div className="image_wrapper">
-                    {console.log('mealImg', props.mealImage)}
+                <div className="image_wrapper">                  
                     <img className="card_image" src={props.mealImage? props.mealImage : noImage} alt={`of ${props.nameMeal} meal`} />
                     <span className="favorite_icon" onClick={favoriteToggle}>
                         {isFavorite ? <FaHeart /> : <FaRegHeart />}

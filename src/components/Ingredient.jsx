@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaEdit, FaTrashAlt, FaCheck } from 'react-icons/fa'
 import customSweetAlert from "../controllers/sweetAlert";
 
@@ -7,6 +7,10 @@ const Ingredient = (props) => {
     const [actualIngredient, setActualIngredient] = useState(props.ingredient.ingredient);
     const [actualMeasure, setActualMeasure] = useState(props.ingredient.measure);
     
+    useEffect(()=>{
+        setActualIngredient(props.ingredient.ingredient);
+        setActualMeasure(props.ingredient.measure);
+    },[props.ingredient.ingredient])
 
     const confirmIngredient = () => {
         const inputIngredient = document.getElementById(`mealIngredient${props.actualStepIngredient}`).value;
@@ -23,8 +27,7 @@ const Ingredient = (props) => {
         }
     }
 
-    const editIngredient = () => {
-        console.log('edit ingredient');
+    const editIngredient = () => {    
         props.editIngredient(props.actualStepIngredient);
     }
 

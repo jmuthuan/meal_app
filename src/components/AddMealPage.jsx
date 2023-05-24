@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Instruction from "./Instruction";
 import { FaPlusSquare, FaUpload } from 'react-icons/fa';
 import './AddMealPage.css';
@@ -11,6 +11,7 @@ const AddMealPage = () => {
 
     const { userId } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const defaultItemState = {
         confirm: true,
@@ -19,6 +20,8 @@ const AddMealPage = () => {
         showInput: true
     }
 
+    //meal Name
+    const [mealNameState, setMealNameState] = useState('');
     //instructions States
     const [instructions, setInstructions] = useState(['']);
     const [itemsState, setItemsState] = useState([defaultItemState]);
@@ -35,17 +38,59 @@ const AddMealPage = () => {
     //photo state
     const [mealPhotoName, setMealPhotoName] = useState('');
 
-    useEffect(() => {
+   
+    useEffect(() => {    
+        /* user edit recipes */
+    if (location.state) {       
+        setInstructions(location.state.instructions);
+
+        let itemStateEdit = [];
+        let instructionIdEdit = [];
+        for (let i = 0; i < location.state.instructions.length; i++) {
+            itemStateEdit.push({confirm: false, edit: true, showInput: false, trash: true});
+            instructionIdEdit.push(i);
+        }
+        setItemsState(itemStateEdit);
+        setInstructionId(instructionIdEdit);
+
+        let ingredientsEdit = [];
+        let iconStateEdit = [];
+        let ingredientsIdEdit = [];
+        for (let i = 0; i < location.state.ingredients.length; i++) {
+            ingredientsEdit.push({
+                ingredient: location.state.ingredients[i] ,
+                measure: location.state.measures[i]
+            });
+            iconStateEdit.push({confirm: false, edit: true, showInput: false, trash: true});
+            ingredientsIdEdit.push(i)
+        }
+
+        setIngredients(ingredientsEdit);
+        setIconsState(iconStateEdit);
+        setIngredientsId(ingredientsIdEdit);
+        setMealNameState(location.state.mealName);
+    }
+
     }, [])
+
+    const onChangeName = (e) =>{
+        setMealNameState(e.target.value);
+    }
 
     const saveMeal = (e) => {
         e.preventDefault();
-  
+
         let alertMessage = '';
         let alertFlag = false;
+        let idMeal = '';
 
-        const idMeal = Date.now(); //
-        const strMeal = document.getElementById('add_mealName').value;       
+        if(location.state){
+            idMeal = location.state.id //
+        }else{
+            idMeal ='user'+Date.now(); //
+        }
+        
+        const strMeal = document.getElementById('add_mealName').value;
 
         if (strMeal === '') {
             alertMessage += 'Name meal \n';
@@ -84,14 +129,14 @@ const AddMealPage = () => {
         }
 
         if (alertFlag) {
-            const arrayMessage = alertMessage.split('\n');           
-            customSweetAlert('Please check the following input data:',arrayMessage, 'error');           
+            const arrayMessage = alertMessage.split('\n');
+            customSweetAlert('Please check the following input data:', arrayMessage, 'error');
         }
         else {
-            setFirestoreUserMeal(docData, 'myMeals', userId, idMeal);       
-            navigate('/'); 
+            setFirestoreUserMeal(docData, 'myMeals', userId, idMeal);
+            navigate('/');
         }
-      
+
     }
 
     //instructions controllers
@@ -138,7 +183,7 @@ const AddMealPage = () => {
 
     }
 
-    const confirmInstruction = (newInstruction, position) => {  
+    const confirmInstruction = (newInstruction, position) => {
 
         let updateInstructions = instructions.map(element => element);
         let updateItemState = itemsState;
@@ -281,7 +326,7 @@ const AddMealPage = () => {
     }
 
 
-    /* ************************************ */
+    /* photo upload controllers */
     const fileUploadClick = () => {
         setMealPhotoName('');
     }
@@ -293,6 +338,9 @@ const AddMealPage = () => {
         }
     }
 
+
+
+
     return (
         <main>
             <div className="main_wrapper">
@@ -301,8 +349,12 @@ const AddMealPage = () => {
                 <div className="add_meal_wrapper">
                     <form className="add_meal_form">
                         <label htmlFor="add_mealName">Meal Name</label>
-                        <input type="text" id="add_mealName" required /> <br />
-                        {/* <label htmlFor={`mealInstructions${instructions.length}`}>Set Instructions</label><br /> */}
+                        <input 
+                        type="text" 
+                        id="add_mealName" 
+                        value={mealNameState} 
+                        required
+                        onChange={onChangeName} /> <br />
 
                         <section className="meal_instructions_wrapper">
                             <table>
@@ -311,7 +363,7 @@ const AddMealPage = () => {
                                         <th>Set Instructions</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody>                                    
                                     {instructions.map((instruction, index) => {
                                         return (
                                             <Instruction
@@ -335,7 +387,6 @@ const AddMealPage = () => {
 
                         </section>
 
-                        {/* <label htmlFor={`mealIngredients${instructions.length}`}>Ingredients</label><br /> */}
                         <section className="meal_ingredients_wrapper">
                             <table>
                                 <thead>

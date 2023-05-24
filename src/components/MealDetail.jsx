@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import getMealById from "../controllers/getMealById";
 import axios from "axios";
 import './MealDetail.css';
-import noImage from '../img/No_Image_Available.jpg'
+import noImage from '../img/No_Image_Available.jpg';
+import { FaEdit, FaTrashAlt } from 'react-icons/fa';
+import deleteFirestoreUserMeal from "../controllers/deleteFirestoreUserMeal";
 
 const MealDetail = (props) => {
 
     const { id } = useParams();
     let { state } = useLocation();
+    const navigate = useNavigate();
 
 
     const [mealDetail, setMealDetail] = useState() //(state.userMeal);
@@ -74,15 +77,33 @@ const MealDetail = (props) => {
     }, [mealDetail?.strMeal]);
 
 
+    const editRecipe = () => {
+        navigate(`/addMeal/${props.user.uid}`,
+            {
+                state: {
+                    id: id,
+                    mealName: mealDetail.strMeal,
+                    instructions: mealDetail.strInstructions.split('\r\n'),
+                    ingredients: ingredientListState,
+                    measures: measureListState
+                }
+            })
+    }
+
+    const deleteRecipe = () => {
+        deleteFirestoreUserMeal('myMeals', props.user.uid, id);
+        navigate(`/favoriteUserMeals/${props.user.uid}`);
+    }
+
     return (
         <main>
             <div className="main_wrapper">
 
                 {mealDetail && <><h2>{mealDetail.strMeal}</h2>
-                    <div className="meal_detail_wrapper">                       
+                    <div className="meal_detail_wrapper">
                         <section className="meal_instructions">
                             <div className="meal_img_wrapper">
-                                <img className="meal_detail_img" src={mealDetail.strMealThumb? mealDetail.strMealThumb :noImage} />
+                                <img className="meal_detail_img" src={mealDetail.strMealThumb ? mealDetail.strMealThumb : noImage} />
                             </div>
                             <ol>
                                 {mealDetail.strInstructions?.split('\r\n').map((paragraph) => {
@@ -96,7 +117,6 @@ const MealDetail = (props) => {
                         <h3>Ingredients</h3>
 
                         <section className="meal_ingredients">
-
                             {
                                 ingredientList &&
                                 ingredientListState.map((ingredient, index) => {
@@ -113,6 +133,19 @@ const MealDetail = (props) => {
                                 })
                             }
                         </section>
+
+                        {id.includes('user') && <div className="button_wrapper">
+                            <button
+                                className="btn_edit_recipe"
+                                type="button"
+                                onClick={editRecipe}>
+                                <FaEdit className="svg_edit_recipe" /> Edit Recipe</button>
+                            <button
+                                className="btn_delete_recipe"
+                                type="button"
+                                onClick={deleteRecipe}>
+                                <FaTrashAlt className="svg_edit_recipe" /> Delete Recipe</button>
+                        </div>}
                     </div>
                 </>}
             </div>

@@ -6,7 +6,7 @@ import customSweetAlert from "./sweetAlert";
 
 const setFirestoreUserMeal = async (data, userCollection, userId, dataId) => {     
    
-    const docRef = doc(db, userCollection, userId, 'userMeals', `user${dataId}`);   
+    const docRef = doc(db, userCollection, userId, 'userMeals', `${dataId}`);   
     
     const app = firebaseStart();
     //const auth = getAuth(app);

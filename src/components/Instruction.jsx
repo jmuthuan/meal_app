@@ -4,16 +4,11 @@ import customSweetAlert from '../controllers/sweetAlert';
 
 const Instruction = (props) => {
 
-    //const [edit, setEdit] = useState(false);
-    //const [add, setAdd] = useState(false);
-    //const [confirm, setConfirm] = useState(true);
-    //const [trash, setTrash] = useState(false);
-    //const [showInput, setShowInput] = useState(props.showInput);
     const [actualInstruction, setActualInstruction] = useState(props.instructions)
 
-    useEffect(() => {
+    useEffect(() => {       
         setActualInstruction(props.instructions);
-    }, [props.stepInstruction,/*  confirm, */ props.showInput])
+    }, [props.stepInstruction, props.instructions, props.showInput])
 
 
     const deleteInstruction = () => {
@@ -33,7 +28,6 @@ const Instruction = (props) => {
     const editInstruction = () => {
         props.editInstruction(props.actualStepInstruction);
     }
-
 
     const actualInstructionChange = (e) => {
         setActualInstruction(e.target.value);
