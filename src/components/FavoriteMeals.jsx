@@ -62,8 +62,7 @@ const FavoriteMeals = (props) => {
     const docFavIdRef = doc(db, 'favorites', userId);
 
     //get data favorite Id and meals
-    const getFavoritesId = async () => {
-        console.log('favorite Ids');
+    const getFavoritesId = async () => {       
         const docSnap = await getDoc(docFavIdRef);
 
         if (docSnap.exists()) {
@@ -79,8 +78,7 @@ const FavoriteMeals = (props) => {
 
     //get data: user meals    
     const colRef = collection(db, 'myMeals', userId, 'userMeals');
-    const getUserMeals = async () => {
-        console.log('get user Meal');
+    const getUserMeals = async () => {       
         let myMealsArray = [];
         let myMeal = {};
 
