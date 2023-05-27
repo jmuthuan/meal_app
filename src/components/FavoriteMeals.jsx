@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import db from '../controllers/firestoreStart';
 
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import getMealById from "../controllers/getMealById";
 import MealCard from "./MealCard";
 
@@ -55,7 +55,7 @@ const FavoriteMeals = (props) => {
     };
 
     const [favsIds, setFavsIds] = useState([]);
-    const [favsMeals, setFavsMeals] = useState([]);
+    const [favsMeals, setFavsMeals] = useState(null);
     const [userMeals, setUserMeals] = useState([Object.create(defaultUserMeal)]);
 
     const { userId } = useParams();
@@ -63,42 +63,24 @@ const FavoriteMeals = (props) => {
 
     //get data favorite Id and meals
     const getFavoritesId = async () => {
+        console.log('favorite Ids');
         const docSnap = await getDoc(docFavIdRef);
 
         if (docSnap.exists()) {
             //console.log("Document data:", docSnap.data());
-            setFavsIds(docSnap.data().idList);
+            //setFavsIds(docSnap.data().idList);            
+
+            return docSnap.data().idList;
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
         }
     }
 
-    let mealsArray = [];
-    const getMeals = async () =>{        
-        if (favsIds.length > 0) {            
-            mealsArray = [];
-            
-            favsIds.forEach(id => {
-               getFavoriteMealsById(id);
-            });            
-            setFavsMeals(mealsArray);
-        }
-    }
-    
-    const getFavoriteMealsById = async (id) => {       
-        if (!id.includes('user')) {           
-            const meal = await getMealById(id);
-            mealsArray.push(meal); 
-        }
-    }
-
-
-
     //get data: user meals    
     const colRef = collection(db, 'myMeals', userId, 'userMeals');
-
     const getUserMeals = async () => {
+        console.log('get user Meal');
         let myMealsArray = [];
         let myMeal = {};
 
@@ -122,16 +104,31 @@ const FavoriteMeals = (props) => {
             }
             myMealsArray.push(myMeal);
         });
-        setUserMeals(myMealsArray);
+        //setUserMeals(myMealsArray);
+        return myMealsArray;
     }
 
+    const getGlobalMealTest = async () => {
 
-    useEffect(() => {        
-        getFavoritesId();
-        getMeals();
-        getUserMeals();
-    }, [favsIds.length])
+        const idList = await getFavoritesId();
 
+        //get favorite meals  
+        let mealsArray = [];
+        for (let i = 0; i < idList.length; i++) {
+            const mealFavs = await getMealById(idList[i]);
+            mealsArray = mealsArray.concat(mealFavs);
+        }
+  
+        const mealUser = await getUserMeals();
+       
+        setFavsIds(idList);
+        setFavsMeals(mealsArray);
+        setUserMeals(mealUser);
+    }
+   
+    if (!favsMeals) {
+        getGlobalMealTest();
+    }
 
     return (
         <main>
@@ -139,10 +136,10 @@ const FavoriteMeals = (props) => {
                 <h2>My Favorite Meals</h2>
                 <div className="favorite_meal_wrapper">
 
-                    {(favsMeals.length === 0) && (userMeals.length === 0) &&
+                    {favsMeals && (userMeals.length === 0) &&
                         <p className="empty_favorites">You don't have favorite or presonal meals</p>}
-                    
-                    {favsMeals.length > 0 && favsMeals.map((meal) => {
+
+                    {favsMeals && favsMeals.map((meal) => {
                         return (
                             <MealCard
                                 key={meal.idMeal}
@@ -159,6 +156,7 @@ const FavoriteMeals = (props) => {
                     }
 
                     {userMeals && userMeals.map((meal) => {
+                        //console.log(favsMeals);
                         return (
                             <MealCard
                                 key={meal.idMeal}
