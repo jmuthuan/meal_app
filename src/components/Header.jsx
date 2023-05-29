@@ -77,8 +77,7 @@ const Header = (props) => {
             break;
 
         case 13:
-            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Sign Up' });
-            //hide_items_log_in = true;
+            breadCrumbArray.push({ name: 'Home', path: '/' }, { name: 'Sign Up' });            
             hide_items_search_bar = true;
             break;
 

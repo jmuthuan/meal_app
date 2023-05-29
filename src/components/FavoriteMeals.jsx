@@ -56,7 +56,7 @@ const FavoriteMeals = (props) => {
 
     const [favsIds, setFavsIds] = useState([]);
     const [favsMeals, setFavsMeals] = useState(null);
-    const [userMeals, setUserMeals] = useState([Object.create(defaultUserMeal)]);
+    const [userMeals, setUserMeals] = useState(null);
 
     const { userId } = useParams();
     const docFavIdRef = doc(db, 'favorites', userId);
@@ -65,13 +65,9 @@ const FavoriteMeals = (props) => {
     const getFavoritesId = async () => {       
         const docSnap = await getDoc(docFavIdRef);
 
-        if (docSnap.exists()) {
-            //console.log("Document data:", docSnap.data());
-            //setFavsIds(docSnap.data().idList);            
-
+        if (docSnap.exists()) {   
             return docSnap.data().idList;
-        } else {
-            // doc.data() will be undefined in this case
+        } else {          
             console.log("No such document!");
         }
     }
@@ -102,7 +98,6 @@ const FavoriteMeals = (props) => {
             }
             myMealsArray.push(myMeal);
         });
-        //setUserMeals(myMealsArray);
         return myMealsArray;
     }
 
@@ -154,7 +149,6 @@ const FavoriteMeals = (props) => {
                     }
 
                     {userMeals && userMeals.map((meal) => {
-                        //console.log(favsMeals);
                         return (
                             <MealCard
                                 key={meal.idMeal}

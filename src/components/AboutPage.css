@@ -121,8 +121,8 @@
    
   }
   
-  /* About Main Style */
-  
+
+  /* About Main Style */  
   
   @media screen and (min-width: 360px) {
     p {
@@ -145,7 +145,6 @@
       margin: 2rem 0 0 0;
       font-size: 1.5rem;
       color: var(--rgba-primary-4);
-      /* text-decoration: underline; */
       display: inline-block;
       width: 100%;
     }
@@ -162,8 +161,8 @@
     }
   
     .img_logo{
-      height: 32px;
-      margin: 1rem 0.5rem;
+      height: 48px;
+      margin: 0rem 1rem;
       animation: logo_animation 4s ease-in-out 0s infinite;
     }
   
@@ -195,9 +194,27 @@
     .about_page_wrapper>section>span {    
       font-size: 1.8rem;    
     }
-    .img_logo{
-      height: 64px;    
+
+    .about_technologies_logos{
+      height: 96px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;      
     }
+
+    .img_logo{
+      height: 64px; 
+      top: 15%;
+      position: relative;  
+      animation: logo_animation_reverse 0.2s ease-in-out 0s normal backwards;
+    }
+
+    .img_logo:hover{
+      height: 96px;
+      top: 0%;
+      animation: logo_animation_640 0.4s ease-in-out 0s normal none;
+    }
+  
   
     .about_avatar {
       clip-path: circle(50% at 50% 50%);
@@ -239,7 +256,7 @@
       width: 60%;
       position: relative;
       text-align: start;    
-       bottom: 10rem;
+      bottom: 10rem;
   
     }
   
@@ -274,19 +291,43 @@
     
   }
 
+
+  @keyframes logo_animation_640 {
+    0%{
+      height: 64px;
+      top: 15%;
+    }
+
+    100%{
+      height: 96px;
+      top: 0%;
+    }    
+  }
+
+  
+  @keyframes logo_animation_reverse {
+    0%{
+      height: 96px;
+      top: 0%;
+    }
+
+    100%{
+      height: 64px;
+      top: 15%;
+    }    
+  }
+
   /* Buttons Animations */
 @keyframes btnOnClick {
   0% {
       top: 0px;
       left: 0px;
-
   }
 
   50% {
       top: 2px;
       left: 2px;
       box-shadow: 6px 6px 4px var(--rgba-primary-2);
-
   }
 
   100% {

@@ -1,6 +1,4 @@
-import { useNavigate } from 'react-router-dom';
 import './AboutPage.css';
-import customSweetAlert from '../controllers/sweetAlert';
 
 const AboutPage = () => {
    
@@ -28,7 +26,7 @@ const AboutPage = () => {
                 <section className="about_technoligies"><span>Technologies</span>
                     <div className="about_technologies_info">
                         <p>
-                            This site was built using React JS. In addition, JSX, HTML, CSS, Bootstrap and Axios were used.
+                            This site was built using React JS. In addition, JSX, HTML, CSS, Bootstrap and Axios were used. Besides Firebase is used to data authentication and data storage.
                         </p>
                         <div className='about_technologies_logos'>
                             <a href="https://react.dev/"><img className='img_logo' src="img/logos/react.png" alt='react logo' /></a>
@@ -37,6 +35,7 @@ const AboutPage = () => {
                             <a href="https://developer.mozilla.org/en-US/docs/Web/CSS"><img className='img_logo' src="img/logos/css.svg" alt='css logo' /></a>
                             <a href="https://axios-http.com/"><img className='img_logo' src="img/logos/axios.png" alt='axios logo' /></a>
                             <a href="https://getbootstrap.com/"><img className='img_logo' src="img/logos/bootstrap.svg" alt='bootstrap logo' /></a>
+                            <a href="https://firebase.google.com/"><img className='img_logo' src="img/logos/firebase.svg" alt='firebase logo' /></a>
                         </div>
                         <p>
                             All data is pulled from the <strong><a className='db_link' href='https://www.themealdb.com/api.php'>The MealDB</a></strong> using Axios.

@@ -228,40 +228,6 @@
     }
 }
 
-/* 
-@media screen and (min-width: 900px) {
-    .add_meal_form>label {
-        font-size: 2.5rem;
-    }
-
-    .add_meal_form>input,
-    .inputInstruction {
-        font-size: 1.5rem;
-        width: 60vw;        
-    }
-
-    .inputIngredient,
-    .inputMeasure {
-        font-size: 1.5rem;
-        width: 35vw;        
-    }
-
-
-    svg {
-        font-size: 2.5rem;
-        top: 3px;
-        position: relative;
-    }
-
-    th {
-        font-size: 2.5rem;
-    }
-
-    #strMealThumb {
-        font-size: 1.5rem;
-        width: 80vw;        
-    }
-} */
 
 @media screen and (min-width: 1200px) {
 
