@@ -8,7 +8,6 @@ import { FaEdit, FaTrashAlt } from 'react-icons/fa';
 import deleteFirestoreUserMeal from "../controllers/deleteFirestoreUserMeal";
 
 const MealDetail = (props) => {
-
     const { id } = useParams();
     let { state } = useLocation();
     const navigate = useNavigate();
@@ -43,7 +42,6 @@ const MealDetail = (props) => {
     let measureList = [];
 
     useEffect(() => {
-
         if (!id.includes('user')) {
             if (!state.fullMealData) {
                 getMeal(id);
@@ -54,8 +52,9 @@ const MealDetail = (props) => {
         } else {
             setMealDetail(state.userMeal);
         }
+    }, []);
 
-
+    useEffect(()=>{
         if (mealDetail) {
             ingredientList = [];
 
@@ -73,8 +72,8 @@ const MealDetail = (props) => {
             setIngredientListState(ingredientList);
             props.setMealName(mealDetail.strMeal);
         }
+    },[mealDetail?.strMeal])
 
-    }, [mealDetail?.strMeal]);
 
 
     const editRecipe = () => {
