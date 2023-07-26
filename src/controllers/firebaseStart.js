@@ -9,13 +9,13 @@ import { getAnalytics } from "firebase/analytics";
 function firebaseStart() {
 
   const firebaseConfig = {
-    apiKey: "AIzaSyBEjJf27Qpa9aadYvq-WlKq7Sx-9xlY-lk",
-    authDomain: "jmuthuan-meal-app.firebaseapp.com",
-    projectId: "jmuthuan-meal-app",
-    storageBucket: "jmuthuan-meal-app.appspot.com",
-    messagingSenderId: "359325443334",
-    appId: "1:359325443334:web:2c827451c81c9b05832a87",
-    measurementId: "G-Z6TJM5ET7W"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
   };
 
   // Initialize Firebase 
